@@ -2,6 +2,11 @@
 
 Research findings on the money hidden inside event costs. Sources at the bottom.
 
+> **Scope note:** the room-block mechanics here — IATA TIDS, commissions, comp-room ratios,
+> rebates, attrition clauses, meal and hotel-adjacent sponsorship — are industry-standard and
+> apply in **any** city. Only the GMCVB incentive, the Florida hurricane program, and the Miami
+> venue quotes are location-specific. Location is still open; see [location.md](location.md).
+
 **Headline: a 600-room-night event can recover roughly $30,000–$45,000 from its own logistics** —
 about $20–26K from the room block and the rest from meal and hotel-adjacent sponsorship. That is
 more than a Cal Hacks Silver sponsor, from money most organizers never realize is on the table.
