@@ -133,8 +133,11 @@ Handshake, RippleMatch, Symplicity, 12twenty, Untapped, Forage, and CodePath are
 or per-post. Only **Wellfound Autopilot** ($500/month per role + 10% placement fee) survives as a
 published hybrid.
 
-**No elite student community charges a per-hire fee.** They monetize through fund economics or
-philanthropy.
+**No elite student community charges a per-hire fee.** Checked directly across seven
+organizations — Z Fellows, Contrary, On Deck/ODF, CodePath, MLH, Kleiner Perkins Fellows, and
+Interact. Every one monetizes through fund economics (carry), nonprofit/philanthropic funding, or
+contact-sales sponsorship. **The absence of any published placement-fee model across all seven is
+itself the finding.**
 
 ## What the market actually pays — real contract data
 
