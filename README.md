@@ -120,7 +120,16 @@ gates everything. The docs below are raw material feeding it.
 | [docs/event-optimizer.md](docs/event-optimizer.md) | Event as multi-objective optimization: worked 3-design result + the 25-answer memo |
 | [docs/event-system-flowcharts.md](docs/event-system-flowcharts.md) | Four Mermaid diagrams: master system, participant, economy, quant loop |
 | [docs/event-design-matrix.md](docs/event-design-matrix.md) | Every event feature × experience/data/money/longterm/cost/risk |
-| [schema/](schema/) · [engine/](engine/) | Typed schema (core + economic + quant) + six runnable engines: consent/temporal correctness, VOI kill-filter, beliefs, Monte Carlo, portfolio, calibration, event optimizer — **54 passing checks** |
+| **— Value engines & the company→offer system —** | |
+| [docs/historical-structural-analysis.md](docs/historical-structural-analysis.md) | How contests/prizes/hackathons historically created value; the Boudreau/Lakhani R&D result |
+| [docs/structural-archetypes.md](docs/structural-archetypes.md) | The 10 recurring structures; which two are both hackathon-advantaged and six-figure |
+| [docs/rd-engine.md](docs/rd-engine.md) · [docs/commercial-engines.md](docs/commercial-engines.md) | The specialized engines: R&D value-of-failure, research, activation, product-dev, more |
+| [docs/company-opportunity-map.md](docs/company-opportunity-map.md) · [docs/icp-by-engine.md](docs/icp-by-engine.md) | The COMPANY→OFFER generator (routes or says NO FIT); one ICP per engine |
+| [docs/top-prospects.md](docs/top-prospects.md) · [docs/go-to-market.md](docs/go-to-market.md) | First-cut prospect list + problem-first outreach theses |
+| [docs/event1-design.md](docs/event1-design.md) | **The payoff.** Concrete Event 1 design + the 40-question synthesis |
+| [docs/value-engine-flowcharts.md](docs/value-engine-flowcharts.md) | Five Mermaid diagrams: value engine, economy, portfolio, tweak, ICP discovery |
+| [docs/historical-program-dataset.md](docs/historical-program-dataset.md) | Structured historical program records (UNKNOWN-honest) |
+| [schema/](schema/) · [engine/](engine/) | Typed schema (core + economic + quant) + six runnable engines: consent/temporal correctness, VOI kill-filter, beliefs, Monte Carlo, portfolio, calibration, event optimizer — **74 passing checks across seven suites** (+ value engines & the company→offer matcher) |
 | [docs/roadmap.md](docs/roadmap.md) | Critical path, owner split, next 30/90 days |
 | [docs/economics.md](docs/economics.md) | The full economic surface — attention / access / answers / outcomes |
 | [docs/monetization-map.md](docs/monetization-map.md) | Every step monetized, tagged proven/swing, against the extraction frontier |
