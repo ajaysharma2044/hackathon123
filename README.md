@@ -108,6 +108,7 @@ outcomes — is not.
 | [docs/economics.md](docs/economics.md) | The full economic surface — attention / access / answers / outcomes |
 | [docs/research-findings.md](docs/research-findings.md) | Sourced benchmarks: competitor pricing, Miami costs, market comparables |
 | [docs/logistics-revenue.md](docs/logistics-revenue.md) | $30-45K hidden in the room block, F&B, and venue — and how to actually collect it |
+| [docs/asset-monetization.md](docs/asset-monetization.md) | What the list, content, research, and credits are worth — and the PyCon price benchmark |
 | [docs/funding.md](docs/funding.md) | Budget, cost levers, sponsor stack, which budget to sell into, liability |
 | [docs/measurement.md](docs/measurement.md) | What specifically to look for, and how to capture it |
 | [docs/concept.md](docs/concept.md) | Full concept: experience design, sponsor model, tracks, the Club OS link |
