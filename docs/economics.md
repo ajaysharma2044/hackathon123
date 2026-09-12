@@ -15,7 +15,7 @@ apart, and most hackathons only ever sell the cheapest one.
 | | What the sponsor gets | Market price | Who buys |
 |---|---|---|---|
 | **Attention** | Logo, booth, swag, workshop slot | $500 – $10K | Anyone |
-| **Access** | Recruiting, resume book, candidate contact | $20K – $50K | University recruiting |
+| **Access** | Recruiting, resume book, candidate contact | $20K – $50K | ⚠️ *Not* university recruiting — NACE median campus budget is ~$2,850/school. Field Marketing holds this. See [procurement.md](procurement.md) |
 | **Answers** | A research study answering their question | $40K – $150K | Product / DevRel / insights |
 | **Outcomes** | A hire, a retained user, a portfolio company | Contingent, unbounded | All of the above |
 
