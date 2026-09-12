@@ -156,3 +156,65 @@ $30–50K of raw panel value before a single question is asked** — and elite e
 the hardest and most expensive segments for panel companies to recruit at all.
 
 That is a floor, not a ceiling, and it is a number a research buyer already understands.
+
+## The access-pricing ladder — a 300x spread for "technical students"
+
+This is the most useful pricing evidence found so far. Companies pay wildly different amounts
+for what is nominally the same thing — access to technical students — and the spread reveals
+exactly what they are actually paying for.
+
+| What | Price | Scale | Engagement |
+|---|---:|---|---|
+| CMU STEM career fair table | **$1,000** | thousands | 1 day, booth |
+| MIT Fall Career Fair add-on booth | **$1,000** | thousands | 1 day, booth |
+| MIT additional representative | **$350** | — | — |
+| MIT Startup Village booth | **$200** | — | 1 day |
+| Cal Hacks Anchor tier | **$50,000** | 3,000+ | 36 hrs, deep |
+| Grace Hopper top tier (Emerald) | **~$300,000** (reported) | 20,000+ | 3 days, brand + mission |
+
+Sources: [CMU](https://www.cmu.edu/career/employers/stem-in-person.html),
+[MIT](https://capd.mit.edu/fcf-add-ons/), [Cal Hacks](https://hackberkeley.org/sponsorship.pdf),
+[GHC](https://ghc.anitab.org/sponsors-patrons) (Emerald figure is reported, not currently
+published — the live prospectus is gated behind a contact form; needs confirming).
+
+### What the spread actually shows
+
+A career fair booth at MIT costs **$1,000**. Cal Hacks charges **fifty times that** for a
+comparable number of students.
+
+The difference is not headcount. It is **depth of engagement and curation**. A booth buys a
+queue of resumes and eight seconds of attention each. Cal Hacks buys 36 hours of observed
+building, a prize track that shapes what gets built, and an API workshop.
+
+This is genuinely good news for a 200-person event, because it means **price does not track
+attendee count.** If it did, 200 builders would be worth $70 total against Cal Hacks' 3,000.
+
+It tracks:
+
+```
+curation × engagement depth × exclusivity × what the sponsor walks away with
+```
+
+On the first three, a 200-person flown-in selected cohort beats a 3,000-person open event
+decisively. On the fourth — what they walk away with — nobody in this market offers anything
+but logos and resumes.
+
+Grace Hopper is the proof of the ceiling: **companies will pay six figures** for curated access
+to a specific technical population when the curation is real and the brand means something.
+GHC has 20,000 attendees, but it also has 30 years of institutional weight — which is the part
+that cannot be shortcut, and is a fair argument for pricing year one below where the model
+eventually lands.
+
+### Working conclusion on price
+
+```
+$1,000      commodity campus access (career fair booth)
+$10–50K     premium hackathon access (Cal Hacks ladder)      ← ceiling on attention
+$25–75K     curated + deep + research deliverable            ← defensible target
+$300K       category-defining brand with mission             ← not year one
+```
+
+A first-year event should probably price its research tier around **$40–60K** and its anchor
+somewhere near **$100K**, with the honest internal knowledge that the anchor number is being
+sold on the strength of the deliverable rather than on track record — which is exactly why the
+mocked sample findings report matters so much.
