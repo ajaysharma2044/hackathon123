@@ -196,3 +196,75 @@ it's a different business and a tenth of the price.
 [MIT Tech Review media kit](http://mediakit.technologyreview.com/) ·
 [HBR Analytic Services](https://hbr.org/hbr-analytic-services) ·
 [Deltek pricing models](https://www.deltek.com/resources/articles/consulting-pricing-models/)
+
+---
+
+# The Multi-Client Model Has Published Rate Cards
+
+Your instinct that one event can host many parallel engagements is correct, it has a name, and
+two vendors publish prices for exactly it.
+
+The structure is **omnibus** — shared fieldwork, *private* results — not plain syndication (shared
+results). Two primary rate cards:
+
+**SSRS Opinion Panel Omnibus:** **$1,000 per question**, 3-question minimum, n=1,000 per wave,
+fielded twice monthly. Their words: *"Cost efficiency is achieved by combining questions from
+several different clients."*
+
+**Researchscape Weekend Omnibus:** **$995 per 5-question block** (~$199/question), n=1,000,
+results the following Monday. Their copy states it outright: *"The questions will be fielded in
+the next available omnibus study along with questions from two or three other clients"* and *"all
+questions remain confidential to each individual client."*
+
+**That last line is the whole argument.** One fieldwork event, 3–4 simultaneous clients, each
+engagement confidential from the others, priced per unit of research rather than per unit of
+sample. The field cost is fixed; revenue scales with the number of buyers.
+
+⚠️ **The open risk, stated honestly:** no vendor was found selling confidential parallel
+*qualitative* engagements off shared fieldwork. Multi-client qual exists only as syndicated
+reports with *shared* findings. The shared-fieldwork/private-findings structure appears genuinely
+unoccupied in qualitative — which is either your white space or a sign someone tried it and it
+didn't hold together. Public sources can't distinguish the two. Pressure-test it; don't treat it
+as a proven moat.
+
+## The anchor you have to beat
+
+**A customer advisory board — 10–15 senior customers, once or twice a year — costs $22K–$55K
+all-in, and the agency fee to run one can be as low as $1,999/month** (Ignite Advisory Group).
+
+That is the number a sponsor reaches for if you sell *"access to a room of important people."*
+**You have to sell research methodology, not access, to clear it.** This is the same lesson as the
+$27K Stanford anchor — access is cheap, the instrument is what commands a premium.
+
+## The participant-hours ceiling
+
+Depth scales with sponsor count, but only until participant attention runs out.
+
+```
+200 builders × ~60 min of research participation ≈ 200 participant-hours
+one 20-interview study                            = 20 hours
+→ hard ceiling ≈ 8–12 parallel engagements
+```
+
+Researcher headcount binds before participant-hours do. **Say this out loud in the pitch** — it's
+the constraint that *justifies* the price rather than undermining it. Scarcity is the argument.
+
+## Two more clean anchors for the DX product
+
+- **Winston Francois** (published): DX research with observation sessions on developers matching a
+  client's ICP is **$20,000–$35,000** — the closest priced analog on the open market to your
+  per-sponsor product.
+- **Ethnography** prices at **$1,500–$4,000 per observed participant**, $15,000–$50,000 per study.
+  **Watching someone work is priced 5–10x interviewing them** — and watching 200 elite builders
+  work for two days is exactly what the event produces.
+
+## The uplift, stated plainly
+
+```
+Current hackathon sponsorship          $1,000 – $10,000 per sponsor
+Same access repriced as research       $25,000 – $50,000 per sponsor
+                                       $75,000+ for audit + observation + report
+```
+
+**A 5–25x uplift per sponsor**, and at 8 sponsors that is **$200K–$400K off one weekend of
+fieldwork whose cost you are largely incurring anyway.**
