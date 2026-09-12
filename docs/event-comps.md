@@ -213,3 +213,66 @@ For calibration: buildspace's founder pegged a sponsorship-only builder-communit
 [TreeHacks 2026](https://treehacks-2026.devpost.com/) ·
 [Thiel Fellowship](https://thielfellowship.org/) ·
 [buildspace letter](https://buildspace.so/letter)
+
+---
+
+# The Full Published Sponsorship Ladder Set
+
+The most complete set of verified hackathon sponsorship prospectuses gathered — for calibration,
+and for the one pattern that actually matters.
+
+| Event | Entry | Mid | Top tier |
+|---|---|---|---|
+| Hack the North 2026 | Bronze $8K | Silver $16K | **Gold $30K** |
+| Technica (UMD) 2026 | Starter $3K | Gold $10K | **Platinum $15K** |
+| McHacks 2027 | $1K | $5K | **$10K** |
+| HackIllinois 2024 | $3K | $10K | **Dragon $25K** |
+| Bitcamp 2023 | $1K | $10K | **Peta $25K** |
+| HackGT 2016 | $1K | $10K | **Partner $30K** |
+| PennApps XVI 2017 | $3K | $10K | **Title $45K min bid** |
+| TreeHacks 2015 | $2.5K | $10K | **Title $75K** |
+| Hack the North 2014 | $5K | $25K | **Platinum $80K** |
+| LauzHack 2026 | CHF 3K | CHF 9.5K | **CHF 18K** |
+
+## The pattern top-tier sponsors are actually buying
+
+Remarkably consistent across every ladder — and it's not headcount:
+
+1. **Candidate-data access is the gated good, and the gate is TIMING.** The ladder is always
+   nothing → post-event resumes → **pre-event resumes**. Pre-event access is what the top one or
+   two tiers sell. That's a direct model for pricing work-evidence: the scarce thing is *early*.
+2. **The only unbundled price for student candidate data anywhere: HackIllinois 2024 — $1,000
+   early access / $750 post-event.** The single best comparable for pricing a résumé/evidence book.
+3. **Recruiter headcount is metered and small** — 1/2/3 (Hack the North), 2/3/6 (TreeHacks).
+4. **Above ~$20K, you're selling curated human access** — PennApps "private brunch with hackers,"
+   Cal Hacks "curated recruiting lunch with hackers they hand-pick," Hack the North "profiles
+   filtered by student interest." Access to *specific vetted people*, not a booth.
+5. **Title sponsorships price at 3–5x the next tier, often by auction** (PennApps $45K min bid).
+
+**TreeHacks' own pitch is the one to steal**, because it's the small-curated argument in their
+words: *"By targeting only 750 attendees and ensuring that they are all qualified, we eliminate
+the noise of traditional hackathons."* That is the 200-person thesis, already sold successfully.
+
+## Model corrections from the filings
+
+- **MLH is a for-profit Delaware public benefit corporation**, not a nonprofit — and sells
+  *developer-marketing reach*, not recruiting (Twilio: promoted at 170 events → 2,000+ developers
+  using Twilio). Its Fellowship is per-fellow, per-12-week-cohort corporate sponsorship with hiring
+  pitched as a free byproduct — no placement fee.
+- **CodePath (nonprofit) did $31.1M revenue in FY2023**, up from $35K in 2017 — a six-year climb
+  on a pure corporate-partner model selling "access to excellent engineers at scale." Proof
+  corporates pay real, growing money for structured student-engineer access. Prices unpublished.
+- **Formation charges the *engineer*, not the employer** — $7,500–$20,000, financeable via Affirm.
+  The clearest example of monetizing the candidate side. (Not a model to copy — elite builders
+  won't pay — but instructive that the employer-pays side is so hard that some give up on it.)
+
+## The finding that reconfirms recruiting-legal.md
+
+Across Contrary, Neo, KP Fellows, 8VC, Soma, SPC, Z Fellows, Thiel, On Deck, Interact — verified
+against SEC Form ADV/D and IRS 990s — **no per-hire or placement fee exists anywhere in the elite
+student space.** Every one runs on fund economics (carry), philanthropy, or participant tuition.
+The market prices **access** (flat sponsorship/subscription), never **outcomes** (per-hire). This
+is now confirmed across ~15 organizations and is as solid as any finding in the repo.
+
+Corrected terms worth noting: Thiel Fellowship is **$250K over two years** (not $100K); Z Fellows
+is **$10K optional at a $1B cap** (~0.001%, not "$10K for 1%"); Neo Scholars is a **$20K** grant.
