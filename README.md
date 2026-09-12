@@ -105,6 +105,8 @@ outcomes — is not.
 | Path | Contents |
 |---|---|
 | [docs/roadmap.md](docs/roadmap.md) | **Start here.** Critical path, owner split, next 30/90 days |
+| [docs/economics.md](docs/economics.md) | The full economic surface — attention / access / answers / outcomes |
+| [docs/research-findings.md](docs/research-findings.md) | Sourced benchmarks: competitor pricing, Miami costs, market comparables |
 | [docs/funding.md](docs/funding.md) | Budget, cost levers, sponsor stack, which budget to sell into, liability |
 | [docs/measurement.md](docs/measurement.md) | What specifically to look for, and how to capture it |
 | [docs/concept.md](docs/concept.md) | Full concept: experience design, sponsor model, tracks, the Club OS link |
