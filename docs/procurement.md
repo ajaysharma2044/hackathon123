@@ -242,3 +242,153 @@ Timelines run 4–12 weeks for local grants, 3–6 months for strategic ones.
 [Tallyfy approval limits](https://tallyfy.com/approval-limits-matrix-template/) ·
 [Lattice purchasing policy](https://lattice.com/templates/sample-corporate-purchasing-policy) ·
 [GSA micro-purchase threshold](https://smartpay.gsa.gov/guidance-and-audits/smart-bulletins/002/)
+
+---
+
+# Who Signs — and a Correction
+
+## The budget reality check
+
+**2024 State of Developer Relations Report**, program budgets:
+
+| Over $1M | 6.8% |
+|---|---:|
+| $101K–$500K | 12.8% |
+| Under $100K | 16.7% |
+| **No set budget or don't know** | **51.3%** |
+
+Allocation: **events 41.1%**, salaries 30.9%, content 19.5%. Product Marketing Alliance's State of
+Developer Marketing found **"no one had a budget of over $1 million."**
+
+> **A median DevRel team's entire annual event budget is roughly $40K–$200K.** A $25K ask is a
+> meaningful but survivable line item. **A $100K–$150K ask is their whole year — structurally not
+> a DevRel decision at all.**
+
+Both surveys skew small and mid-market and likely understate the target companies. But the
+implication holds: **six figures requires a different buyer than DevRel.**
+
+DevRel reporting lines: Marketing 33.1% · Product 21.7% · CEO 20.3% · Engineering 19.9%.
+
+## ⚠️ Correction: university recruiting cannot fund this
+
+Earlier I advised "lead with research, close on recruiting," on the logic that campus recruiting
+budgets already exist and are already allocated. **The budget data doesn't support that.**
+
+**NACE 2025: median campus recruiting budget is ~$114,000/year, spread across ~40 schools —
+roughly $2,850 per school.** Campus cost-per-hire is $6,275.
+
+A University Recruiting Lead **cannot approve a $25–50K engagement.** They are a champion and a
+co-signer, not an economic buyer. The recruiting *value* argument still works as justification;
+the recruiting *budget* does not exist at this scale.
+
+## Who can actually sign, by documented evidence
+
+| Role | Evidence | Realistic ceiling |
+|---|---|---|
+| **Sr. Manager / Director, UX Research** | ServiceNow JD owns *"research budget… research vendor management"*; Lightspeed ResearchOps *"managing the UXR budget"* | **$25K–$75K — and already has a vendor line and a procurement path** |
+| **Manager / Sr. Manager, Field or Regional Marketing** | Strongest documented. GitLab's public handbook: manages a *"multi-million dollar marketing budget"*, with *"decision making and discretion regarding event and campaign selection and planning"* | **$25K–$100K** |
+| **Head / Director of Events** | MongoDB recruiting a leader to *"oversee a multi-million dollar budget for flagship conferences and third-party events"*; also has a Manager, Sponsor Relations & Partner Events | **$100K possible** — but budget is committed to *owned* conferences 6–12 months ahead |
+| Head / Director of DevRel | *"Owns strategy, headcount, budget, and reporting"* | $25K; $100K needs VP co-sign |
+| Developer Marketing Manager | AWS JD: *"managing marketing budgets"* — executes an allocation | $25K within an existing line |
+| Brand / Partner Marketing | *"MDF programs totaling $500K+"* | Real money, but **MDF is earmarked for channel/ISV co-marketing** — deprioritize |
+| **University Recruiting Lead** | NACE median $114K across ~40 schools | **Cannot fund this** |
+| Community Manager | Budget covers swag, meetup food, tools | **Cannot approve $25K.** Champion only |
+
+**The best-fit buyer on the evidence is a UX Research Director** — they hold budget at the right
+size *and* already have a vendor-management path, which removes most of the onboarding friction
+described above. Field Marketing is second: documented discretion over event selection.
+
+## The only published DevRel decision process
+
+Mozilla publishes its event request guidelines, and they are sobering:
+
+> They *"usually do not consider supporting requests that require significant sponsorship (in
+> general, **above $5,000 USD**)"*; need **at least 8 weeks** lead time; review requests **three
+> months out**; and decisions are made by a **weekly committee** of representatives from
+> Developer Relations, Developer Tools, Participation, MDN, and Events.
+
+**Assume your DevRel contact is a champion who convenes a group, not a signer.**
+
+## Finding the economic buyer
+
+The useful definition: the economic buyer is **"the last yes required,"** and *"what defines them
+is not title but control: they own the budget line, or they sign the requisition, or they have
+the authority to override procurement holds."* **Economic buyers are not always senior.**
+
+Two questions to ask verbatim on a first call:
+
+1. *"Who typically needs to approve investments at this level in your organization?"*
+2. *"Has this type of purchase gone through your CFO in the past?"*
+
+**The champion test:** ask them to arrange a meeting with the economic buyer. Their willingness
+and the quality of that introduction is a direct measure of champion strength. The classic
+failure mode is an enthusiastic contact with no budget authority — a fan, not a champion.
+
+**Framing determines which budget pays.** A brand campaign comes from brand marketing, a trade
+show from field marketing, a philanthropic partnership from CSR. Choose the framing that points
+at the budget you want.
+
+# The Two-Products Finding
+
+Published sponsorship pricing tops out far below six figures:
+
+| | |
+|---|---:|
+| **React Summit US 2026** — Hackathon tier | $38,000 |
+| React Summit — Platinum | $29,000 |
+| AWS re:Invent, 5x5 booth | ~$30,000 |
+| **Technica** (UMD collegiate hackathon) — Platinum | $15,000 |
+| **MIT Fall Career Fair** — Gold | $10,000 |
+
+Meanwhile agencies charge **$15,000–$75,000 per UX research study**, with complex multi-market
+work reaching $100,000+.
+
+> **Priced as a sponsorship, $25K is normal and $150K is absurd. Priced as a research engagement,
+> $25K is unremarkable and $75K is defensible.**
+
+There is a genuine tension with the §2 finding above — sponsorship has by far the better cash
+timing and the lighter approval path, but a hard ceiling around $30–38K. The resolution:
+
+```
+$25K – $38K     sell as sponsorship        marketing budget, 50% up front, fast
+$40K – $95K     sell as research           UXR or insights budget, existing vendor path
+$100K+          multi-year, or pooled      not a single DevRel or sponsorship decision
+```
+
+Lead with sponsorship framing at six figures and every comparable a buyer pulls up will make you
+look mispriced.
+
+# Two practical details
+
+**Take ACH or wire. Never card.**
+
+| On a $50,000 payment | Cost |
+|---|---:|
+| ACH | **~$5** |
+| Stripe (2.9% + 0.4% invoicing) | ~$1,650 |
+| PayPal | $1,500–$1,750 |
+
+At $150,000, card rails cost **$4,400–$5,200**.
+
+**Expect to deliver Proof of Execution.** Sponsors demand a POE for every line item — *"pictures,
+screenshots, recordings of every tweet, slide, poster, emcee mention."* Build the capture into
+event ops from day one rather than reconstructing it afterward.
+
+**One timing note for Microsoft and GitHub** (fiscal year starts July 1): a community organizer's
+account puts **March/April as the right window to send the prospectus.**
+
+**Useful primary source:** the UK **Payment Practices register**
+(check-payment-practices.service.gov.uk) forces large companies to publish actual average
+days-to-pay twice yearly, searchable by name. Use it on any target with a UK entity.
+
+## Additional sources
+
+[React Summit US sponsors](https://reactsummit.us/sponsors/) ·
+[Technica sponsor tiers](https://gotechnica.org/sponsor) ·
+[MIT Fall Career Fair sponsorship](https://capd.mit.edu/fcf-inperson-sponsorship/) ·
+[State of Developer Relations 2024](https://www.stateofdeveloperrelations.com/2024devrelreport) ·
+[Mozilla event request guidelines](https://wiki.mozilla.org/Engagement/Developer_Engagement/Event_request_guidelines) ·
+[GitLab Field Marketing Manager JD](https://handbook.gitlab.com/job-description-library/marketing/field-marketing-manager/) ·
+[Champion vs. economic buyer](https://www.spotlight.ai/post/champion-vs-economic-buyer) ·
+[UK Payment Practices register](https://check-payment-practices.service.gov.uk/) ·
+[MongoDB vendor T&Cs](https://www.mongodb.com/legal/vendors/purchase-of-goods-terms-and-conditions)
