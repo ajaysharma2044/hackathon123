@@ -10,7 +10,7 @@ Estimates, not quotes. Every line needs a real number before anything is committ
 |---|---:|---:|---|
 | Travel | $55K | $90K | 200 builders. Stipend-capped reimbursement, not booked flights. |
 | Housing | $18K | $65K | 3 nights. Summer dorms vs. hotel — **the single biggest lever**. |
-| Food | $30K | $48K | 9 meals + continuous snacks, 200 builders + ~30 staff/mentors/judges. |
+| Food | **$15K** | **$25K** | ⚠️ Revised down. MLH benchmarks are **$8–10 per person per meal** — ~$13–16K for 200 across 7 meals. The earlier figure used conference catering rates, which run several times higher. |
 | Venue | $0 | $45K | Target $0: sponsor office or university space, in-kind. |
 | Prizes (cash) | $10K | $40K | Credits/hardware come free from sponsors; this is cash only. |
 | Production / AV | $10K | $30K | Wifi capable of 250 concurrent devs is not optional and is often underbudgeted. |
