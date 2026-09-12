@@ -220,12 +220,15 @@ questions remain confidential to each individual client."*
 engagement confidential from the others, priced per unit of research rather than per unit of
 sample. The field cost is fixed; revenue scales with the number of buyers.
 
-⚠️ **The open risk, stated honestly:** no vendor was found selling confidential parallel
-*qualitative* engagements off shared fieldwork. Multi-client qual exists only as syndicated
-reports with *shared* findings. The shared-fieldwork/private-findings structure appears genuinely
-unoccupied in qualitative — which is either your white space or a sign someone tried it and it
-didn't hold together. Public sources can't distinguish the two. Pressure-test it; don't treat it
-as a proven moat.
+⚠️ **The open risk, stated honestly and precisely:** across two research passes, **no vendor
+could be identified** selling confidential parallel *qualitative* engagements off shared
+fieldwork. Multi-client qual exists only as syndicated reports with *shared* findings. But this
+is a negative result under degraded search, not an exhaustive sweep — the defensible claim is
+"we could not identify one," not "none exists." The one partial precedent found (Mature Marketing
+& Research's "Tracking the 50+ Market" combined a 20-minute IDI with a 10-minute survey on one
+multi-client sample) is archival, unpriced, and not a live offering. Either genuine white space
+or a sign it doesn't hold together at qualitative depth. Pressure-test it; do not treat it as a
+proven moat.
 
 ## The anchor you have to beat
 
@@ -268,3 +271,54 @@ Same access repriced as research       $25,000 – $50,000 per sponsor
 
 **A 5–25x uplift per sponsor**, and at 8 sponsors that is **$200K–$400K off one weekend of
 fieldwork whose cost you are largely incurring anyway.**
+
+## More omnibus rate cards, and the revenue math
+
+Beyond SSRS and Researchscape, two more primary rate cards for the vendor-led vehicle:
+
+**NORC AmeriSpeak Omnibus** (the gold-standard probability panel): **$1,000/question (Q1–5), $850
+(Q6–10), $750 (Q11+)**, 3-question minimum, n=1,000, bi-weekly, ~1 week turnaround. Add-ons:
+custom banner $350, profile variable $300, open-end coding $1,500.
+
+**Launchpad (UK):** **£60/question**, n=500, results within 48 hours of close.
+
+**The revenue engine, quantified** (derived, not a disclosed figure): a 50-question wave at a
+blended ~$850/question yields **~$42,500 of revenue against a single n=1,000 fielding** — where a
+standalone custom n=1,000 survey costs materially less than that to field. **That gap is the
+entire economic argument for the model.** Clients per wave isn't published anywhere; the working
+range from provider copy is ~3 on a small wave to ~8–12 on a large one — which matches your
+participant-hours ceiling almost exactly.
+
+## Two models hide under one name — and it matters
+
+"Multi-client research" means two structurally different things, and choosing deliberately affects
+who controls the study and how it's sold:
+
+| Model | Who sets audience, timing, questions | Who owns findings |
+|---|---|---|
+| **Vendor-led syndication** (Quirk's definition) | You do | Shared across clients |
+| **Client-led cost-sharing** (DJS definition) | The clients negotiate the split | Clients decide |
+| **Omnibus** (the hybrid you want) | You run the vehicle | **Each client's questions private to them** |
+
+The omnibus hybrid — you own the fieldwork event, each sponsor owns their proprietary questions
+and gets confidential results — is the structure that lets you sell the same weekend to competing
+sponsors without conflict. Sell it that way explicitly.
+
+## Expert networks: the margin you're really competing on
+
+Expert networks (GLG, AlphaSights, Third Bridge) are a **~$3B industry** brokering exactly what
+you'd sell — access to hard-to-reach people who know something.
+
+| | |
+|---|---:|
+| Client pays per expert hour | **$1,000–$1,400** |
+| Expert receives | $200–$500 |
+| **Implied network gross margin** | **~62–85% (central ~73%)** |
+| Subscription entry | $50K–$100K/yr for credits |
+
+⚠️ Vendor-sourced (Inex One, a competitor to the incumbents) — directionally sound, not audited.
+
+The point for your pitch: **brokering access to scarce expertise sustains ~73% gross margins as a
+$3B business.** Your cohort is scarcer than a GLG expert (you can't hire your way onto it), and
+you observe them building rather than just talking. You are competing in a proven, high-margin
+category — not inventing one.
