@@ -114,7 +114,13 @@ gates everything. The docs below are raw material feeding it.
 | [docs/capture-risk-register.md](docs/capture-risk-register.md) | Methodological / privacy / legal / experience / data-quality / integration risks |
 | [docs/event1-instrumentation-plan.md](docs/event1-instrumentation-plan.md) | MVP capture stack, study-compatibility capacity model, the 20-question synthesis |
 | [docs/question-catalog.md](docs/question-catalog.md) | **The VOI-scored questions** — what a hackathon economy can answer that telemetry/panels can't |
-| [schema/](schema/) · [engine/](engine/) | Typed schema (core + economic) + runnable kernels: consent/temporal correctness (14 tests) and question-VOI scoring with the HackathonAdvantage kill-filter (7 tests) |
+| **— Quant decision engine —** | |
+| [docs/quant-engine.md](docs/quant-engine.md) | The probabilistic engine: beliefs, Bayesian updates, Monte Carlo, VOI, calibration |
+| [docs/quant-assumptions.md](docs/quant-assumptions.md) | **Read before quoting any engine number** — every assumption, labeled, ranked by resolve-value |
+| [docs/event-optimizer.md](docs/event-optimizer.md) | Event as multi-objective optimization: worked 3-design result + the 25-answer memo |
+| [docs/event-system-flowcharts.md](docs/event-system-flowcharts.md) | Four Mermaid diagrams: master system, participant, economy, quant loop |
+| [docs/event-design-matrix.md](docs/event-design-matrix.md) | Every event feature × experience/data/money/longterm/cost/risk |
+| [schema/](schema/) · [engine/](engine/) | Typed schema (core + economic + quant) + six runnable engines: consent/temporal correctness, VOI kill-filter, beliefs, Monte Carlo, portfolio, calibration, event optimizer — **54 passing checks** |
 | [docs/roadmap.md](docs/roadmap.md) | Critical path, owner split, next 30/90 days |
 | [docs/economics.md](docs/economics.md) | The full economic surface — attention / access / answers / outcomes |
 | [docs/monetization-map.md](docs/monetization-map.md) | Every step monetized, tagged proven/swing, against the extraction frontier |
