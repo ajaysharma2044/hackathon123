@@ -100,8 +100,13 @@ outcomes — is not.
 
 ## Repo map
 
+**Planning Event 1** — the flagship, ~200 builders, target August 2027.
+
 | Path | Contents |
 |---|---|
+| [docs/roadmap.md](docs/roadmap.md) | **Start here.** Critical path, owner split, next 30/90 days |
+| [docs/funding.md](docs/funding.md) | Budget, cost levers, sponsor stack, which budget to sell into, liability |
+| [docs/measurement.md](docs/measurement.md) | What specifically to look for, and how to capture it |
 | [docs/concept.md](docs/concept.md) | Full concept: experience design, sponsor model, tracks, the Club OS link |
 | [docs/data-model.md](docs/data-model.md) | Entities, event taxonomy, consent scoping, temporal semantics |
 | [docs/research-framework.md](docs/research-framework.md) | Experiment lifecycle, behavioral funnels, model specs, qualitative coding |
@@ -110,5 +115,5 @@ outcomes — is not.
 
 ## Status
 
-Concept stage. Nothing built yet. See [docs/open-questions.md](docs/open-questions.md) for what
-needs deciding before the first line of platform code.
+Planning Event 1. The binding constraint is the anchor sponsor, and the window is Q4 2026 —
+2027 corporate budgets are being set now. See [docs/roadmap.md](docs/roadmap.md).
