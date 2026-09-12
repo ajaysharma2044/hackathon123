@@ -233,3 +233,87 @@ yet considered. Each record ends at `WTP: UNKNOWN → NextTest: talk to [role]`.
 That is a bounded, high-value research pass — and it is the natural **next** deliverable after this
 capture infrastructure lands. It is offered, not auto-run: it is a 100–300-company sweep and should
 be a deliberate go, not a reflex (the swarm discipline from this session applies).
+
+---
+
+# From Company-Fit to Question-VOI (the sharper engine)
+
+The ICP scoring above is necessary but not sufficient. The unit that actually predicts a large
+sale is not a company — it is a **question with high Value of Information that a hackathon can
+answer unusually well.** Score questions, then trace them to the company/buyer who owns the
+decision.
+
+## The opportunity formula, with the discriminating term
+
+```
+Opportunity = EconomicImportance × Unansweredness × HackathonAdvantage × BehavioralObservability × BuyerBudget
+```
+
+**`HackathonAdvantage` is the kill filter.** If Gartner, a User-Interviews panel, the company's
+own telemetry, or 20 Zoom calls can answer the question *equally well*, we have no product — the
+term goes to ~0 and the opportunity dies **no matter how high the other terms are.** A rich company
+with a huge budget and a real pain is worthless to us if their pain is answerable without a
+hackathon. This single filter is what stops the engine from chasing "big company, has a developer
+problem" and forces it toward "question only a compressed builder economy can resolve."
+
+The questions we want are ones where the hackathon *is* the instrument: hundreds of independent
+builders simultaneously making real, constrained, incentivized choices — greenfield teams
+selecting stacks from zero, competing tools available at once, credits and bounties varying,
+integrations attempted through to a working prototype, and 7/30/90-day follow-up separating prize-
+driven use from genuine retention.
+
+## Value of Information — why a $200K study isn't crazy
+
+```
+VOI = ValueOfDecision × P(research changes the decision)
+```
+
+The buyer is not paying for 200 students. They are paying for **information that changes a
+multimillion-dollar decision.** An AI company weighing $20M/year of startup-credit spend, told
+that *credits lift activation but do almost nothing for 90-day retention unless paired with
+hands-on technical support*, has just had a large allocation rationally changed. Against that
+decision, a $200K study is cheap. The engine's job is to find the questions where
+`ValueOfDecision` is large **and** our environment materially moves `P(research changes it)`.
+
+⚠️ **Honest boundary:** VOI sets a *rational ceiling* on price, not an *observed* WTP. A high VOI
+means a sponsor *could* rationally pay a lot; it is not evidence they *will*. WTP stays UNKNOWN
+until the pre-sell test returns a signed number (Part 20 rule; [STATE.md](STATE.md)).
+
+## Scoring dimensions (kept visible, never collapsed to one number)
+
+Every candidate question is scored on ten dimensions, stored separately in
+`research_question_score` ([schema/002_economic.sql](../schema/002_economic.sql)) and computed by
+[engine/score.py](../engine/score.py), which returns the **full vector plus** a composite — and
+applies HackathonAdvantage as a hard gate, not a weighted average:
+
+```
+EconomicDecisionSize · CurrentUncertainty · ExistingResearchSpend · InternalDataBlindSpot ·
+HackathonNaturalness · BehaviorObservability · ExperimentalFeasibility · LongitudinalValue ·
+Repeatability · BuyerAuthority
+```
+
+`HackathonNaturalness` (does this behavior occur naturally in a hackathon?) and
+`InternalDataBlindSpot` (is it invisible to their own telemetry?) are the two that most separate a
+real opportunity from a generic research need. A question scoring high on
+`EconomicDecisionSize × BuyerBudget` but low on `HackathonNaturalness` is a Gartner engagement, not
+ours.
+
+## The discovery pass this defines
+
+The next research pass is **question discovery**, not company discovery:
+
+> Find the most expensive unanswered business questions across AI, developer tools, infrastructure,
+> cloud, fintech infrastructure, semiconductors, technical recruiting, startup programs, and
+> corporate innovation — where the question can be answered unusually well by observing a
+> high-density hackathon economy.
+
+For each question, produce the record the worked catalog uses
+([question-catalog.md](question-catalog.md)): who owns the decision → what it is economically
+worth → how they try to answer it now → why their existing data fails → exactly what
+behavioral/economic activity at the hackathon would answer it → what experiment or observation is
+required → what follow-up is necessary → the rational WTP ceiling if the answer changes the
+decision (an estimate, not a validated price). Then cluster to find the real ICP.
+
+A first, evidence-grounded cut of that catalog — built from the buyer evidence already gathered
+this session, not a new sweep — is in [question-catalog.md](question-catalog.md). Broadening it to
+100–300 companies is the deliberate scale-up, not a reflex.

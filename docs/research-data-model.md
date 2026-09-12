@@ -190,3 +190,97 @@ The **participant research graph** (everything above) and the **Sponsor/Buyer Ev
 at the individual-participant grain. A buyer's stated pain and a participant's behavior meet only
 inside a `Finding`, in aggregate. This separation is what lets us answer "which customer class
 actually pays" without ever turning a participant into a line item in a sales record.
+
+---
+
+# The Hackathon as a Compressed Economic Laboratory
+
+The research object is not `Person → Action`. A hackathon is a temporary micro-economy of
+technical builders spending scarce resources under real incentives, and the object model must
+record the *economic* structure of each decision, not just the behavior. This extends — does not
+replace — the four layers above.
+
+```
+Actor → Opportunity → ChoiceSet → Resource → Decision → Transaction → Behavior → Artifact → Outcome
+```
+
+Each participant holds a scarce budget and allocates it:
+
+```
+Budget_i = Time_i + Attention_i + Skill_i + Compute_i + SocialCapital_i
+```
+
+Companies pay to understand *why those allocations happen* — which is a far more valuable question
+than "did students like our product."
+
+## `ChoiceSet` is the missing primitive: Choice ≠ Preference
+
+**A chosen product tells you almost nothing unless you know what was actually available to choose
+from.** "They used Claude" is not a preference signal unless you know Cursor and Copilot were
+equally reachable in that context. So the schema records the choice set, not just the choice:
+
+```
+ChoiceSet(i, decision_point)   the alternatives actually available to actor i at that moment
+   ├─ options[]                 each with: reachability, incentive attached (credits/bounty),
+   │                            prior_familiarity, switching_cost_from_current
+   └─ chosen_option             the ChosenProduct_{i,t}
+```
+
+Only with `ChoiceSet` can we estimate the quantity a sponsor actually wants —
+`P(choose X | X, competitorA, competitorB, …, context)` — instead of a meaningless raw count.
+This is stored in `choice_set` / `choice_set_option` ([schema/002_economic.sql](../schema/002_economic.sql))
+and is what turns "72 signups" into "chose us 41% of the time when Firebase and Neon were equally
+available and unincentivized."
+
+## Price signals are first-class
+
+Economic behavior moves with price, and the event can *vary* price in ways a survey cannot:
+
+```
+Price · Credits · FreeTier · Prize · Bounty · SwitchingCost
+```
+
+The highest-value version of this: **does a $100 credit create sustained adoption, or only
+subsidize temporary activation?** If `Credits↑ ⇒ Activation↑` but `Retention_30d` is flat, a
+company learns that millions in startup-credit spend is buying temporary usage — an expensive,
+unanswered question. Incentives are recorded per `ChoiceSet` option and per `Opportunity`, so the
+incentive→activation→retention chain is reconstructable.
+
+## The interacting economies (recorded, not conflated)
+
+Six economies run at once and the interesting findings live in the *edges* between them:
+
+```
+BUILDER   time / attention / tools / teams
+PRODUCT   APIs / credits / compute / SaaS adoption
+SPONSOR   cash / bounties / engineer-hours / research
+TALENT    candidates / recruiter attention / interviews          (opt-in only)
+STARTUP   teams / prototypes / users / capital                   (opt-in only)
+EVENT     travel / rooms / food / venue / vendors                (logistics-revenue.md)
+```
+
+The chain a sponsor cares about crosses several:
+
+```
+SponsorCredits → ToolChoice → ProjectStack → ProjectOutcome → 30DayRetention → SponsorRevenue
+```
+
+`economic_transaction` records resource flows (time, compute, credits, bounties, prizes) with the
+same tri-temporal + consent envelope as behavioral events, so the economic chain is queryable
+under the same point-in-time and consent guarantees.
+
+## Sponsor economics are observable too
+
+For every sponsor we record inputs and observable outputs, so `SponsorROI` becomes decomposable
+(not a single fake dollar number):
+
+```
+inputs:  cash · credits · engineer-hours · workshop-hours · bounty · prize · participants_exposed
+outputs: activated · meaningful_users · projects_shipped · retained_7/30/90 · design-partner_leads
+         · recruiting_leads (opt-in) · follow-on_conversations
+SponsorROI = f(Adoption, Retention, ResearchValue, Talent, DesignPartners, R&DOutput)
+```
+
+This is itself a saleable research question — *what is the real ROI of developer-event and
+startup-credit spend?* — which the repo already found companies publicly cannot connect to
+non-vanity outcomes ([buyer-needs.md](buyer-needs.md)). Stored in `sponsor_economics`.

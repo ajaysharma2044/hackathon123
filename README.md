@@ -113,7 +113,8 @@ gates everything. The docs below are raw material feeding it.
 | [docs/research-modules.md](docs/research-modules.md) | ICP (problem-backward) + the pain-first reusable module catalog |
 | [docs/capture-risk-register.md](docs/capture-risk-register.md) | Methodological / privacy / legal / experience / data-quality / integration risks |
 | [docs/event1-instrumentation-plan.md](docs/event1-instrumentation-plan.md) | MVP capture stack, study-compatibility capacity model, the 20-question synthesis |
-| [schema/001_core.sql](schema/001_core.sql) · [engine/](engine/) | Typed schema + runnable consent/temporal-correctness kernel (14 passing tests) |
+| [docs/question-catalog.md](docs/question-catalog.md) | **The VOI-scored questions** — what a hackathon economy can answer that telemetry/panels can't |
+| [schema/](schema/) · [engine/](engine/) | Typed schema (core + economic) + runnable kernels: consent/temporal correctness (14 tests) and question-VOI scoring with the HackathonAdvantage kill-filter (7 tests) |
 | [docs/roadmap.md](docs/roadmap.md) | Critical path, owner split, next 30/90 days |
 | [docs/economics.md](docs/economics.md) | The full economic surface — attention / access / answers / outcomes |
 | [docs/monetization-map.md](docs/monetization-map.md) | Every step monetized, tagged proven/swing, against the extraction frontier |

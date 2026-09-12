@@ -259,3 +259,63 @@ Every capture mechanism carries four scores (`ResearchValue`, `ParticipantBurden
 `CaptureEfficiency = ExpectedInformationGain / ParticipantBurden` — used to rank, not to blindly
 maximize. Full budget model and the "never feel experimented on" rule are in
 [event1-instrumentation-plan.md](event1-instrumentation-plan.md) and enforced in Part 16's capacity model.
+
+---
+
+# Organic In-Flow Feedback Capture
+
+The goal: get their feedback on *everything*, continuously, while they build — but embedded so
+naturally it never feels like a survey. The design rule that makes this safe:
+
+> **Subtle means low-friction and well-timed. It never means covert.** Every mechanism below is
+> disclosed at consent. "Track as much as possible" is bounded, always, by the research-minutes
+> budget, the consent scopes, and the hard no-surveillance boundaries
+> ([capture-risk-register.md](capture-risk-register.md)). Organic is a UX property, not a
+> loophole. There is no hidden capture in this system, ever.
+
+## The core trick: capture things they were going to do anyway
+
+The best in-flow capture is not *added* to the builder's flow — it *is* the flow, lightly
+structured. Ranked by burden (lowest first):
+
+| Mechanism | What it captures | Why it's organic (value to the builder) | Class |
+|---|---|---|---|
+| **Instrument the help they seek** | friction type/severity/stage, in the moment | they asked a mentor/sponsor engineer *because they wanted help* — the interaction they sought IS the data; a trained mentor logs it against the codebook | `[PL]` |
+| **Artifacts they write anyway** | actual stack, decisions, what shipped | commit messages, PR descriptions, README, dependency manifest — zero prompts, honest record | `[P]` |
+| **`/blocked` (or a reaction) in the event chat** | the blocker + timestamp | one word both **summons a mentor** and logs the blocker — it helps them *right now* | `[PL]` |
+| **Doc/tool reactions** (🔥 helped / 😕 confusing) | per-artifact sentiment, ambient | one tap; a legitimate way to vent friction on a bad doc; sponsors love per-page signal | `[E]` |
+| **Post-moment micro-prompt** (fired by telemetry) | the "why" behind a detected error/switch/stall | appears *in the tool they're already in*, at the freshest moment, one line, skippable, budgeted | `[E]` |
+| **The 20-second "rubber duck" voice note** | rich qualitative, unprompted-feeling | framed as rubber-duck debugging — talking through a stuck point genuinely helps builders think; transcribed + themed | `[E]` |
+| **Checkpoint reframed as mentor-matching** | what/tools/blocker/stuck-level | the answer *routes them to a relevant mentor or a meal/slot* — it buys them something, so it isn't a tax | `[PL]` |
+| **The demo/pitch as a structured interview** | what built, tools, hardest part, what they'd change | they were pitching anyway; the prompts structure the exit qualitative into the thing they already do | `[P]` |
+| **Team retro template** | team decisions, coordination, tool choices | good teams retro anyway; a light template captures it | `[PL]` |
+| **Observer floaters** | ethnographic friction at scale | the builder just experiences a friendly expert wandering by | `[PL]` |
+
+## The timing principle: capture at the moment of freshest signal
+
+A survey at the end asks people to *remember* why they switched at hour 14. An in-flow prompt
+fired by the `TOOL_SWITCHED`/`ERROR_ENCOUNTERED` event asks them **while it's still on their
+screen** — higher signal, lower burden, and it feels relevant rather than random. The brokered-key
+telemetry is what makes this possible: the *what* (detected server-side) triggers the *why* (one
+tap, in context). This is the qualitative↔behavioral link ([Part 5 above]) operating in real time,
+not reconstructed after the fact.
+
+## The frequency governor (so "as much as possible" doesn't become "too much")
+
+Every participant carries a **research-minutes budget** and a **prompt-rate limit**. The system
+spends the budget on the highest-`CaptureEfficiency` moments (a fresh switch/error) and stays
+silent otherwise. A builder in deep flow who hasn't hit friction gets *no* prompts — the absence
+of a prompt is itself correct behavior. The budget is the mechanism that keeps the golden goose
+alive: a participant should end the weekend having spent maybe 15–20 minutes on all research
+combined, most of it feeling like help they wanted.
+
+## What "track as much as possible" does and does not mean here
+
+**Does:** ambient, disclosed, low-tap signals on things they already touch (docs, tools, help,
+artifacts, pitches); telemetry-triggered micro-prompts at the freshest moment; rich voluntary
+qualitative (voice notes) framed as an aid.
+
+**Does not:** keystroke/screen capture, DM scraping, always-on recording, attention monitoring,
+or any prompt cadence that turns the build into a study. Those remain `[HR]` boundaries regardless
+of how much signal they'd yield — because the front end staying genuinely excellent is worth more
+than any one weekend's data ([monetization-map.md](monetization-map.md) extraction frontier).
