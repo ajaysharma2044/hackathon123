@@ -18,6 +18,10 @@ Covered in [research-framework.md](research-framework.md). The anchor product.
 
 ## 2. Recruiting — work evidence, not résumés
 
+> ⚠️ **Read [recruiting-legal.md](recruiting-legal.md) before building this.** FCRA restricts the
+> candidate artifact to first-hand observation of your own event — no GitHub history, no Club OS
+> longitudinal data, no third-party evidence. And it must never emit a score or ranking.
+
 Instead of *"here's a résumé book of 200 elite students,"* a permissioned work-evidence pool:
 
 ```
