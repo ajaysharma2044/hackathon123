@@ -402,3 +402,122 @@ Open every conversation with the deliverable. Never with the room.
 [Changelog rate card](https://changelog.com/sponsor/pricing) ·
 [Carbon Ads](https://carbonads.net/more-info) ·
 [DevOpsDays sponsor policy](https://www.devopsdays.org/sponsor/)
+
+---
+
+# Gartner's Real Price List (and the cleanest floor argument yet)
+
+Gartner publishes no pricing — but its **state government contracts do**, and New York's
+Appendix E-3 states the pricing *"is the same as the pricing Gartner offers on its GSA Contract."*
+These are list prices, not estimates.
+
+## Florida DMS — Gartner RAS Price Schedule, 2025
+
+| Product (verbatim) | Annual fee |
+|---|---:|
+| Global CIO Research Board | **$250,625** |
+| Global CIO | $246,558 |
+| Divisional CIO / Global IT Leader | $184,222 |
+| Guided Individual Access, Single License | $150,822 |
+| Technical Professionals Advisor Department | $148,948 |
+| **Technical Professionals Team** (1 leader + up to 4 members) | **$70,928** |
+| Cross Function Member | $39,394 |
+| Strategic Advisory — Internal Advisory Session | $25,105 |
+| Additional Team Member | $13,461 |
+| IT Symposium/Xpo, per ticket | $6,172 |
+
+Sources: [Florida DMS 2025](https://www.dms.myflorida.com/content/download/169292/1232619/2025-02%20Florida%2081141902-18-ACS%20Exhibit%20C_Pricing_2025-01-27.pdf) ·
+[NY OGS PS66085 App. E-3](https://online.ogs.ny.gov/purchase/prices/7300122601PL_Gartner.pdf)
+
+The two schedules cross-validate: **every line rose ~9.4% year over year.** Research pricing in
+this category escalates, and buyers accept it.
+
+> **One Gartner Technical Professionals team seat costs $70,928/year — and buys generic
+> syndicated research, not a custom study on an audience you chose.**
+
+## What a commissioned study can actually cost
+
+From USAspending.gov, a single public federal award:
+
+> **$2,800,000** — Dept. of Commerce, 1305M423FNEEA0111, **"CX STUDY"** — Forrester
+
+One commissioned study. Not a subscription.
+
+IDC's published band via transaction data: **"Custom Research & Consulting: $75,000 starting
+point, with larger engagements exceeding $250,000."**
+
+Forrester's contract value per client has climbed steadily: **$143K (YE2023) → $158K (YE2024) →
+$162K (Q3 2025)**.
+
+⚠️ Forrester **TEI study pricing remains genuinely unpublished.** No vendor has disclosed what
+they paid. Treat any circulating "$50K for a TEI" figure as unverified; the sourced proxy is the
+$50K–$250K+ consulting band.
+
+## The floor argument, simplified
+
+Published agency rates for **cost per completed survey response**, by how hard the audience is to
+reach:
+
+| Audience | Per complete |
+|---|---:|
+| General consumer | $2 – $5 |
+| Niche consumer | $8 – $20 |
+| B2B professionals (managers, directors) | $40 – $150 |
+| **Hard-to-reach specialists** (physicians, engineers, C-suite) | **$200 – $500+** |
+
+Sources: [Resourcera](https://resourcera.com/guide/market-research-cost/) ·
+[Merren](https://merren.io/blogs/how-much-does-market-research-cost/) ·
+[User Intuition](https://www.userintuition.ai/posts/market-research-cost/)
+
+Note the incidence problem these guides cite: *"IT directors might have a 2–3% incidence rate."*
+Screening for elite student builders is worse.
+
+> **200 elite builders × $200–$500 per complete = $40,000–$100,000 in pure sample value —
+> before a single question is written, before analysis, before the report.**
+
+This is cleaner than the earlier $59,400 panel-replacement figure and rests on published agency
+rate cards rather than a stacked calculation. Use it as the opening floor.
+
+Context on total study cost from the same guides: basic quant B2B survey **$18K–$40K**; in-depth
+quant **$40K–$100K+**; mixed-method B2B **$60K–$120K+**. Sample typically runs **~27% of total
+project cost** — which, at $40–100K of sample value, implies a total study value well into six
+figures.
+
+## The three anchors to quote in a sponsor conversation
+
+Each has a public URL the buyer can check themselves:
+
+1. **$70,928/year** — one Gartner Technical Professionals team seat, for *generic* syndicated
+   research (Florida DMS, published)
+2. **$55,000** — a commissioned 300-complete study on a developer audience, base, before panel
+   costs of $24–30/complete (Linux Foundation, published)
+3. **$50,000** — top-tier co-branded research sponsorship *with foreword authorship* (Linux
+   Foundation, published) — and that does not include recruiting access
+
+Against those three, a **$50–95K research tier** for a study on 200 hand-selected elite builders,
+instrumented in real time, with 30/90-day follow-up and recruiting access attached, is not an
+aggressive ask. It is a discount on the third anchor with more delivered.
+
+## Additional comparables
+
+| Product | Median annual contract |
+|---|---:|
+| Qualtrics | $30,000 (range $7,000–$139,920) |
+| G2 | $27,813 (528 purchases) |
+| UserEvidence | $20,000 (range $10,000–$59,700) |
+
+⚠️ Still confirmed unpublished after direct checks: **SlashData, Stack Overflow, RedMonk,
+JetBrains, Dimensional Research, Wakefield, Vanson Bourne, 451/S&P custom, TechValidate.** The
+entire category hides its prices — which remains an argument for publishing yours.
+
+## Additional sources
+
+[Gartner FY2025 10-K](https://www.sec.gov/Archives/edgar/data/749251/000074925126000112/it-20251231.htm) ·
+[Gartner Q4 2025 results](https://www.sec.gov/Archives/edgar/data/749251/000074925126000028/it-12312025xex991.htm) ·
+[Forrester FY2024 10-K](https://www.sec.gov/Archives/edgar/data/1023313/000095017025035158/forr-20241231.htm) ·
+[USAspending.gov](https://www.usaspending.gov/search) ·
+[Vendr: IDC](https://www.vendr.com/marketplace/idc) ·
+[Vendr: Qualtrics](https://www.vendr.com/marketplace/qualtrics) ·
+[Vendr: G2](https://www.vendr.com/marketplace/g2) ·
+[Adience B2B research pricing](https://www.adience.com/blog/insights/b2b-market-research-price/) ·
+[Evans Data report pricing](https://evansdata.com/reports/viewRelease.php?reportID=22)
