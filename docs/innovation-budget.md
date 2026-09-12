@@ -192,3 +192,83 @@ Lead with that arithmetic. It does the selling.
 [BetaTesting pricing](https://betatesting.com/pricing) ·
 [HeroX](https://www.herox.com/how-it-works) ·
 [NASA NOIS2](https://www.nasa.gov/general/nasa-announces-open-innovation-services-2-contract-selections-expands-crowdsourcing-toolkit/)
+
+---
+
+# University Affiliate Rate Cards — the cleanest comparables, and a pricing rule
+
+The deep-tech category sweep surfaced the best published comparables in the whole effort:
+university industry-affiliate programs, which price *exactly* what this would sell (curated
+student access + research) and publish their tiers.
+
+| Program | Tiers | Recruiting bundled at |
+|---|---|---|
+| Stanford SCPNT | $250K / $150K / $75K / **$25K** | **every tier** |
+| Stanford SystemX | $193K / $110K / **$35K** | Associate+ |
+| Stanford CIFE | $125K / $60K / $35K / **$12K** | **every tier, incl. $12K** |
+| Berkeley BSAC | **$70K** member | — |
+| UT Austin Texas Robotics | $190K / $120K / **$50K non-research** / $10K | resume book, career fairs |
+| CMU CyLab | **$30K/yr** base | student recruiting assistance |
+| MIT.nano | **$300K** ($75K directable) | members-only job fairs |
+| MIT Media Lab | ~$200–250K/yr | yes, + royalty-free IP |
+| **SRC** (semiconductor consortium) | **~$2.28M/yr avg** | 255 hires in 2024 |
+
+Unbundled recruiting-only floors: Georgia Tech $2,500–$15K (resume book; **$450 à la carte**);
+CMU CPDC **$10,000**; Caltech **$750 networking dinner for up to 8 students** (~$94/student).
+
+## The rule these prove
+
+> **Almost every program bundles student recruiting into its *cheapest* tier and charges the
+> premium for research and IP.**
+
+Stanford CIFE grants "facilitated recruiting of students" at **$12,000**. Recruiting access alone
+tops out around **$50,000** (UT Austin's non-research tier). Everything above that —
+$70K to $2.28M — requires **research direction, IP rights, or exclusive access** attached.
+
+This is the same conclusion the whole repo keeps reaching, now from the hardest comparable set:
+**access is cheap; the research/IP layer is what clears $50K.** If the product is "200 builders,
+no research attached," the published ceiling is ~$50K and the entry band is $10–35K. The research
+layer is not a nice-to-have — it is the only thing that moves the price into six figures.
+
+## ⚠️ A correction to the "publish your prices" advice
+
+[research-pricing.md](research-pricing.md) argued transparent pricing is a differentiator. The
+deep-tech sweep adds a countervailing signal worth holding in tension:
+
+> **Organizations selling above ~$50K stop publishing prices.** Publishing a rate card anchors you
+> to the $10–50K band; withholding one is what lets MIT.nano, the Media Lab, and SRC clear
+> $250K–$2M+. Every affiliate program above $50K gates pricing behind "contact us."
+
+Reconciled: **publish a floor to win the first conversation** (removes friction with a buyer who's
+never heard of you, at the $25–50K research tier) — but **negotiate the ceiling privately.** A
+published price is a door-opener at the entry tier and an anchor-anchor at the top tier. Do both:
+a transparent entry, a quoted premium.
+
+## The deep-tech verdict: R&D size was the wrong predictor
+
+The hypothesis (deep-tech has bigger R&D, so pays more) is **half right, for the wrong reason.**
+
+- Semiconductors do have the highest R&D intensity (25.8% US) and pay the most (SRC $2.28M/co,
+  MIT.nano $300K, and FIRST's $1M+ donor band is 6:2 hardware/defense over software).
+- **But R&D per employee is *lower* for hardware (€33,555) than software (€49,914)** — hardware
+  R&D is fab- and capital-intensive, not headcount-intensive. And **sponsorship comes out of
+  recruiting/marketing budgets, not R&D** — so R&D size never was the predictor.
+- Aerospace/defense is only 1.7% of global corporate R&D (the government funds it); energy/climate
+  is 0.6% intensity, the lowest measured; **iGEM raises $150,002/yr total** — biotech doesn't fund
+  student competitions in cash.
+
+**What actually predicts a six-figure check is bundling: research output + IP + exclusive
+recruiting, together.** Same rule as above.
+
+Two tactical borrows from deep-tech comparables:
+- **Take in-kind product, not just cash.** CalSol structures tiers as "$50,000+ contribution, of
+  which $20,000+ must be monetary." Deep-tech and cloud sponsors give hardware/credits far more
+  readily than cash (NVIDIA: 30,000 H100-hours; SRC scholars; MITRE free dev boards).
+- **Use scarcity caps.** NECCDC caps its top tier at 2, SECCDC at 1. Caps are what let a small
+  event charge real money — the same mechanic as the LF slot structure.
+
+⚠️ **Defense-specific constraint:** across 3,896 live defense-tech postings, **90% require US-Person
+/ ITAR status** (Anduril, Applied Intuition, Saronic, Hadrian, Astranis all 100%). If ~40–50% of a
+200-person event is international, a defense sponsor's addressable pool is ~100–120 students and
+hands-on work with their hardware/data is legally off-limits to the rest. Price defense sponsors on
+US-person headcount, or sell a segmented track. Palantir (17% ITAR-gated) is the exception.
