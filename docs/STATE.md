@@ -202,3 +202,64 @@ Strongest evidence against     all evidence is supply-side; elites may be unrepr
                                n≈200 validity is attackable; the event is the costliest data path
 Decision committed             none — correctly
 ```
+
+---
+
+## Convergence with the council evidence-pass (Aarush, 2026-09-12)
+
+An independent LLM-council + web-evidence pass ([hackathon123-council-verdict.md](hackathon123-council-verdict.md))
+reached the same core conclusion from a different direction — pre-sell before building — and
+tested the market-existence priors this synthesis left as UNKNOWN. Three of its findings update
+the standing view:
+
+**1. The demand category is real and funded — but the backend alone is not a business.**
+Developer-behavior intelligence is a funded, growing category: SlashData has sold it to Microsoft/
+Google/Amazon/Intel/Meta for ~20 years; Common Room raised ~$52.9M (~$300M val, ~$15M ARR);
+Reo.Dev raised $4M for "developer intent intelligence." This moves the CLAIM *"buyers pay for
+developer intelligence"* from LIKELY toward **KNOWN**. **But the caution matters as much as the
+proof:** Orbit (acquired by Postman, product closed) and Common Room (being acquired by Zoom) both
+got absorbed into GTM platforms rather than thriving standalone. **Passive developer-intelligence
+alone did not sustain a company.** The event + proprietary panel is the thing that could make this
+version defensible where passive-signal plays were not — but the backend is not a business by
+itself.
+
+**2. There is a competitor already running the front-end: Cerebral Valley.**
+Premium, invite-only, elite-AI-builder events with lab sponsorships — revenue from tickets
+($199–$2,999) plus sponsorships, with deals reportedly seeded there. This did not surface in the
+research sweep and it should have. **The event is table stakes; someone already runs the elite
+version.** The unoccupied white space is the rigorous causal + longitudinal research instrument
+fused onto the panel — which nobody has done — not the event itself.
+
+**3. A fourth, cheaper first move — Wedge D: run the first study on someone else's event.**
+Instead of building a 200-person event to get a panel, **layer the research instrument onto an
+existing elite event** (an MLH/HackMIT-tier hackathon, or Cerebral Valley / AI Engineer). You get
+the elite panel, real behavioral data, and a live retention test **without six-figure logistics or
+one-shot reputation risk** — and you produce the first *real* (not mock) sponsor deliverable. This
+dissolves the chicken-and-egg in [roadmap.md](roadmap.md): the event's economics don't have to be
+solved before the research thesis is tested.
+
+### Revised next move
+
+The single first step is unchanged and now doubly-sourced: **build one polished sample report and
+pitch 5–10 named buyers for a $5–15K paid pilot; no signed commitment in ~4 weeks means the event
+would have flopped too.** Add two refinements from the council pass:
+
+- **Probe offer-shape, not just demand.** In the same calls, test whether buyers want a *report*
+  or *talent access* — recruiting has proven, quantified WTP (~$35K cost-to-hire; hackathon hiring
+  ~$5–10K/hire, ~4.2 qualified hires/event) and may be the easier first check. Sell the deliverable
+  and the access; let the buyer tell you which they'll pay for.
+- **Line up Wedge D in parallel** — one existing elite event to run the first real study on, so the
+  second sales call can show real data instead of a mock.
+
+### What still holds against both analyses
+
+- **Internal validity survives every optimistic reframe.** n≈200, Hawthorne, prize-contaminated
+  "free choice" → this is *directional leading-indicator behavioral signal on an early-adopter
+  cohort*, not representative market research. Sell it as **depth** (observed causal behavior)
+  against SlashData's **breadth** (12,500+-dev surveys). Overselling generalizability loses the
+  sophisticated buyer in one meeting.
+- **Panel retention** into 7/30/90-day tracking is the untested engine of the compounding moat —
+  the council's evidence pass agrees this is the real supply-side risk (recruiting elite builders
+  is easy; *retaining* them into longitudinal tracking is not).
+- **Willingness-to-pay at the specific price for THIS deliverable** is still the one thing no desk
+  research resolves. The category is proven; the specific check is not.
