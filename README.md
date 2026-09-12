@@ -109,6 +109,7 @@ gates everything. The docs below are raw material feeding it.
 | [docs/STATE.md](docs/STATE.md) | **The standing understanding.** Evidence/claim/hypothesis separation, epistemic status, next test |
 | [docs/roadmap.md](docs/roadmap.md) | Critical path, owner split, next 30/90 days |
 | [docs/economics.md](docs/economics.md) | The full economic surface — attention / access / answers / outcomes |
+| [docs/monetization-map.md](docs/monetization-map.md) | Every step monetized, tagged proven/swing, against the extraction frontier |
 | [docs/research-findings.md](docs/research-findings.md) | Sourced benchmarks: competitor pricing, Miami costs, market comparables |
 | [docs/logistics-revenue.md](docs/logistics-revenue.md) | $30-45K hidden in the room block, F&B, and venue — and how to actually collect it |
 | [docs/asset-monetization.md](docs/asset-monetization.md) | What the list, content, research, and credits are worth — and the PyCon price benchmark |
