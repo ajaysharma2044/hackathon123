@@ -24,6 +24,8 @@ GAP_ADVANTAGE_FLOOR = MED
 # candidate list). These are HYPOTHESES about what our scarce asset actually is — not assumed to be
 # "elite student access."
 CANDIDATE_ASSETS = (
+    "NEUTRAL_CAUSAL_EVIDENCE",   # the dominant recurring scarce asset in the sweep: neutral proof that
+                                 # a buyer's spend actually works (no vendor can be neutral about itself)
     "INDEPENDENT_PARALLEL_TECHNICAL_SEARCH", "GREENFIELD_DEVELOPER_DECISION_DATA",
     "RAPID_PROTOTYPE_DIVERSITY", "UNBIASED_COMPETITIVE_CHOICE_DATA", "RARE_TECHNICAL_TALENT",
     "DESIGN_PARTNER_FORMATION", "EXTERNAL_RND_EXPLORATION", "FAST_PRODUCT_EXPERIMENTATION",
