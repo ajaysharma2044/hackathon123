@@ -1,10 +1,13 @@
 ---
-title: "Hackathon123 -- LLM Council Verdict (First Wedge & Riskiest Assumption)"
+title: "Hackathon123 -- LLM Council Verdict + Evidence Check (First Wedge & Riskiest Assumption)"
 type: reference
 created: 2026-09-12
-tags: [hackathon123, council, decision-support, go-to-market, experimentation-network]
+updated: 2026-09-12
+tags: [hackathon123, council, decision-support, go-to-market, experimentation-network, market-research, competitive-landscape]
 ai-first: true
-method: llm-council
+method:
+  - llm-council
+  - web-research
 status: advisory
 confidence: advisory
 related-notes:
@@ -12,13 +15,13 @@ related-notes:
   - "[[hackathon123-initial-context]]"
 ---
 
-# Hackathon123 -- LLM Council Verdict (First Wedge & Riskiest Assumption)
+# Hackathon123 -- LLM Council Verdict + Evidence Check (First Wedge & Riskiest Assumption)
 
 **Related:** [[hackathon123 MOC]] · [[hackathon123-initial-context]]
 
 ## For future Claude
 
-Advisory synthesis (not an owner decision) produced 2026-09-12 by running the LLM Council skill on the hackathon123 idea while it was at pure idea stage. The council was asked one thing: what should the first move be, and is a flown-in premium flagship event the right entry point? Five independent advisor lenses + an anonymized peer-review round converged hard on one answer -- **do not run an event first; pre-sell the sponsor research report and test whether a buyer will pay real cash before building anything.** This note captures the framed question, the verdict, and the caveats. It is decision-support, not a committed plan -- scoping remains owner-driven per [[hackathon123 MOC]].
+Advisory synthesis (not an owner decision) produced 2026-09-12 by running the LLM Council skill on the hackathon123 idea while it was at pure idea stage. The council was asked one thing: what should the first move be, and is a flown-in premium flagship event the right entry point? Five independent advisor lenses + an anonymized peer-review round converged hard on one answer -- **do not run an event first; pre-sell the sponsor research report and test whether a buyer will pay real cash before building anything.** This note captures the framed question, the verdict, and the caveats. A follow-on evidence-check pass (2026-09-12, web research) then tested the council's empirical priors against real comparables and revised several -- see "Evidence check" below. Net finding: the idea is more doable than the council implied (the buyer market, the "they already have the data" objection, and supply-side recruiting all break the owner's way), while two of the council's hardest points -- internal validity and panel *retention* -- survive. It is decision-support, not a committed plan -- scoping remains owner-driven per [[hackathon123 MOC]].
 
 ---
 
@@ -87,8 +90,54 @@ And carry the Contrarian's warning into every pitch: have a ready answer for "wh
 
 ---
 
+## Evidence check (2026-09-12) -- where the council was too conservative
+
+A web-research pass tested the council's empirical priors against real comparables (Firecrawl was quota-blocked with a 402, so this ran via WebSearch/WebFetch). The council explicitly flagged its own market claims as "advisor priors, not verified figures" -- those are exactly what was tested. Net: the owner's instinct is substantially supported. The buyer, the market, and the supply magnet are real and in several cases already venture-funded; the council's conservatism was mostly in treating market existence as the open question when it is not.
+
+**Assumption 1 -- "Will a sophisticated buyer pay real cash for developer-adoption intelligence?" (the council's single riskiest assumption)**
+Evidence: [SlashData](https://www.slashdata.co/about) has sold developer research (adoption, satisfaction, competitive analysis, segmentation) to Microsoft, Google, Amazon, Intel, and Meta for ~20 years (as of 2026-09-12, slashdata.co). [Common Room](https://www.geekwire.com/2022/fueled-by-52m-in-funding-common-room-unveils-intelligent-community-growth-platform/) raised ~$52.9M at a ~$300M valuation turning GitHub/Slack/Discord activity into buyer intelligence (~$15M ARR, now being acquired by Zoom; as of 2026-09-12, geekwire.com / getlatka.com). [Reo.Dev](https://pulse2.com/reo-dev-4-million-seed-funding/) raised a $4M seed (Heavybit) for "developer intent intelligence," used by 100+ dev-first companies incl. Chainguard, LangChain, n8n (as of 2026-09-12, pulse2.com).
+Verdict: **Refuted.** Enterprise buyers demonstrably pay for developer-behavior intelligence; it is a funded, growing category. The market-existence risk the council treated as near-fatal is not in serious doubt. (What is still unproven is the *specific* $10-50K price for *this* deliverable -- see caveats.)
+
+**Assumption 2 -- "Sponsors already have their own telemetry that tells them more than your artificial room."**
+Evidence: ~52% of dev-tool discovery happens through unmeasurable "dark-funnel" channels (GitHub, Slack, word-of-mouth); adoption paths are non-linear and break attribution; DevRel data sits in disconnected silos; AI-assist-vs-expertise attribution is "nearly impossible" ([daily.dev](https://business.daily.dev/resources/developer-marketing-roi-measure-report-impact-to-leadership/), [GTM Delta](https://gtmdelta.com/measure-developer-event-roi-product-adoption/), as of 2026-09-12).
+Verdict: **Overstated / mostly refuted.** First-party telemetry tells a company what its *own* users do -- not why elite builders pick a *competitor*, or why non-users never convert. That "why + competitive + non-user" gap is precisely the hackathon123 thesis, and it is a documented, widely-felt pain, not a niche.
+
+**Assumption 3 -- "Hand-picked elite students don't generalize; 'elite' may be vanity."**
+Evidence: early adopters drive diffusion to the majority; students are a classic early-adopter cohort; at an elite college, generative-AI adoption went from <10% to >80% in ~18 months ([arXiv 2508.00717](https://arxiv.org/pdf/2508.00717), as of 2026-09-12).
+Verdict: **Reframed.** If the buyer's question is forward-looking -- "what will the next cohort of engineers and founders adopt?" -- elite student builders are a *leading-indicator* panel, not an unrepresentative one. The generalizability critique weakens. (The internal-validity critique below is the one that survives.)
+
+**Assumption 4 -- "The premium event is an undifferentiated, capital-heavy commodity."**
+Evidence: confirmed -- hackathon platforms (AngelHack, Devpost, MLH) already bundle sponsor post-event reports, surveys, feedback, and talent pipelines; [Cerebral Valley](https://www.cerebralvalley.com/) already runs the premium invite-only elite-AI-builder event with lab sponsorships and "activations for the labs building the frontier" (revenue = tickets $199-$2999 + sponsorships; deals like Databricks/MosaicML reportedly seeded there; as of 2026-09-12, cerebralvalley.com).
+Verdict: **Confirmed -- and it changes the strategy.** The event is table stakes. The defensible, unoccupied white space is the *rigorous causal + longitudinal research instrument on a proprietary elite panel*, which nobody has fused onto the premium event. This agrees with the council ("the event is the costume") but flips the implication: you may not need to *build* the event at all (see Wedge D).
+
+**Assumption 5 -- "Two unfunded people can't recruit and retain 200 elite builders" (the council's biggest peer-review blind spot).**
+Evidence: [HackMIT](https://www.airmeet.com/hub/blog/top-most-prestigious-hackathons-in-the-world-every-developer-should-know-about/) draws 10,000+ applicants for ~500 spots (~5% acceptance), historically on a ~$250K budget from 70+ sponsors; selectivity is the draw, not a barrier (as of 2026-09-12, airmeet.com; budget figure is a 2015 data point).
+Verdict: **Split.** *Recruiting* elite builders is effectively solved -- they compete to get in. *Retaining* them into 7/30/90-day longitudinal behavioral tracking is still genuinely untested and remains the real supply-side risk. The council's blind spot was half-right: the hard half is retention, not attraction.
+
+**Assumption 6 (council minority insight) -- "Talent access may be a higher-WTP first sale than a report."**
+Evidence: average cost to hire a developer is ~$35K (up to ~$50K specialized); hackathon-based hiring runs ~$5-10K/hire, ~55% lower cost-per-hire than campus recruiting, ~4.2 qualified hires/event ([Indeed](https://in.indeed.com/insights/hackathons-to-hire-sourcing-tech-talent-without-resumes), [Forbes / Laney 2025-08-30](https://www.forbes.com/sites/douglaslaney/2025/08/30/the-staffing-economics-of-hackathons-and-on-chain-credentials/), as of 2026-09-12).
+Verdict: **Strongly supported.** Permissioned work-evidence recruiting on an elite panel has a proven, quantified buyer and may be the easiest first check -- a second validated revenue leg the council under-weighted.
+
+## The wedge the council missed -- Wedge D: run the experiment on someone else's elite event
+
+The council's three wedges assumed you either build the event (A) or avoid it (B/C). The evidence points to a fourth, cheaper path: **layer the research/experiment instrument on top of an existing elite event** -- an MLH/HackMIT-tier student hackathon, or an AI-builder event (Cerebral Valley, AI Engineer). You get the elite panel + real behavioral data + a live retention test *without* six-figure logistics or one-shot reputation risk, and you produce the first real (not mock) sponsor deliverable. This directly dissolves the chicken-and-egg the council framed. Pre-selling the report (Wedge B) and running it on a partner event (Wedge D) are complementary, not competing -- B proves someone pays, D produces the goods cheaply.
+
+## What still holds (do not hand-wave these)
+
+- **Internal validity / methodology (the Contrarian's point survives).** n~=200, Hawthorne effect, and prize-contaminated "free choice" mean this is *directional, leading-indicator behavioral signal on an early-adopter cohort* -- not statistically representative market research. Sell it as depth (observed causal behavior) against SlashData's breadth (12,500+-dev surveys); do not oversell generalizability, or a competent research lead discounts it in one meeting.
+- **Panel retention** (Assumption 5) -- the untested engine of the compounding-data moat.
+- **Differentiation from the commodity** (Assumption 4) -- "sponsors get insights from a hackathon" is already sold cheaply; the pitch must be decision-grade causal research or it collapses into the commodity tier.
+- **Standalone developer-intelligence is hard to monetize alone.** Both [Orbit](https://orbitapp.io/) (acquired by Postman, product closed) and Common Room (being acquired by Zoom) ended up absorbed into larger GTM platforms rather than thriving standalone (as of 2026-09-12). The event + proprietary panel is what could make hackathon123's version defensible where passive-signal plays were not -- but it is a warning that the backend alone is not a business.
+
+## Revised bottom line
+
+The owner's read is largely right: the council was too conservative on market existence, buyer willingness-to-pay, the "they already have the data" objection, and supply-side recruiting -- all of which the evidence supports as real and in several cases already funded. The council was *correct* on event commoditization, internal validity, and panel retention. Net: hackathon123 is more doable than the council implied, and the fastest de-risking path is **pre-sell a decision-grade report (Wedge B) and run the first study on an existing elite event (Wedge D), leading with recruiting as a parallel, higher-WTP first check** -- while being honest that the product is deep leading-indicator behavioral research, not representative market surveys. The single first step is unchanged (pre-sell a sample report to named buyers); add to it: line up one existing elite event to run the first study on.
+
+---
+
 ## Method & caveats
 
-- Produced with the LLM Council skill (Karpathy-style): 5 independent advisor lenses answered in parallel, responses were anonymized (A-E) for a peer-review round, then de-anonymized for this chairman synthesis. All advisors were the same underlying model with different assigned thinking styles -- this is structured multi-perspective reasoning, not five different models or any external data.
-- **Confidence: advisory.** Nothing here is fact-checked market research. No external sources were consulted; claims about buyer willingness-to-pay, per-hire economics, and competitor telemetry are advisor priors, not verified figures -- validate them in the actual sales calls the recommendation prescribes.
-- This does not commit the project to Wedge B. Scoping remains owner-driven (and partner-shared) per [[hackathon123 MOC]].
+- Produced with the LLM Council skill (Karpathy-style): 5 independent advisor lenses answered in parallel, responses were anonymized (A-E) for a peer-review round, then de-anonymized for the chairman synthesis. All advisors were the same underlying model with different assigned thinking styles -- structured multi-perspective reasoning, not five different models. The original council round used no external data.
+- **Evidence-check pass (2026-09-12):** the "Evidence check" section above was added by a web-research pass. Firecrawl was quota-blocked (402 on the active key), so it ran via WebSearch/WebFetch. Figures there come from web-search results, not individually audited primary sources; the softer ones -- the ~52% dark-funnel share, HackMIT's 2015 $250K/70-sponsor budget, and the per-hire economics -- should be re-verified before they enter any external-facing deck.
+- **Confidence: advisory.** This is decision-support, not audited market research. The evidence shows the *category* is paid and funded; it does not prove a given sponsor will wire a given number. Buyer willingness-to-pay at the specific $10-50K point still has to be proven in the sales calls the recommendation prescribes.
+- This does not commit the project to any wedge. Scoping remains owner-driven (and partner-shared) per [[hackathon123 MOC]].
