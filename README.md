@@ -100,11 +100,14 @@ outcomes — is not.
 
 ## Repo map
 
-**Planning Event 1** — the flagship, ~200 builders, target August 2027.
+**Read [docs/STATE.md](docs/STATE.md) first** — the honest synthesis: what we actually know vs.
+assumed, the bear case at full strength, and the one untested question (will a buyer pay?) that
+gates everything. The docs below are raw material feeding it.
 
 | Path | Contents |
 |---|---|
-| [docs/roadmap.md](docs/roadmap.md) | **Start here.** Critical path, owner split, next 30/90 days |
+| [docs/STATE.md](docs/STATE.md) | **The standing understanding.** Evidence/claim/hypothesis separation, epistemic status, next test |
+| [docs/roadmap.md](docs/roadmap.md) | Critical path, owner split, next 30/90 days |
 | [docs/economics.md](docs/economics.md) | The full economic surface — attention / access / answers / outcomes |
 | [docs/research-findings.md](docs/research-findings.md) | Sourced benchmarks: competitor pricing, Miami costs, market comparables |
 | [docs/logistics-revenue.md](docs/logistics-revenue.md) | $30-45K hidden in the room block, F&B, and venue — and how to actually collect it |
