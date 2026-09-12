@@ -109,6 +109,7 @@ outcomes — is not.
 | [docs/research-findings.md](docs/research-findings.md) | Sourced benchmarks: competitor pricing, Miami costs, market comparables |
 | [docs/logistics-revenue.md](docs/logistics-revenue.md) | $30-45K hidden in the room block, F&B, and venue — and how to actually collect it |
 | [docs/asset-monetization.md](docs/asset-monetization.md) | What the list, content, research, and credits are worth — and the PyCon price benchmark |
+| [docs/target-list.md](docs/target-list.md) | **Named doors.** Companies, contacts, what's dead, and what to do in the next two weeks |
 | [docs/procurement.md](docs/procurement.md) | **How to actually get paid.** Champion requirement, the $25K threshold, sponsorship vs. SOW |
 | [docs/recruiting-legal.md](docs/recruiting-legal.md) | **Read before building the recruiting product.** FCRA, LL144, EU AI Act, who-pays |
 | [docs/event-comps.md](docs/event-comps.md) | Real prospectus ladders from comparable events, and the honest sponsor math |
