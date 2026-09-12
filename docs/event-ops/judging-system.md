@@ -85,11 +85,10 @@ MLH anchor):
 
 > **The formula gives a FLOOR, not the roster.** Five judges is the minimum that can physically
 > cover 45 teams three times in two hours. A premium, one-shot event **deliberately over-recruits**
-> (Event 1 plans ~12–18 judges, *illustrative*) for three reasons: richer overlap makes the
-> aggregate stack-rank more robust, a diverse panel reduces single-judge taste bias, and a no-show
-> judge must not break coverage. `staffing_model.plan` reports the floor; the Judging & Awards head
-> sets the actual count above it. Fewer than 3 judges cannot support 3-round stack-ranking at all —
-> `plan` raises exactly that warning.
+> (Event 1 plans ~12–18 judges, *illustrative*): richer overlap makes the aggregate stack-rank more
+> robust, a diverse panel reduces single-judge taste bias, and a no-show must not break coverage.
+> `staffing_model.plan` reports the floor and the Judging & Awards head sets the count above it —
+> and warns that fewer than 3 judges cannot support 3-round stack-ranking at all.
 
 ## The conflict-free rotation
 

@@ -14,9 +14,8 @@ it is due, and which decisions quietly protect the research layer.**
 
 > **Epistemic note.** Ratios and per-person bands labeled *sourced* come from hackathon.guide and the
 > premium fly-in comps (TreeHacks, Cal Hacks) in [prior-hackathons.md](prior-hackathons.md). Every
-> dollar figure is an **estimate**, not a quote; invented counts are marked *illustrative*. Real
-> numbers replace these before anything is signed ([funding.md](../funding.md) holds the budget of
-> record; this doc must not contradict it).
+> dollar figure is an **estimate**, not a quote; invented counts are *illustrative*. Real numbers
+> replace these before signing — [funding.md](../funding.md) holds the budget of record and wins.
 
 ## The domains at a glance
 
@@ -57,10 +56,9 @@ devices" are both rows. Setup/teardown are **30 minutes each** (sourced), each i
 ## FOOD — `meal_service`
 
 Food is mandatory, continuous, and a morale instrument. hackathon.guide (sourced): **$7–15 per person
-per meal**, order catering **3+ days ahead**, and cover dietary needs. [funding.md](../funding.md)
-budgets the lower MLH band (~$8–10/meal); this doc uses that and does not revise it. Every meal is a
-`meal_service` row with a non-empty `dietary_options[]` — **dietary coverage is a schema-enforced
-requirement** (`dietary_options text[] not null`), never an afterthought.
+per meal**, order catering **3+ days ahead**, cover dietary needs. [funding.md](../funding.md) budgets
+the lower MLH band (~$8–10/meal); this doc uses that. Every meal is a `meal_service` row with a
+non-empty `dietary_options[]` — **dietary coverage is schema-enforced** (`text[] not null`).
 
 ```
 72h MEAL CADENCE (illustrative, ~175 headcount)
@@ -146,26 +144,26 @@ of the `DO_NOT_INTERRUPT` moments — a one-shot moment research must never ruin
 
 ## SWAG / PRIZES
 
-Swag is part of the arrival kit (badge, shirt, stickers, lanyard) — a `logistics_task` owned by DESIGN/
-PARTICIPANT_EXPERIENCE, ordered against the 3-day lock. Prizes are modeled separately in `prize` /
-`prize_award` (kinds `GRAND | CATEGORY | SPONSOR | R&D_CHALLENGE`); **cash prizes stay modest and
-credits/hardware come in-kind from sponsors** ([funding.md](../funding.md), [event1-design.md](../event1-design.md):
-oversized prize pools barely move outcomes). IP terms on any sponsor/R&D prize are decided **before**
-the event and disclosed in the challenge ([judging-system.md](judging-system.md)).
+Swag is part of the arrival kit (badge, shirt, stickers, lanyard) — a `logistics_task` owned by DESIGN,
+ordered against the 3-day lock. Prizes live in `prize` / `prize_award` (kinds `GRAND | CATEGORY |
+SPONSOR | R&D_CHALLENGE`); **cash prizes stay modest, credits/hardware come in-kind from sponsors**
+([event1-design.md](../event1-design.md): oversized prize pools barely move outcomes). IP terms on any
+sponsor/R&D prize are decided **before** the event and disclosed in the challenge
+([judging-system.md](judging-system.md)).
 
 ## OVERNIGHT / SLEEP + WELLNESS — `venue_resource(SLEEP_ROOM)`
 
 A safety and experience requirement (sourced: overnight/quiet sleeping space, AC after-hours). Quiet
-rooms are dark, low-stimulation, with cots/air mattresses and gendered options. The critical interlock:
-**sleep hours are a `DO_NOT_INTERRUPT` window** in the research layer — overnight rest is protected
-even for the tired team ([../research-ops/interruption-policy.md](../research-ops/interruption-policy.md)).
-So the quiet room's posted hours and the research layer's protected sleep-hours are the **same hours by
-construction**. Wellness also means water, caffeine, quiet, and a visible on-call organizer.
+rooms are dark, low-stimulation, cots/air mattresses, gendered options. The critical interlock: **sleep
+hours are a `DO_NOT_INTERRUPT` window**, protected even for the tired team, so the quiet room's posted
+hours and the research layer's protected sleep-hours are the **same hours by construction**
+([../research-ops/interruption-policy.md](../research-ops/interruption-policy.md)). Wellness also means
+water, caffeine, quiet, and a visible on-call organizer.
 
 ## SAFETY / SECURITY / CoC + emergency plan — `safety_incident`
 
-Mandatory, public, and enforced (sourced): an MLH-style **public Code of Conduct**, an **emergency
-plan**, accessibility, and an **on-call organizer** reachable at all hours. Every incident is a
+Mandatory, public, enforced (sourced): an MLH-style **public Code of Conduct**, an **emergency plan**,
+accessibility, and an **on-call organizer** reachable at all hours. Every incident is a
 `safety_incident` row (`kind = COC_VIOLATION | MEDICAL | FACILITIES | SECURITY`, with `severity`).
 
 > **Firewall (schema-enforced).** `safety_incident.is_research = false` is a `check` constraint.
@@ -173,21 +171,21 @@ plan**, accessibility, and an **on-call organizer** reachable at all hours. Ever
 > research record. This is the same ops-vs-research separation the research OS commits to
 > ([../research-ops/live-research-os.md](../research-ops/live-research-os.md)).
 
-CoC acknowledgement is required to work the event (`staff.coc_acknowledged_at`, `judge.coc_acknowledged_at`
-are tracked) and is briefed to all participants at the opening ceremony ([run-of-show.md](run-of-show.md)).
-Escalation is a typed `ESCALATES_TO` edge: any volunteer → Safety lead / on-call organizer.
+CoC acknowledgement is required to work the event (`staff.coc_acknowledged_at`,
+`judge.coc_acknowledged_at`) and is briefed to all participants at the opening ceremony
+([run-of-show.md](run-of-show.md)). Escalation is a typed `ESCALATES_TO` edge: any volunteer → Safety
+lead / on-call organizer.
 
 ## A/V + SIGNAGE — `venue_resource(AV_KIT | SIGNAGE)`
 
 Stage A/V (projector + mics + speakers, sourced) for ceremonies, talks, demos, and finals; signage for
-wayfinding (hall, workshops, help desk, quiet rooms, bathrooms, meals) and live schedule/announcements.
-Gender-neutral single-occupancy bathrooms are clearly signed (sourced). A/V is owned by TECH_AV crew;
-signage by DESIGN. Both are `logistics_task` rows with setup on the critical path.
+wayfinding (hall, workshops, help desk, quiet rooms, gender-neutral bathrooms, meals) and live
+schedule/announcements. A/V is owned by TECH_AV crew, signage by DESIGN; both are `logistics_task` rows
+with setup on the critical path.
 
 ## Illustrative budget — per-person + fixed lines
 
-Estimates only; reconcile to [funding.md](../funding.md) (the budget of record) before committing. Per
-the sourced bands and ~175 builders:
+Estimates only; reconcile to [funding.md](../funding.md) before committing. Per the sourced bands, ~175 builders:
 
 | Line | Basis (sourced band) | Per-person | Illustrative total |
 |---|---|---:|---:|
