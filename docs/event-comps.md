@@ -166,8 +166,14 @@ startup cost, HCB-to-HCB transfers free. 1,500 sponsored projects. Contributions
 2024 income.
 
 A 7% skim on money *flowing through* a community scaled from $1.6M to $22.4M in five years.
-Worth serious thought alongside the 501(c)(3) question in
-[research-findings.md](research-findings.md).
+
+⚠️ **Correction: HCB itself is not available to you.** Its eligibility page requires groups *"led
+and primarily run by teenagers (ages 13 to 18)"* and states HCB is *"exclusively focused on
+teen-led organizations."* College students are not eligible, despite HCB being widely recommended
+for student hackathons. The *mechanic* remains instructive; the vendor is not an option. See
+[procurement.md](procurement.md) for fiscal-sponsorship alternatives (Hack+, Players
+Philanthropy Fund ~6%, Social Good Fund) and the UBIT problem with routing a research deliverable
+through a nonprofit.
 
 ## The honest sponsor math
 
