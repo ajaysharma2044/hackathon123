@@ -117,3 +117,45 @@ Two live doors this evidence surfaced, both verified:
   DORA reports."**
 - **MLH sells "product feedback and insights" to Google, Meta, GitHub, MongoDB — and has zero
   payments/fintech sponsors.** MongoDB proves the channel works; the fintech budget is unclaimed.
+
+## The commissioned-study mechanism, verified concretely
+
+The clearest proof of research spend is the **Forrester Total Economic Impact (TEI)** study — and
+we now have the exact mechanism, verified across 8 companies:
+
+| Company | ROI headline | Built on |
+|---|---|---|
+| Snowflake (2020) | **612%** / 3yr | ~4 customers → composite org |
+| Ramp Enterprise | **408%**, NPV $5.0M | "interviews with four Ramp customers" |
+| Ramp SMB (2nd study) | **503%** / 3yr | separate study — **Ramp bought two** |
+| Airbyte | **239%**, NPV $1.1M | 5 individuals, 4 orgs |
+| Checkout.com | **182%**, NPV $12.4M | large enterprise customers |
+| dbt Labs | **194%** | composite |
+| Temporal | **201%** / 3yr | four Temporal Cloud customers |
+| Adyen | $2.5M chargeback saving | composite merchant |
+
+Plus IDC Business Value studies (Fivetran **459% ROI**, dbt, Datadog) and commissioned Forrester
+*surveys* (MongoDB surveyed 1,000+ finserv IT leaders; Brex + Forrester surveyed 304 finance
+execs).
+
+**The pattern, citable:** a TEI costs six figures and is built on interviews with **roughly four
+existing enterprise customers**, modeled into a composite. **11 of the target companies have
+bought at least one; Ramp bought two, Snowflake at least three.** The research-buying muscle is
+not hypothetical — it's a standing habit with a known unit.
+
+Note what a TEI *is*, though: a marketing asset built from a vendor's own happy customers to prove
+ROI. It is **not** neutral discovery, and it samples (a) existing customers by definition. That is
+the opposite end of the spectrum from what we'd sell — which cuts both ways: it proves the budget
+and the format exist, and it means our "independent, sees non-customers" angle is genuinely
+differentiated rather than a nicer version of the same thing.
+
+## The clean negative that sharpens the wedge
+
+The two flagship developer surveys — **Stack Overflow Developer Survey** and **JetBrains State of
+Developer Ecosystem** — accept **no sponsorship at all** (verified: zero "sponsor"/"partner"
+strings across 2023–2025 editions; both explicitly state no funders).
+
+So a company that wants to sponsor credible, independent developer research **has nowhere to buy
+it.** DORA is the one exception that openly solicits sponsors. The demand has proven budget
+(11 commissioned studies) and almost no supply of the neutral, third-party format — which is the
+space this could occupy, *if* the willingness-to-pay test in [STATE.md](STATE.md) comes back yes.
