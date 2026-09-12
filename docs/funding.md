@@ -39,44 +39,61 @@ Estimates, not quotes. Every line needs a real number before anything is committ
 
 ## Where the money comes from
 
+> **Revised against later research.** See [procurement.md](docs/procurement.md) for who actually
+> holds budget, and [research-pricing.md](research-pricing.md) for the published comparables.
+
 ### The stack
 
-One realistic path to ~$280K:
+One grounded path to ~$300K, built on the Linux Foundation slot structure plus custom
+engagements plus Reality Hack's scholarship product:
 
-| Tier | Count | Each | Total |
-|---|---:|---:|---:|
-| Title / anchor research sponsor | 1 | $100K | $100K |
-| Research sponsors | 2 | $40K | $80K |
-| Recruiting sponsors | 3 | $20K | $60K |
-| Activation sponsors | 5 | $8K | $40K |
-| University / in-kind | — | — | venue, some housing |
+| Line | Count | Each | Total | Buyer |
+|---|---:|---:|---:|---|
+| **Custom research engagements** | 2 | $55,000 | $110,000 | UX Research / Insights |
+| **Study sponsorship — Title** | 1 | $50,000 | $50,000 | Field Marketing / DevRel |
+| **Study sponsorship — Leadership** | 4 | $15,000 | $60,000 | DevRel |
+| **Study sponsorship — Innovation** | 8 | $5,000 | $40,000 | DevRel / Community |
+| **Builder Scholarship Fund** (travel + housing for 4 each) | 10 | $5,000 | $50,000 | Any — brand, CSR, DEI |
+| Logistics recovery (room block, F&B, keycards) | — | — | $30,000–45,000 | n/a |
+| University / in-kind venue | — | — | in-kind | n/a |
 
-Eleven sponsors. The anchor is the crux — it sets the price floor for everyone else and is the
-reference that makes conversations 2 through 11 possible.
+**~$310K from 15 sponsor relationships plus logistics recovery**, with no single line above $55K.
 
-### The thing to understand about sponsor money
+Three things make this better than the earlier "$100K anchor + ten others" version:
 
-**Sponsors pay from different budgets, and those budgets have very different sizes and sales
-cycles.**
+- **No six-figure single ask.** A $100K ask exceeds a median DevRel team's entire annual event
+  budget and is structurally not a single-buyer decision.
+- **The Innovation tier at $5,000 is genuinely easy** — under most corporate-card and
+  manager-approval thresholds, and it fills eight slots that each become a reference.
+- **The Scholarship Fund draws from a different pocket entirely** (brand, CSR, diversity), so it
+  doesn't compete with the research budget at the same company.
 
-| Budget | Owner | Size | Difficulty |
+### ⚠️ Correction: which budgets actually exist
+
+An earlier version of this document advised *"lead with research, close on recruiting"* on the
+logic that campus recruiting budgets are large and already allocated. **The data does not support
+that.**
+
+| Budget | Owner | Real size | Verdict |
 |---|---|---|---|
-| University recruiting | Head of University/Early-Career Recruiting | Large, annual, already allocated | **Easiest first dollar** |
-| DevRel / developer marketing | Head of DevRel, Developer Marketing | Moderate, discretionary | Moderate |
-| Product research / insights | PM leadership, Research lead | Variable, often no line item | **Hardest to sell cold** |
+| **UX Research / Insights** | Sr. Manager or Director, UX Research | $25–75K, **and an existing vendor-management path** | **Best fit** |
+| **Field / Regional Marketing** | Manager or Sr. Manager, Field Marketing | $25–100K, documented discretion over event selection | Strong |
+| Events | Head / Director of Events | Multi-million, but committed to *owned* conferences 6–12 months out | Possible, long lead |
+| DevRel | Head of DevRel | **$40–200K total annual event budget**; 51.3% have no set budget | $25K ceiling, committee-gated |
+| **University recruiting** | University Recruiting Lead | **~$114K/yr across ~40 schools ≈ $2,850/school** (NACE 2025) | **Cannot fund this** |
 
-The strategic consequence, and it is counterintuitive:
+The revised strategic line:
 
-> **Lead with research. Close on recruiting.**
+> **Sell research to the research buyer.**
 
-The research framing is what makes you different from every other hackathon and what earns the
-meeting. But for most first sponsors, the money will come out of a recruiting budget, because
-that budget already exists and is already spent on campus events with worse targeting. A single
-senior engineering hire costs $30–50K in agency fees — that is the number your recruiting tier
-is priced against, and it makes $20K for access to 200 elite builders an easy internal
-justification.
+The recruiting value is a powerful *justification* — a senior engineering hire costs $30–50K in
+agency fees, and that framing helps any buyer defend the spend internally. But the recruiting
+*budget* does not exist at this scale. Pitching a University Recruiting Lead as the economic
+buyer wastes the best relationship you have on someone who cannot sign.
 
-Sell the research report as the reason they pick you. Let them expense it as recruiting.
+The buyer to find is whoever owns **research or field marketing** — and the fastest way to
+identify them is to ask directly: *"Who typically needs to approve investments at this level in
+your organization?"*
 
 ### Pipeline math
 
