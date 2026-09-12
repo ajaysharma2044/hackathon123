@@ -250,6 +250,12 @@ Sources: [CMU](https://www.cmu.edu/career/employers/become-a-student-career-spon
 > **Stanford sells research *and* recruiting access to 1,000+ CS/EE students — including placing
 > your researcher inside a faculty lab — for $27,000 a year.**
 
+⚠️ **The $27,000 figure could not be independently verified** — Stanford Computer Forum's join and
+benefits pages are JavaScript-rendered and publish no amount. The verified Stanford comps are
+**$75,000/yr (Social Algorithms Lab)** and **$50,000/yr (Digital Economy Lab)**, both higher. The
+trap argument still holds on **CMU's published $10,000 for two semesters**, but don't put the
+Stanford number in a deck. See [innovation-budget.md](innovation-budget.md).
+
 That is the number a sophisticated sponsor will reach for. Any pitch anchored on "access to
 elite students" or "a 200-person technical event" lands in the **$5K–$27K band**, no matter how
 good the students are. CNCF's own 200-person events price at exactly $5K–$25K.
