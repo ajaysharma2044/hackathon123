@@ -1,7 +1,7 @@
 """One-button Run-2 economy-wide discovery pipeline.
 
 Usage from repo root/engine:
-    python3 discovery_runner.py ../docs/run-2/session_findings.json
+    python3 discovery_runner.py /path/to/session_findings.json
 
 The findings file is produced by a live session/browser researcher and records its mode as
 SESSION_ASSISTED. The Python governor does not claim it browsed the web itself.
@@ -62,6 +62,7 @@ def run_discovery(findings_path: str):
 
 
 if __name__ == "__main__":
-    path = sys.argv[1] if len(sys.argv) > 1 else "../docs/run-2/session_findings.json"
-    gov, report = run_discovery(path)
+    if len(sys.argv) != 2:
+        raise SystemExit("usage: python3 discovery_runner.py /path/to/session_findings.json")
+    gov, report = run_discovery(sys.argv[1])
     print(json.dumps(report, indent=2, default=str))
