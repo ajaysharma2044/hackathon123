@@ -19,10 +19,12 @@ This repository contains a **surprisingly substantial implementation** of an Age
 
 ### Prerequisites
 ```bash
-pip install scipy  # Required for beliefs.py, value_engines.py
+pip install -r requirements.txt
 ```
 
-No `requirements.txt` exists — this is a gap.
+Dependencies (`requirements.txt`):
+- `numpy>=1.24` — used by beliefs.py, monte_carlo.py, calibration.py, voi.py, etc.
+- `scipy>=1.10.0` — used by beliefs.py, value_engines.py
 
 ### Run the Governor (One-Button Cornell Pipeline)
 ```bash
@@ -68,7 +70,7 @@ PYTHONPATH=. python3 node_scraper.py --force # re-scrape all
 | **Node Scraper** | `node_scraper.py` | (included in grounding) | **Actually scrapes the web** (urllib, no LLM). Refreshes stale nodes via freshness.py decay. Reports QUOTE/PRIMARY nodes it cannot scrape. |
 | **Freshness Decay** | `freshness.py` | — | Claim-type-specific staleness (product_pricing → 90 days, etc.). |
 | **Event Optimizer** | `event_optimizer.py` | 13 pass | Mechanism-design engine. EventDesign dataclass, multi-objective optimization (experience + research_info scores). |
-| **Cornell Scenario** | `cornell_scenario.py` | — | Grounded economics: $39,732 all-in cost from real scraped menu prices. Break-even analysis. |
+| **Cornell Scenario** | `cornell_scenario.py` | — | Engine scenario cost: $39,732 (computed from scraped menu prices, NOT observed buyer WTP). Break-even analysis. |
 | **Beliefs / VOI** | `beliefs.py`, `voi.py`, `calibration.py`, `monte_carlo.py` | 10 + 10 pass | Beta distributions, Bayesian updates, VOI calculation, calibration scoring (ECE). |
 | **Temporal Core** | `temporal_core.py` | 34 pass | Four clocks (EVENT, PROJECT, LIFECYCLE, MARKET), point-in-time information set, no future leakage, 12 duration metrics. |
 | **Episode Reconstruction** | `episode.py` | (included in temporal) | The master object: actor → prior_state → context → opportunity_set → decision → intervention → outcome. Reconstructed from immutable event log. |
@@ -108,7 +110,7 @@ PYTHONPATH=. python3 node_scraper.py --force # re-scrape all
 
 | Gap | Impact | Priority |
 |-----|--------|----------|
-| **No requirements.txt / pyproject.toml** | Manual `pip install scipy` required. Other hidden dependencies possible. | HIGH |
+| ~~**No requirements.txt**~~ | ✅ FIXED: `requirements.txt` now includes `numpy>=1.24` and `scipy>=1.10.0`. | DONE |
 | **No live database** | Schemas exist but aren't instantiated. Evidence is in-memory only. | MEDIUM |
 | **No LLM/web cognition wiring** | Cognition agents are hooks. Topic synthesis, industry sweeps, company research need external tools. | HIGH for production |
 | **No API / CLI interface** | `python3 governor.py` only. No REST API, no CLI arguments beyond node_scraper's `--force`. | MEDIUM |
@@ -155,7 +157,7 @@ PYTHONPATH=. python3 node_scraper.py --force # re-scrape all
 | **Cornell Decision Grid** | ✅ HARDCODED as default. `build_cornell_graph()` in `governor.py` creates the specific node structure for Cornell Event 1. |
 | **Industry Seed** | ✅ HARDCODED: fintech_payments, ai_infra_devtools, quant_finance, logistics, healthcare, energy. |
 | **Sponsor Seed** | ✅ HARDCODED: Jump/IMC, Citadel, startup_credit_programs, Stripe. |
-| **Rate Cards** | ✅ HARDCODED: LF syndicated $150K, Tier-A $25K, panel $27/complete. |
+| **Rate Cards** | ✅ HARDCODED: Published rate-card ceilings (LF syndicated $150K, Tier-A $25K, panel $27/complete). These are reference benchmarks, NOT observed buyer WTP. |
 
 **These are seeds, not assumptions.** The system marks the full universe as NEEDS_RESEARCH and does not claim it has discovered all sponsors/industries.
 
@@ -164,18 +166,18 @@ PYTHONPATH=. python3 node_scraper.py --force # re-scrape all
 ## Test Results Summary
 
 ```
-Total tests: 446 passed, 0 failed
+Total tests: 446 passed, 0 failed (21 test suites)
 
 By test file:
   test_adaptive_questions.py     15 passed
   test_agent_os.py               17 passed
-  test_arms_race.py              29 passed
+  test_arms_race.py              25 passed
   test_beliefs_mc.py             10 passed
   test_capture.py                14 passed
-  test_company_matcher.py        13 passed
+  test_company_matcher.py         7 passed
   test_cornell_products.py       33 passed
-  test_discovery_engine.py       25 passed
-  test_environment_economy.py    12 passed
+  test_discovery_engine.py       33 passed
+  test_environment_economy.py    29 passed
   test_event_ops.py              30 passed
   test_event_optimizer.py        13 passed
   test_grounding.py              12 passed
@@ -186,11 +188,13 @@ By test file:
   test_score.py                   7 passed
   test_talent_venture.py         25 passed
   test_temporal.py               34 passed
-  test_value_engines.py           7 passed
+  test_value_engines.py          13 passed
   test_voi_portfolio_calib.py    10 passed
+  ─────────────────────────────────────
+  TOTAL                         446 passed
 ```
 
-**To run:** `cd engine && pip install scipy && for f in test*.py; do python3 "$f"; done`
+**To run:** `cd engine && pip install -r requirements.txt && for f in test*.py; do python3 "$f"; done`
 
 ---
 
@@ -198,7 +202,7 @@ By test file:
 
 | Priority | Task | Rationale |
 |----------|------|-----------|
-| **1** | Add `requirements.txt` with `scipy` | Unblocks anyone trying to run the code. 2 minutes. |
+| ~~**1**~~ | ~~Add `requirements.txt`~~ | ✅ DONE: `requirements.txt` added with `numpy>=1.24` and `scipy>=1.10.0`. |
 | **2** | Wire one LLM tool into `topic_synthesis` agent | Closes the "cognition hook" loop. Proves the architecture works end-to-end. |
 | **3** | Persist Governor runs to SQLite | Schema exists (`013_agentic.sql`). Add a lightweight ORM or raw inserts. Enables run history, resume, audit. |
 | **4** | Parameterize `build_cornell_graph()` | Make the goal/node structure configurable. Enables non-Cornell scenarios without code changes. |
@@ -211,10 +215,12 @@ By test file:
 
 ## Appendix: Sample Governor Run Output
 
+Note: Numbers below are **engine scenario costs** and **published rate-card ceilings**, NOT observed buyer WTP. Buyer WTP remains UNKNOWN until validated by sales.
+
 ```
 === RESOLVED autonomously ===
-  cost: 39732
-  pricing: {'sponsorship_study_syndicated': 150000, ...}
+  cost: 39732                    # engine scenario cost (scraped inputs)
+  pricing: {'sponsorship_study_syndicated': 150000, ...}  # rate-card ceilings
   event_design: {'experience': 6.36, 'research_info': 26.9}
   portfolio: {'grounded_cost': 39732, 'breakeven_sponsorship': 39732, ...}
   company_jump_imc: quant recruiters already courting Cornell
