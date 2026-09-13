@@ -15,4 +15,4 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m pip install pytest
-      - run: PYTHONPATH=engine pytest -q engine/test_agent_os_lifecycle.py engine/test_research_contracts.py engine/test_web_research.py engine/test_capture.py
+      - run: PYTHONPATH=engine pytest -q engine/test_agent_os_lifecycle.py engine/test_research_contracts.py engine/test_web_research.py engine/test_governor_runtime.py engine/test_capture.py
