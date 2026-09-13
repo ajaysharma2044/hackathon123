@@ -2,12 +2,11 @@
 
 Validation for this revision:
 
-- `python3 -m pytest -q`: **71 passed**, including 21 subprocess cases that execute every historical
-  test script and 50 direct tests. This count describes pytest cases, not an invented count of
+- `python3 -m pytest -q`: **86 passed**, including 21 subprocess cases that execute every historical
+  test script and 65 direct tests. This count describes pytest cases, not an invented count of
   assertions inside the historical scripts.
 - `PYTHONPYCACHEPREFIX=/private/tmp/hackathon-refactor-pycache python3 -m compileall -q engine`: passed.
-- Offline CLI smoke check: exit 2, RESEARCH_BACKEND_REQUIRED, recommendation UNKNOWN, no discovered
-  entities or atomic claims, six traced backend-required attempts.
+- Offline CLI smoke check: exit 2, RESEARCH_BACKEND_REQUIRED, recommendation UNKNOWN, a user-seeded company dossier with no atomic claims and an honest backend-required trace.
 - `git diff --check`: passed.
 
 The initial unmodified suite could not finish pytest collection because a legacy test script raised
@@ -24,8 +23,11 @@ WTP misuse, covert/person-scoring capture, R&D constraints, shared burden and ad
 negative burden, resume, independent red-team reopening, evidence-only synthesis and Pareto comparison.
 Existing capture, consent, temporal, qualitative, live-research and R&D scripts remain in the suite.
 
-All research fixtures are fictional. No live provider was exercised; no source classification or
-semantic-extraction accuracy claim is made by these tests. A first compile attempt used macOS's
+All deterministic research fixtures are fictional. Fifteen live-path tests cover the actual CLI,
+semantic adapter, company/objective execution, exports, interruption persistence, budgets and provenance.
+The real DuckDuckGo smoke was blocked by a bot challenge (reported explicitly); a direct fetch of
+https://www.cornell.edu/ succeeded. Paid search and semantic API credentials were unavailable, so no
+paid provider or semantic accuracy success is claimed. A first compile attempt used macOS's
 unwritable default bytecode cache; the explicit temporary cache command above passed.
 
 Concurrent upstream lifecycle/scraper/governor tests are included. Scraper cases verify exact

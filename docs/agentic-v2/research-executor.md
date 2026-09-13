@@ -22,38 +22,33 @@ syndication and common ownership should share one.
 Run from repository root:
 
 ```bash
-python -m engine.research_run --objective "Determine the optimal first Cornell technical event"
-python -m engine.research_run --objective "Your objective" \
-  --executor installed_provider:create_executor \
-  --red-team-executor independent_provider:create_executor \
-  --config research-config.json --output run.json
+python -m engine.research_run --company "Genspark" --live --output runs/genspark
+python -m engine.research_run --objective "Discover company research questions for Cornell builders" \
+  --live --max-companies 10 --output runs/cornell
 ```
 
-Adapter factories must already be trusted/installed. An optional HTTP adapter is bundled; no production reasoning/browser adapter is bundled. CLI loads research and independent-review factories plus optional `--synthesizer`,
-`--theme-generator` and `--opportunity-mapper` factories; the Python API accepts the same objects. Theme proposals are name + accepted evidence IDs + event connection.
-Synthesis outputs only claim_ids, candidate_node_ids or missing_questions. Opportunity mappers return
-ResearchOpportunity objects. Their implementation is not silently synthesized by the runtime.
+The README documents credentials, budgets, and exact setup commands. Advanced trusted adapter
+factories remain optional overrides. `--live` selects Brave, Tavily or DuckDuckGo, configures
+`SemanticGroundedExtractor` when `RESEARCH_LLM_API_KEY` and `RESEARCH_LLM_MODEL` are present, and
+uses default opportunity/theme/synthesis adapters. `RESEARCH_LLM_BASE_URL` selects a compatible
+endpoint; missing semantic credentials retain the conservative EVIDENCE extractor.
 
-Offline output is RESEARCH_BACKEND_REQUIRED, recommendation/confidence UNKNOWN, an empty entity
-set and real failed-attempt trace. Exit code 2 means unresolved; 0 means a resolved comparison.
-Provider errors and inaccessible sources stay visible and cannot count as successful negative searches.
-This is a testable executor architecture, **not an autonomous deployed research service**.
+The model receives only questions, retrieved passages with runtime metadata, and accepted relevant
+claims. Returned metadata is rejected; exact quotes, inference support and WTP rules still pass
+through shared evidence intake. A separate adversarial context uses negative queries before any
+synthesis prose exists. Same-provider review is explicitly labeled. Proposed themes and structured
+opportunities remain hypotheses until their existing completion contracts pass.
 
+Each output is a new directory containing Markdown dossiers, partial comparison, complete JSON,
+and incrementally flushed source/claim/search JSONL. Full resume is not implemented. Exit 2 means
+partial/backend-required output, not successful completion. Search failures, challenges, inaccessible
+pages, and queries producing no useful retrieved evidence do not count as completed field research.
 
-## Integrated HTTP retrieval adapter
+HTML and plain text are supported with bounded timeouts, retries, caches, size limits and public-IP
+redirect checks. Retrieved external link destinations remain in extracted text to support identity
+corroboration. No PDF, login or JavaScript browser execution is provided. Domain classification is
+heuristic and reviewable; deployment should address DNS rebinding beyond preliminary DNS checks.
 
-`--executor web_research:build_default_web_executor` explicitly enables Brave (BRAVE_SEARCH_API_KEY),
-Tavily (TAVILY_API_KEY), or DuckDuckGo HTML search, plus bounded/cached public HTTP text retrieval.
-This opt-in adapter is not selected merely because a run has no configured executor. It preserves
-source content digests, excerpt anchors and provider errors in the shared trace.
-
-The default keyword extractor creates unpromoted EVIDENCE/candidate leads. It intentionally cannot
-prove strategic need, buyer authority, cohort fit, or event relevance from matching words. Supply a
-GroundedExtractor for reviewed semantic extraction; it receives the question, fetched candidates
-and accepted context, and its output still passes shared intake and completion gates.
-
-Unknown web domains default to discovery-only; official-domain, government and known-publisher
-heuristics remain reviewable approximations. HTML scraping does not support login, JS execution,
-PDF extraction, publisher authentication, or exhaustive entity recognition. DNS/redirect checks
-reject private addresses; deployment still needs controlled egress and protection against DNS rebinding.
-No live provider requests were made in this validation run; fake providers exercise the adapter.
+Validation used fake model/network boundaries for end-to-end extraction, discovery and output.
+The real free-search smoke received a DuckDuckGo challenge. Direct Cornell homepage fetching
+succeeded. No Brave, Tavily or semantic API credentials were available; no paid API success is claimed.

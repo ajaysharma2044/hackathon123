@@ -106,7 +106,7 @@ class Governor:
                 return False, {'missing': ['accepted_opened_source_evidence']}
             if any(memory.claims.get(c.claim_id) != c for c in value.get('supporting_claims',())):
                 return False, {'missing': ['accepted_supporting_evidence']}
-            if node.node_type in ('data_opportunity','rd_opportunity'):
+            if node.node_type in ('data_opportunity','rd_opportunity','recruiting_opportunity'):
                 from research_opportunities import ResearchOpportunity
                 from research_config import ResearchConfig
                 spec = value.get('opportunity')

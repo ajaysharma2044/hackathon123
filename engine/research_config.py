@@ -3,6 +3,8 @@ from dataclasses import dataclass, field
 
 @dataclass(frozen=True)
 class ResearchConfig:
+    max_queries: int = 240
+    max_companies: int = 10
     max_rounds: int = 4
     max_results_per_query: int = 4
     max_queries_per_round: int = 48
@@ -21,7 +23,7 @@ class ResearchConfig:
     def __post_init__(self):
         for k in ('max_rounds', 'max_results_per_query', 'max_queries_per_round',
                   'min_primary_sources', 'min_independent_sources', 'min_query_angles',
-                  'saturation_rounds', 'max_nodes', 'participant_burden_cap_sec'):
+                  'saturation_rounds', 'max_nodes', 'max_queries', 'max_companies', 'participant_burden_cap_sec'):
             if not isinstance(getattr(self, k), int) or getattr(self, k) < 1:
                 raise ValueError(f'{k} must be a positive integer')
         if not 0 <= self.max_new_entity_fraction <= 1 or self.max_dependency_hops < 0:

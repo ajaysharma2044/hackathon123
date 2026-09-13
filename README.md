@@ -1,3 +1,66 @@
+# Start Researching in 5 Minutes
+
+The evidence-first CLI supports one company or an open-ended objective. Start from the repository root with Python 3.10+ (3.12 recommended):
+
+```bash
+git clone https://github.com/ajaysharma2044/hackathon123.git
+cd hackathon123
+git checkout codex/agentic-research-refactor
+git pull --ff-only
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
+```
+
+For an existing checkout, switch to the branch and pull, then use the same environment setup. The commands below prompt for your actual credentials and model ID rather than embedding example keys:
+
+```bash
+export BRAVE_SEARCH_API_KEY="$(python -c 'import getpass; print(getpass.getpass("Brave Search API key: "))')"
+export RESEARCH_LLM_API_KEY="$(python -c 'import getpass; print(getpass.getpass("Semantic provider API key: "))')"
+export RESEARCH_LLM_MODEL="$(python -c 'print(input("Chat-completions model ID from your provider: "))')"
+
+python -m engine.research_run \
+  --company "Genspark" \
+  --live \
+  --output runs/genspark
+```
+
+The semantic endpoint defaults to `https://api.openai.com/v1`. For another compatible provider, set `RESEARCH_LLM_BASE_URL` to its API base URL, including its version path if required. The endpoint must support `/chat/completions`, system/user messages, and `response_format: {"type":"json_object"}`. The implementation uses the [official Chat Completions interface](https://developers.openai.com/api/reference/resources/chat), with no browsing tools or conversation history. Use a model ID available on your own account. Retrieved excerpts and relevant accepted claims are sent to the configured endpoint.
+
+Search selects **Brave → Tavily → DuckDuckGo HTML**, in that order. Only one paid search key is needed. To use Tavily, leave `BRAVE_SEARCH_API_KEY` unset and set `TAVILY_API_KEY`. Without either key, the free fallback is attempted; DuckDuckGo may block automated requests or return a challenge. Such failures are reported as failures, never successful research. A search key is recommended for reliable runs. Missing semantic credentials allow evidence-only scraping, with `PARTIAL` conclusions.
+
+For Cornell Event #1:
+
+```bash
+python -m engine.research_run \
+  --objective "Find the optimal first Cornell technical hackathon/event with strong student value and unusually high company research, R&D, recruiting, developer adoption, and commercial value." \
+  --live \
+  --max-companies 10 \
+  --max-rounds 4 \
+  --max-queries 240 \
+  --max-sources-per-query 4 \
+  --output runs/cornell-event-1
+```
+
+Open `runs/cornell-event-1/summary.md`, then `companies/`, `opportunities/`, and `themes/`. Full accepted claims, opened source text, identity evidence, node states, search traces, rejection reasons, and primary-validation questions are also saved. Hypotheses remain hypotheses; missing comparison dimensions yield **NO FINAL WINNER YET**. Funding never establishes willingness to pay.
+
+Budgets are global query attempts, companies admitted, rounds per node, and opened results per query. Live mode allocates queries among companies and reserves a separate negative review pass; short allocations leave material fields unresolved. Limits are reported under `budget_exhausted`, not treated as evidence saturation. Default maximums are 240 queries, 10 companies, 4 rounds, and 4 sources per query. Each opened source may invoke the semantic model; choose smaller budgets to control API usage. Pages are cached within the run, fetched with bounded timeouts/retries/size limits, and restricted to public HTTP(S) addresses. HTML and plain text are supported; PDF and browser-only pages are currently reported as unavailable.
+
+The default review is labeled `SAME_PROVIDER_SEPARATE_PASS`: a fresh adversarial prompt and negative retrieval with accepted claims, before synthesis. Optionally configure `RESEARCH_RED_TEAM_LLM_API_KEY`, `RESEARCH_RED_TEAM_LLM_MODEL`, and `RESEARCH_RED_TEAM_LLM_BASE_URL` for a separately configured endpoint/model. This configuration alone is not a guarantee of organizational independence.
+
+Sources and claims flush as they arrive to JSONL; query completion appends to `trace.jsonl`, and node/entity snapshots update incrementally. Ctrl-C writes partial exports when possible. For abrupt process termination, inspect `events.jsonl`, `sources.jsonl`, `claims.jsonl`, and `nodes.json`. Full resume is not implemented. Use a **new output directory for each run**; existing nonempty directories are refused to avoid mixing evidence.
+
+Exit codes: `0` resolved, `2` useful partial/backend-required result, `1` configuration/run error, `130` interrupted. `PARTIAL` is expected until evidence and primary commercial validation are sufficient. Advanced adapter overrides remain in `--help`.
+
+```bash
+python -m engine.research_run --help
+python -m engine.research_run --company "Genspark" --output runs/offline-check
+python -m pytest -q
+python -m pytest engine/test_live_cli.py -q
+```
+
+The offline command does not browse and exits `2` with `RESEARCH_BACKEND_REQUIRED`. Fake-live tests replace only network/model boundaries and exercise the actual executor, runtime, validation, defaults and exports. They do not establish real API availability.
+
 # Builder Network
 
 > An elite student hackathon network that doubles as a live product R&D, talent, and

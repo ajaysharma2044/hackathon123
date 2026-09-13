@@ -61,16 +61,15 @@ or run their event/company assumptions. No earlier research report is loaded as 
 
 ## Explicit boundaries
 
-The implementation supplies a provider-neutral interface and an explicit opt-in HTTP adapter
-(`web_research.build_default_web_executor`) preserving the concurrent search/fetch work. Its default
-keyword extractor emits EVIDENCE, not complete factual dossiers. It requires a reviewed grounded
-extractor for semantic facts, relevant entity proposals and interpretations. No browser/LLM reasoning
-adapter or autonomous end-to-end production research service is bundled.
-Source classification and semantic extraction still require a trustworthy adapter and review:
-verbatim excerpt matching proves provenance, **not logical entailment of arbitrary prose**.
-No deterministic string rule can establish that an extracted interpretation is true.
+The existing runtime now has a one-flag live CLI, a provider-neutral semantic extractor using an
+OpenAI-compatible endpoint, evidence-bounded default hypothesis adapters, and readable incremental
+run exports. See the repository README for the current commands. The keyword fallback still emits
+EVIDENCE only when semantic credentials are absent. Source authenticity and semantic entailment
+remain review questions: exact quote checks establish provenance, not the truth of arbitrary prose.
 
-There is no database migration runner or persistent research job service. CLI JSON contains source
-snapshots, atomic claims, provenance, all nodes, unknowns and trace. In-process memory is shared and
-Governor.resume retries unresolved research without erasing it. Durable restart/import and production
-identity-resolution review remain integration work. No email, spend, enrollment or publishing occurs.
+The CLI performs a separately labeled adversarial pass before partial synthesis. It does not mark
+open completion gates resolved to produce a report. Canonical domain promotion requires independent
+quoted corroboration and an opened self-identification page; supporting claim IDs are retained.
+JSONL source/claim checkpoints and node snapshots survive partial runs. Full durable resume, a
+persistent job service, PDFs, and browser-only pages remain outside this release. No email, spend,
+enrollment, participant data collection or deployment is performed by the research command.

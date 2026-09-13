@@ -38,7 +38,10 @@ class FakeExecutor:
         q=questions[0];field=q.target_fields[0]
         cid=q.subject_id+':'+q.question_id+':'+doc.source_id
         if field in ('wtp_status','budget_function','talent_need_status'):
-            return [AtomicClaim(cid,field,'UNKNOWN',EpistemicStatus.UNKNOWN,subject_id=q.subject_id)]
+            # An unknown alone is not proof that useful source research happened.
+            # Preserve the opened passage separately without promoting it to the missing fact.
+            return [replace(atomic(doc,cid+':passage',field,q.subject_id),status=EpistemicStatus.EVIDENCE),
+                    AtomicClaim(cid,field,'UNKNOWN',EpistemicStatus.UNKNOWN,subject_id=q.subject_id)]
         return [atomic(doc,cid,field,q.subject_id)]
     def discover_entities(self,doc,claims,context):
         if not self.discoveries or not claims:return []

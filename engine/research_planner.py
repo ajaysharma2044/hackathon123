@@ -54,9 +54,15 @@ class ResearchPlan:
     questions: tuple[ResearchQuestion, ...]
     saturation_round: int = 0
 
-def questions_for(subject, missing_fields, node_type, round_number=0, config=None, previous=()):
+def questions_for(subject, missing_fields, node_type, round_number=0, config=None, previous=(), accepted_claims=()):
     priorities = config.field_priorities if config else {}
-    fields = sorted(set(missing_fields), key=lambda f: (-priorities.get(f, 0), f))
+    initial = ['identity','financial_capacity','product_business_model','current_initiative','internal_capability','substitute','talent_need_status','developer_need_status','buyer_function']
+    fields = sorted(set(missing_fields), key=lambda f: (initial.index(f) if f in initial else len(initial), -priorities.get(f,0),f))
+    terms = []
+    for c in accepted_claims:
+        if c.status.value=='FACT' and isinstance(c.value,dict):
+            terms.extend(t for t in c.value.get('research_terms',[]) if isinstance(t,str) and t in c.quote_or_excerpt)
+    focus = (' "'+terms[round_number % len(terms)]+'"') if terms and round_number else ''
     out = []
     default = {'rd_opportunity':'rd_research', 'data_opportunity':'qualitative_research',
                'red_team':'red_team', 'company':'company_discovery'}.get(node_type, 'economy_discovery')
@@ -64,11 +70,13 @@ def questions_for(subject, missing_fields, node_type, round_number=0, config=Non
         role = FIELD_AGENT.get(field, default)
         support, negative = STRATEGIES[role]
         # Different rounds search an explicit unresolved question, informed by actual earlier results.
-        prior = '; '.join(previous[-3:])
+        prior = ''
         for angle, phrase in [('support', support), ('alternative', 'independent evidence ' + support),
                               ('negative', negative)]:
+            if field == 'identity':
+                phrase = {'support':'official website company about', 'alternative':'company website domain profile', 'negative':'similarly named company acquired renamed'}[angle]
             out.append(ResearchQuestion(f'{node_type}:{round_number}:{field}:{angle}',
-                f'{subject}: {field.replace("_", " ")}; {phrase}; research pass {round_number + 1}'
+                f'{subject}{focus} {field.replace("_", " ")} {phrase}'
                 + (f'; unresolved after {prior}' if prior else ''), (field,), angle == 'negative',
                 agent=role))
     return tuple(out)

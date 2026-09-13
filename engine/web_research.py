@@ -52,6 +52,8 @@ class DuckDuckGoHTMLSearchProvider(SearchProvider):
     def search(self, query: str, limit: int = 8):
         req = urllib.request.Request("https://html.duckduckgo.com/html/?" + urlencode({"q":query}), headers={"User-Agent":UA})
         with urllib.request.urlopen(req, timeout=15) as r: page = r.read(2_000_000).decode("utf-8","ignore")
+        if any(marker in page.lower() for marker in ('anomaly.js','anomaly-modal','bots use duckduckgo')):
+            raise ValueError('DuckDuckGo blocked automated search; configure BRAVE_SEARCH_API_KEY or TAVILY_API_KEY')
         out=[]
         for i,m in enumerate(self._RESULT_RE.finditer(page)):
             raw_url=html.unescape(m.group(1))
@@ -70,13 +72,19 @@ def default_search_provider():
     return DuckDuckGoHTMLSearchProvider()
 
 class _TextParser(HTMLParser):
-    def __init__(self): super().__init__(); self.parts=[]; self._skip=0; self.title=""; self._in_title=False
+    def __init__(self): super().__init__(); self.parts=[]; self._skip=0; self.title=""; self._in_title=False; self._links=[]
     def handle_starttag(self,tag,attrs):
         if tag in {"script","style","noscript","svg"}: self._skip+=1
+        if tag=="a" and not self._skip:
+            href=dict(attrs).get('href','')
+            self._links.append(href if href.startswith(('https://','http://')) else '')
         if tag=="title": self._in_title=True
         if tag in {"p","div","li","h1","h2","h3","br","tr"} and not self._skip: self.parts.append("\n")
     def handle_endtag(self,tag):
         if tag in {"script","style","noscript","svg"} and self._skip: self._skip-=1
+        if tag=="a" and not self._skip and self._links:
+            href=self._links.pop()
+            if href: self.parts.append(' ('+href+')')
         if tag=="title": self._in_title=False
         if tag in {"p","div","li","h1","h2","h3","tr"} and not self._skip: self.parts.append("\n")
     def handle_data(self,data):
@@ -99,9 +107,19 @@ class _SafeRedirect(urllib.request.HTTPRedirectHandler):
         return super().redirect_request(req,fp,code,msg,headers,newurl)
 
 class HTTPFetcher:
-    def __init__(self, timeout=15, max_bytes=4_000_000, min_domain_interval=.15):
+    def __init__(self, timeout=15, max_bytes=4_000_000, min_domain_interval=.3, retries=2):
+        self.retries=retries
         self.timeout=timeout; self.max_bytes=max_bytes; self.min_domain_interval=min_domain_interval; self._cache={}; self._last_domain_fetch={}
     def fetch(self,url):
+        if url in self._cache: return self._cache[url]
+        for attempt in range(self.retries+1):
+            doc = self._fetch_once(url)
+            if doc is not None: return doc
+            if attempt < self.retries: time.sleep(min(2**attempt,4))
+        self._cache[url] = None
+        return None
+
+    def _fetch_once(self,url):
         if url in self._cache: return self._cache[url]
         if not _safe_url(url): return None
         domain=(urlparse(url).hostname or "").lower(); elapsed=time.monotonic()-self._last_domain_fetch.get(domain,0.0)
@@ -111,7 +129,9 @@ class HTTPFetcher:
             with urllib.request.build_opener(_SafeRedirect()).open(req,timeout=self.timeout) as r:
                 ctype=r.headers.get_content_type()
                 if ctype not in {"text/html","text/plain","application/xhtml+xml"}: return None
-                raw=r.read(self.max_bytes+1)[:self.max_bytes]; charset=r.headers.get_content_charset() or "utf-8"; body=raw.decode(charset,"ignore"); status=getattr(r,"status",200)
+                raw=r.read(self.max_bytes+1)
+                if len(raw)>self.max_bytes: return None
+                charset=r.headers.get_content_charset() or "utf-8"; body=raw.decode(charset,"ignore"); status=getattr(r,"status",200)
         except (urllib.error.URLError,urllib.error.HTTPError,TimeoutError,socket.timeout,ValueError): return None
         finally: self._last_domain_fetch[domain]=time.monotonic()
         if ctype in {"text/html","application/xhtml+xml"}:
@@ -228,7 +248,7 @@ class ScrapingResearchExecutor:
         official=q.preferred_domains[0] if q.preferred_domains else None
         source=SourceRef(raw.url,raw.title,classify_source(raw.url,official),source_type='scraped_web',
                          retrieved_at=raw.retrieved_at,content_sha256=raw.content_sha256)
-        sid=hashlib.sha256((raw.url+raw.content_sha256).encode()).hexdigest()
+        sid=hashlib.sha256((raw.url+raw.content_sha256+str(source.tier)).encode()).hexdigest()
         return RuntimeDocument(sid,source,raw.text,raw.retrieved_at)
 
     def extract_claims(self,document,questions):
@@ -240,6 +260,7 @@ class ScrapingResearchExecutor:
             for excerpt,score in relevant_excerpts(raw,q,self.excerpts_per_document)]
         proposed=self.extractor.extract(q,candidates,{'subject_id':q.subject_id,
             'accepted_claims':q.context_claims,'official_domain':q.preferred_domains[0] if q.preferred_domains else None})
+        self.last_extraction_notes = proposed.notes
         valid,rejected=self.validator.validate(proposed,document,q.context_claims)
         self.rejections.extend(rejected)
         self._entities[document.source_id]=valid.discovered_entities

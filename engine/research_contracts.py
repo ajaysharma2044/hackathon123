@@ -303,3 +303,6 @@ DIMENSIONS = ('student_value','technical_quality','company_value','research_valu
 GATES['theme'] = GATES['event_concept'] = CompletionGate('theme_v2',
     THEME_COMPLETION_GATE.requirements + tuple(GateRequirement(d, require_fact=False)
         for d in DIMENSIONS if d not in {r.field for r in THEME_COMPLETION_GATE.requirements}))
+
+# Recruiting plans share participant-choice and qualitative completion safeguards.
+GATES['recruiting_opportunity'] = GATES['data_opportunity']

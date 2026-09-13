@@ -27,7 +27,7 @@ def dynamic_entity_research(node, graph, ctx):
     if node.node_type == 'company':
         rt.map_opportunities(node)
     if status == 'EVIDENCE_COMPLETE':
-        if node.node_type in ('data_opportunity','rd_opportunity'):
+        if node.node_type in ('data_opportunity','rd_opportunity','recruiting_opportunity'):
             from research_opportunities import ResearchOpportunity
             try:
                 spec = node.value.get('opportunity')
