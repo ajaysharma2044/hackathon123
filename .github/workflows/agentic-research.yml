@@ -28,9 +28,9 @@ jobs:
                 ;;
             esac
             echo "=== $f ==="
-            if grep -q 'raise SystemExit' "$f"; then
-              PYTHONPATH=engine python "$f"
-            else
+            if grep -Eq '^def test_|^class Test' "$f"; then
               PYTHONPATH=engine pytest -q "$f"
+            else
+              PYTHONPATH=engine python "$f"
             fi
           done
