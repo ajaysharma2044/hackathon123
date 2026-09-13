@@ -53,7 +53,11 @@ def test_company_gate_accepts_full_sourced_dossier_with_counterevidence():
     for i, req in enumerate(COMPANY_COMPLETION_GATE.requirements):
         claims.append(fact(f"c{i}", req.field, SourceTier.TIER_2_REPUTABLE))
     claims.append(fact("counter", "counterevidence", SourceTier.TIER_2_REPUTABLE))
-    out = COMPANY_COMPLETION_GATE.evaluate(claims)
+    claims.append(AtomicClaim('primary', 'identity', 'primary evidence', EpistemicStatus.FACT,
+        sources=(SourceRef('https://primary.example/source','Primary',SourceTier.TIER_1_PRIMARY),)))
+    searches = [dict(query=f'{r.field}:{i}',target_fields=[r.field],status='SEARCHED',negative_query=i==2)
+                for r in COMPANY_COMPLETION_GATE.requirements for i in range(3)]
+    out = COMPANY_COMPLETION_GATE.evaluate(claims, searches=searches)
     assert out.complete
 
 

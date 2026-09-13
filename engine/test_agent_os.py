@@ -54,11 +54,9 @@ ck("a node with no resolver routes to NEEDS_RESEARCH (human)", g6.get("human_onl
 
 # ---- the one-button Cornell pipeline (integration) --------------------------
 gov7, rep = governor.run_cornell()
-ck("pipeline resolves grounded cost to a real number", isinstance(rep["resolved"].get("cost"), int) and rep["resolved"]["cost"] > 0)
-ck("pipeline resolves pricing from scraped rate cards", "sponsorship_study_syndicated" in rep["resolved"].get("pricing", {}))
-ck("pipeline leaves the demand-side open (NEEDS_RESEARCH/PRIMARY), honestly", rep["counts"].get("NEEDS_RESEARCH", 0) >= 1 and rep["counts"].get("PRIMARY", 0) >= 1)
-ck("top VOI-ranked next action is the falsification test", rep["open_for_humans"][0]["node"].startswith("falsify"))
-ck("exactly the external outreach is gated for approval", len(rep["awaiting_approval"]) == 1)
+ck("offline pipeline cannot resolve any business facts", not rep['resolved'])
+ck("offline pipeline explicitly requires research", any('RESEARCH_BACKEND_REQUIRED' in str(n['next']) for n in rep['open_for_humans']))
+ck("offline pipeline does not plan unsolicited outreach", not rep['awaiting_approval'])
 
 # cleanup mock agents
 for k in ["_mock_hi","_mock_lo","_decomp","_defer"]: agents.REGISTRY.pop(k, None)

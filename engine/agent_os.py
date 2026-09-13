@@ -54,7 +54,8 @@ class Permission(str, Enum):
 
 # A status is terminal only when the research/decision itself is finished.  Waiting for a human,
 # another research round, or primary validation is NOT research completion.
-SUCCESS_TERMINAL = {NodeStatus.RESOLVED, NodeStatus.KILLED}
+SUCCESS_TERMINAL = {NodeStatus.RESOLVED}
+CLOSED_UNRESOLVED = {NodeStatus.KILLED, NodeStatus.BLOCKED}
 OPEN_STATES = {
     NodeStatus.UNRESEARCHED,
     NodeStatus.RESEARCHING,
@@ -63,7 +64,6 @@ OPEN_STATES = {
     NodeStatus.EVIDENCE_COMPLETE,
     NodeStatus.SYNTHESIS_READY,
     NodeStatus.PRIMARY_VALIDATION_REQUIRED,
-    NodeStatus.BLOCKED,
 }
 
 
@@ -82,10 +82,26 @@ class Node:
     node_type: str | None = None
     completion_gate: str | None = None
     critical_unknown_fields: list[str] = field(default_factory=list)
+    depth: int = 0
+    auto_rollup: bool = True
+
+    def __post_init__(self):
+        if self.node_type in ('company','theme','event_concept','industry','problem','product','investor',
+                              'technology','business_unit','buyer_function','rd_opportunity','data_opportunity'):
+            self.completion_gate = self.completion_gate or self.node_type
 
     def resolve(self, value, provenance, status=NodeStatus.RESOLVED):
         if status not in SUCCESS_TERMINAL and status != NodeStatus.RESOLVED:
             raise ValueError(f"resolve() requires a terminal success status, got {status}")
+        if self.completion_gate:
+            from research_contracts import get_gate
+            from research_config import ResearchConfig
+            v = value if isinstance(value, dict) else {}
+            gate = get_gate(self.completion_gate).evaluate(v.get('claims',()), self.critical_unknown_fields,
+                searches=v.get('searches',()), profile=v.get('profile'),
+                config=ResearchConfig(**v.get('research_config',{})), supporting_claims=v.get('supporting_claims',()))
+            if not gate.complete:
+                raise ValueError('Node.resolve requires its completion contract to pass')
         self.value, self.provenance, self.status = value, provenance, status
         self.evidence.append({"value": value, "provenance": provenance, "at": _now()})
 
@@ -95,6 +111,8 @@ class NodeGraph:
         self.nodes: dict[str, Node] = {}
 
     def add(self, node: Node) -> Node:
+        if node.id in self.nodes:
+            return self.nodes[node.id]
         self.nodes[node.id] = node
         return node
 
@@ -119,7 +137,17 @@ class NodeGraph:
         }]
 
     def dependency_complete(self, node_id: str) -> bool:
-        return self.nodes[node_id].status in SUCCESS_TERMINAL
+        n = self.nodes.get(node_id)
+        if n is None or n.status not in SUCCESS_TERMINAL:
+            return False
+        if n.completion_gate:
+            from research_contracts import get_gate
+            v = n.value if isinstance(n.value, dict) else {}
+            from research_config import ResearchConfig
+            return get_gate(n.completion_gate).evaluate(v.get("claims", []), n.critical_unknown_fields,
+                searches=v.get("searches", []), profile=v.get("profile"),
+                config=ResearchConfig(**v.get('research_config',{})), supporting_claims=v.get('supporting_claims',())).complete
+        return True
 
     def ready(self):
         """Only dispatch nodes whose dependencies are genuinely finished."""
@@ -130,7 +158,7 @@ class NodeGraph:
 
     def children_all_done(self, node):
         return bool(node.children) and all(
-            self.nodes[c].status in SUCCESS_TERMINAL for c in node.children
+            self.dependency_complete(c) for c in node.children
         )
 
 

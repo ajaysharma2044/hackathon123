@@ -1,3 +1,5 @@
+> Historical first-pass design. The implemented successor is [agentic-v2/architecture.md](../agentic-v2/architecture.md).
+
 # Agentic Research Refactor v2
 
 ## Why this refactor exists

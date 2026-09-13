@@ -34,7 +34,7 @@ ck("recursive expansion terminates on stop rule", r2["stops"][low.id] == "LOW_HA
 
 b = ResearchBridge()
 b.ingest(Finding("battle_power", "economic_battle", {"urgency":"HIGH"}, "https://iea.org/x", "IEA", "GOVERNMENT", "demand doubles"))
-ck("session-assisted sourced evidence resolves", b.packet("battle_power", "economic_battle")["status"] == "RESOLVED")
+ck("session-assisted packets remain unvalidated", b.packet("battle_power", "economic_battle")["status"] == "CACHED_UNVALIDATED")
 b.ingest(Finding("battle_power", "economic_battle", {"urgency":"MEDIUM"}, "https://ferc.gov/y", "FERC", "GOVERNMENT", "different framing"))
 ck("contradictory research is not silently averaged", b.packet("battle_power", "economic_battle")["status"] == "CONTRADICTED")
 

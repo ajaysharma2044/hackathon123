@@ -1,13 +1,19 @@
-# Agentic Research Refactor Entry Point
+# Evidence-first research entrypoint
 
-Use `governor.build_research_graph(objective)` for new research runs.
+From the repository root:
 
-Do **not** use the old seeded discovery graph as the source of truth for new work. The new path expects:
+```bash
+python -m engine.research_run --objective "Determine the optimal first Cornell technical event"
+```
 
-- `ctx['research_executor']`: a live source-backed research adapter;
-- optionally `ctx['theme_generator']`: an evidence-bounded theme generator;
-- optionally `ctx['synthesizer']`: an evidence-only final synthesizer.
+Without a configured research adapter this intentionally returns `RESEARCH_BACKEND_REQUIRED`,
+`UNKNOWN` recommendation, and exit code 2. It does not load a sponsor or theme packet.
 
-Without these adapters the system must remain PARTIAL rather than hallucinate.
+Supply a trusted installed `--executor module:factory`, an independent `--red-team-executor`,
+and optionally a JSON `--config`. Python `research_run.run` additionally accepts the theme,
+opportunity and synthesis adapters. No production browser/LLM adapter is bundled.
 
-See `docs/agentic/refactor-v2.md` for the architecture and P0/P1 roadmap.
+See [architecture](../docs/agentic-v2/architecture.md),
+[executor contract](../docs/agentic-v2/research-executor.md), and
+[actual validation](../docs/agentic-v2/testing.md). Historical seeded/packet agents are quarantined
+under `examples/legacy`; they are not production discovery.

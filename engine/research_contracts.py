@@ -11,6 +11,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 from enum import Enum
+from typing import Any
 from typing import Iterable, Mapping, Sequence
 
 
@@ -37,10 +38,13 @@ class SourceRef:
     tier: SourceTier
     published_at: str | None = None
     source_type: str | None = None
+    independent_group: str | None = None
 
     def __post_init__(self):
         if not self.url or not self.title:
             raise ValueError("source requires url + title")
+        if self.tier not in tuple(SourceTier):
+            raise ValueError('source tier must be one of the defined quality tiers')
 
 
 @dataclass(frozen=True)
@@ -53,7 +57,19 @@ class AtomicClaim:
     confidence: float = 0.5
     contradictory_claim_ids: tuple[str, ...] = ()
 
+    subject_id: str = ''
+    value: Any = None
+    source_id: str | None = None
+    quote_or_excerpt: str = ''
+    observed_at: str | None = None
+    published_at: str | None = None
+    supporting_claim_ids: tuple[str, ...] = ()
+
     def __post_init__(self):
+        if not isinstance(self.status, EpistemicStatus):
+            raise ValueError('status must be an EpistemicStatus')
+        if self.status == EpistemicStatus.INFERENCE and not self.supporting_claim_ids:
+            raise ValueError('INFERENCE requires supporting evidence IDs')
         if not self.claim_id or not self.field or not self.statement:
             raise ValueError("claim requires id, field, and statement")
         if not 0.0 <= self.confidence <= 1.0:
@@ -75,6 +91,10 @@ class GateRequirement:
     min_claims: int = 1
     max_source_tier: SourceTier = SourceTier.TIER_3_CONTEXT
     require_fact: bool = True
+    accepted_statuses: tuple[EpistemicStatus, ...] = ()
+    applies_to: tuple[str, ...] = ()
+    positive: bool = False
+
 
 
 @dataclass
@@ -92,52 +112,69 @@ class CompletionGate:
     require_counterevidence: bool = True
     require_no_critical_unknowns: bool = True
 
-    def evaluate(self, claims: Iterable[AtomicClaim], critical_unknown_fields: Sequence[str] = ()) -> GateResult:
+    def evaluate(self, claims: Iterable[AtomicClaim], critical_unknown_fields: Sequence[str] = (),
+                 *, searches=(), profile=None, config=None, supporting_claims=()) -> GateResult:
+        from research_config import ResearchConfig
+        config = config or ResearchConfig()
         claims = list(claims)
-        by_field: dict[str, list[AtomicClaim]] = {}
-        for c in claims:
-            by_field.setdefault(c.field, []).append(c)
-
-        missing: list[str] = []
-        weak: list[str] = []
-        primary: list[str] = []
-
+        all_claims = {c.claim_id:c for c in list(supporting_claims) + claims}
+        ids = set(all_claims)
+        missing, weak, primary = [], [], []
+        def valid(c, req):
+            statuses = req.accepted_statuses or ((EpistemicStatus.FACT,) if req.require_fact else
+                         (EpistemicStatus.FACT, EpistemicStatus.INFERENCE))
+            if c.status not in statuses:
+                return False
+            if c.status in (EpistemicStatus.UNKNOWN, EpistemicStatus.PRIMARY_VALIDATION_REQUIRED):
+                return True  # only explicitly optional/status fields permit these
+            if c.status == EpistemicStatus.HYPOTHESIS:
+                return True  # explicit design proposal, never a required fact
+            if c.status == EpistemicStatus.INFERENCE:
+                def grounded(item, seen=()):
+                    if item.claim_id in seen:return False
+                    if item.status == EpistemicStatus.FACT:
+                        return item.strongest_tier is not None and item.strongest_tier <= req.max_source_tier
+                    if item.status != EpistemicStatus.INFERENCE:return False
+                    return bool(item.supporting_claim_ids) and all(i in ids and
+                        grounded(all_claims[i], seen+(item.claim_id,)) for i in item.supporting_claim_ids)
+                return grounded(c)
+            return c.strongest_tier is not None and c.strongest_tier <= req.max_source_tier
         for req in self.requirements:
-            field_claims = by_field.get(req.field, [])
-            factual = [c for c in field_claims if c.status == EpistemicStatus.FACT]
-            acceptable = [
-                c for c in factual
-                if c.strongest_tier is not None and c.strongest_tier <= req.max_source_tier
-            ]
-            if req.require_fact and len(acceptable) < req.min_claims:
-                if any(c.status == EpistemicStatus.PRIMARY_VALIDATION_REQUIRED for c in field_claims):
-                    primary.append(req.field)
-                elif field_claims:
-                    weak.append(req.field)
-                else:
-                    missing.append(req.field)
-
+            if req.applies_to and profile not in req.applies_to:
+                continue
+            xs = [c for c in claims if c.field == req.field]
+            ok = [c for c in xs if valid(c, req) and (not req.positive or c.value is True)]
+            if len(ok) < req.min_claims:
+                (primary if any(c.status == EpistemicStatus.PRIMARY_VALIDATION_REQUIRED for c in xs)
+                 else weak if xs else missing).append(req.field)
+            # Search attempts are runtime records, not claims supplied by the extractor.
+            angles = {x['query'] for x in searches if req.field in x.get('target_fields', ())
+                      and x.get('status') == 'SEARCHED'}
+            if len(angles) < config.min_query_angles:
+                missing.append('search:' + req.field)
         if self.require_counterevidence:
-            has_counter = any(c.contradictory_claim_ids for c in claims) or any(
-                c.field == "counterevidence" and c.status == EpistemicStatus.FACT for c in claims
-            )
-            if not has_counter:
-                missing.append("counterevidence")
-
+            negatives = [x for x in searches if x.get('negative_query') and x.get('status') == 'SEARCHED']
+            if not negatives:missing.append('counterevidence')
+            for req in self.requirements:
+                if req.applies_to and profile not in req.applies_to:continue
+                if not any(req.field in x.get('target_fields',()) for x in negatives):
+                    missing.append('negative_search:' + req.field)
+        for c in claims:
+            if c.contradictory_claim_ids:
+                weak.append('contradiction:' + c.field)
         if self.require_no_critical_unknowns:
             for f in critical_unknown_fields:
-                if any(c.field == f and c.status in {
-                    EpistemicStatus.UNKNOWN,
-                    EpistemicStatus.PRIMARY_VALIDATION_REQUIRED,
-                } for c in claims):
+                if not any(c.field == f and c.status == EpistemicStatus.FACT for c in claims):
                     primary.append(f)
-
-        return GateResult(
-            complete=not (missing or weak or primary),
-            missing=sorted(set(missing)),
-            weak=sorted(set(weak)),
-            primary_validation=sorted(set(primary)),
-        )
+        from urllib.parse import urlparse
+        good = [s for c in all_claims.values() if c.status == EpistemicStatus.FACT for s in c.sources
+                if s.tier <= SourceTier.TIER_3_CONTEXT]
+        if len({s.url for s in good if s.tier == SourceTier.TIER_1_PRIMARY}) < config.min_primary_sources:
+            missing.append('primary_sources')
+        if len({s.independent_group or urlparse(s.url).hostname for s in good}) < config.min_independent_sources:
+            missing.append('independent_sources')
+        return GateResult(not (missing or weak or primary), sorted(set(missing)),
+                          sorted(set(weak)), sorted(set(primary)))
 
 
 # Company research is deliberately generic: no company names or sectors are encoded here.
@@ -150,11 +187,20 @@ COMPANY_COMPLETION_GATE = CompletionGate(
         GateRequirement("product_business_model", max_source_tier=SourceTier.TIER_2_REPUTABLE),
         GateRequirement("strategic_need", max_source_tier=SourceTier.TIER_3_CONTEXT),
         GateRequirement("internal_capability", max_source_tier=SourceTier.TIER_3_CONTEXT),
-        GateRequirement("external_incremental_value", max_source_tier=SourceTier.TIER_3_CONTEXT),
-        GateRequirement("event_answerable_question", max_source_tier=SourceTier.TIER_3_CONTEXT),
+        GateRequirement("external_incremental_value", require_fact=False),
+        GateRequirement("event_answerable_question", require_fact=False),
         GateRequirement("buyer_function", max_source_tier=SourceTier.TIER_3_CONTEXT),
         GateRequirement("substitute", max_source_tier=SourceTier.TIER_3_CONTEXT),
-        GateRequirement("event_value_chain", max_source_tier=SourceTier.TIER_3_CONTEXT),
+        GateRequirement("event_value_chain", require_fact=False),
+        GateRequirement("talent_need_status", accepted_statuses=(EpistemicStatus.FACT, EpistemicStatus.UNKNOWN)),
+        GateRequirement("developer_need_status", accepted_statuses=(EpistemicStatus.FACT, EpistemicStatus.UNKNOWN), applies_to=("developer",)),
+        GateRequirement("cohort_fit", require_fact=False),
+        GateRequirement("natural_activity", require_fact=False),
+        GateRequirement("corporate_artifact", require_fact=False),
+        GateRequirement("decision_affected", require_fact=False),
+        GateRequirement("strongest_objection", require_fact=False),
+        GateRequirement("budget_function", accepted_statuses=(EpistemicStatus.FACT, EpistemicStatus.UNKNOWN)),
+        GateRequirement("wtp_status", accepted_statuses=(EpistemicStatus.UNKNOWN, EpistemicStatus.PRIMARY_VALIDATION_REQUIRED, EpistemicStatus.FACT)),
     ),
     require_counterevidence=True,
 )
@@ -175,7 +221,7 @@ THEME_COMPLETION_GATE = CompletionGate(
 )
 
 
-GATES: Mapping[str, CompletionGate] = {
+GATES: dict[str, CompletionGate] = {
     "company": COMPANY_COMPLETION_GATE,
     "theme": THEME_COMPLETION_GATE,
 }
@@ -186,3 +232,49 @@ def get_gate(name: str) -> CompletionGate:
         return GATES[name]
     except KeyError as exc:
         raise KeyError(f"unknown completion gate {name!r}") from exc
+
+# Type-specific ontology; none of these fields seeds an entity or conclusion.
+TYPE_FIELDS = {
+    "industry": ("economic_problem", "spending", "technical_transition", "event_connection"),
+    "problem": ("economic_problem", "affected_organizations", "uncertainty", "event_connection"),
+    "product": ("identity", "documentation", "access", "onboarding", "competitors", "event_connection"),
+    "investor": ("identity", "portfolio", "investment_thesis", "event_connection"),
+    "technology": ("identity", "technical_transition", "users", "event_connection"),
+    "business_unit": ("identity", "product_business_model", "buyer_function", "event_connection"),
+    "buyer_function": ("identity", "decision_affected", "budget_function", "event_connection"),
+    "cornell": ("capabilities", "access", "student_demand", "uniqueness", "constraints"),
+    "cost": ("cost", "cost_scope", "quote_status"),
+    "attendance": ("attendance", "recruitment_channel", "conversion_uncertainty"),
+    "capacity": ("venue", "staffing", "capacity"),
+    "pricing": ("pricing_comparable", "comparable_scope", "wtp_status"),
+    "red_team": ("theme", "company_ecosystem", "revenue_assumptions", "research_validity",
+        "cornell_uniqueness", "student_experience", "participant_burden", "privacy", "cost",
+        "rd_value", "sponsor_demand", "procurement", "repeatability"),
+}
+for kind, fields in TYPE_FIELDS.items():
+    GATES[kind] = CompletionGate(kind, tuple(GateRequirement(f,
+        accepted_statuses=(EpistemicStatus.UNKNOWN, EpistemicStatus.PRIMARY_VALIDATION_REQUIRED, EpistemicStatus.FACT)
+        if f in ('wtp_status','quote_status','conversion_uncertainty') else ()) for f in fields))
+GATES['event_concept'] = THEME_COMPLETION_GATE
+DESIGN = (EpistemicStatus.INFERENCE, EpistemicStatus.HYPOTHESIS)
+GATES['data_opportunity'] = CompletionGate('data_opportunity', tuple(
+    GateRequirement(f, accepted_statuses=DESIGN) for f in (
+        'natural_activity', 'capture_plan', 'consent_scope', 'participant_burden', 'research_question',
+        'buyer_relevance', 'valid_inference', 'invalid_inference', 'generalizability_limit',
+        'sponsor_contamination_risk', 'corporate_deliverable')))
+GATES['rd_opportunity'] = CompletionGate('rd_opportunity', tuple(
+    GateRequirement(f, require_fact=False, positive=True) for f in (
+        'high_uncertainty', 'parallelizable', 'prototypeable', 'evaluable', 'student_fit',
+        'failure_information_valuable', 'internal_substitute_researched', 'ip_understood', 'participant_value')))
+
+# Red-team conclusions are interpretations backed by accepted evidence, not invented facts.
+GATES['red_team'] = CompletionGate('red_team', tuple(GateRequirement(f, require_fact=False)
+    for f in TYPE_FIELDS['red_team']))
+
+# Candidate comparison dimensions are explicit. Unknown dimensions cannot produce a final ranking.
+DIMENSIONS = ('student_value','technical_quality','company_value','research_value','rd_value',
+    'recruiting_value','repeatability','founder_economics','participant_burden','privacy_risk',
+    'research_contamination','operational_complexity','conflict')
+GATES['theme'] = GATES['event_concept'] = CompletionGate('theme_v2',
+    THEME_COMPLETION_GATE.requirements + tuple(GateRequirement(d, require_fact=False)
+        for d in DIMENSIONS if d not in {r.field for r in THEME_COMPLETION_GATE.requirements}))

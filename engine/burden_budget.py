@@ -34,6 +34,8 @@ class BurdenBudget:
     """Append-only ledger of research touches, with a spend gate."""
 
     def __init__(self, cap_sec: int = EXPLICIT_CAP_SEC, min_gap_sec: int = MIN_PROMPT_GAP_SEC):
+        if type(cap_sec) is not int or cap_sec < 0 or min_gap_sec < 0:
+            raise ValueError("burden limits must be nonnegative")
         self.cap_sec = cap_sec
         self.min_gap = timedelta(seconds=min_gap_sec)
         self._ledger: list = []        # (participant, channel, seconds, at)
@@ -47,6 +49,8 @@ class BurdenBudget:
 
     def can_spend(self, participant: str, channel: str, seconds: int, now: datetime) -> bool:
         """Would a spend of `seconds` on `channel` be allowed right now?"""
+        if type(seconds) is not int or seconds < 0:
+            raise ValueError("burden must be nonnegative integer seconds")
         assert channel in ALL_CHANNELS, f"unknown channel {channel}"
         if channel in AMBIENT_CHANNELS:
             return True                # ambient channels never consume the explicit budget
