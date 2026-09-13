@@ -2,7 +2,7 @@
 Agent Governor.
 
 The Governor dispatches work, but it no longer trusts an agent's self-assessment that a research
-node is complete.  Nodes may declare a deterministic completion_gate; sourced atomic claims are
+node is complete. Nodes may declare a deterministic completion_gate; sourced atomic claims are
 validated against that gate before RESOLVED is allowed.
 
 UNKNOWN/UNRESEARCHED -> research -> PARTIAL/CONTRADICTED -> EVIDENCE_COMPLETE -> RESOLVED
@@ -16,6 +16,7 @@ from agent_os import (
     RequestAction, TaskQueue, Log,
 )
 import agents
+import dynamic_agents  # noqa: F401 - import registers dynamic agents with agents.REGISTRY
 
 
 class Governor:
@@ -116,7 +117,6 @@ class Governor:
             self.log.decision(node=node.id, decision="DECOMPOSED", n_children=len(res.children))
 
         elif isinstance(res, Defer):
-            # Deferral is explicitly open work.  Never mark the node resolved by implication.
             node.status = res.status
             node.provenance = res.reason
             task.status = "DONE"
@@ -144,7 +144,6 @@ class Governor:
     def _rollup(self):
         for n in self.g.all():
             if n.children and self.g.children_all_done(n) and n.status == NodeStatus.PARTIAL:
-                # Rollup is only legitimate when every child is genuinely RESOLVED/KILLED.
                 n.resolve(
                     {"resolved_via_children": list(n.children)},
                     "decomposition rollup: all children genuinely terminal",
@@ -195,7 +194,6 @@ class Governor:
         }
 
 
-# New entrypoint: objective-driven and deliberately free of hardcoded sectors/companies.
 def build_research_graph(objective: str) -> NodeGraph:
     g = NodeGraph()
     g.add(Node(
@@ -224,8 +222,6 @@ def build_research_graph(objective: str) -> NodeGraph:
     return g
 
 
-# Legacy compatibility entrypoint.  It now routes into the generic objective-driven graph instead
-# of embedding six industries, four sponsor seeds, or a fixed participant count in orchestration.
 def build_cornell_graph() -> NodeGraph:
     return build_research_graph(
         "Find the optimal first Cornell hackathon/event, its participant value, company ecosystem, "
@@ -236,7 +232,7 @@ def build_cornell_graph() -> NodeGraph:
 def run_cornell(n_builders=None):
     ctx = {}
     if n_builders is not None:
-        ctx["scenario_n_builders"] = n_builders  # scenario input, not a truth baked into the graph
+        ctx["scenario_n_builders"] = n_builders
     gov = Governor(build_cornell_graph(), ctx=ctx)
     return gov, gov.run()
 
