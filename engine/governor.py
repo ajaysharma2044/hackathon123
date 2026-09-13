@@ -27,6 +27,7 @@ class Governor:
         self.log = Log()
         self.max_steps = max_steps
         self.approvals = []
+        self.step = 0
 
     def run(self):
         steps = 0
@@ -37,6 +38,7 @@ class Governor:
                 break
             node = max(ready, key=lambda n: n.voi)
             steps += 1
+            self.step += 1
             self._dispatch(node)
         self._rollup()
         return self.report()
@@ -62,7 +64,8 @@ class Governor:
         entry = agents.get(node.resolver) if node.resolver else None
         if entry is None:
             if node.status == NodeStatus.UNRESEARCHED:
-                node.status = NodeStatus.PARTIAL
+                node.status = NodeStatus.CONTRACT_REQUIRED
+            node.provenance = "No resolver/contract registered"
             node.retryable = False
             self.log.run(node=node.id, agent=None, outcome="no-resolver -> open")
             return
@@ -82,6 +85,7 @@ class Governor:
             agent=node.resolver,
             permission=perm.value,
             result=type(res).__name__,
+            attempt=node.attempt_count,
         )
         self._apply(node, res, task)
 
@@ -191,6 +195,7 @@ class Governor:
                 "node": node.id,
                 "action": res.description,
                 "payload": res.payload,
+                "state": "AWAITING_HUMAN_APPROVAL",
             })
             self.log.approval(
                 node=node.id,
@@ -227,7 +232,7 @@ class Governor:
 
     def report(self):
         voi_rank = sorted(self.g.open_for_humans(), key=lambda n: -n.voi)
-        return {
+        result = {
             "resolved": {n.id: n.value for n in self.g.by_status(NodeStatus.RESOLVED)},
             "open_for_humans": [
                 {
@@ -235,6 +240,7 @@ class Governor:
                     "q": n.question,
                     "status": n.status.value,
                     "voi": n.voi,
+                    "attempts": n.attempt_count,
                     "next": n.provenance,
                 }
                 for n in voi_rank
@@ -252,6 +258,8 @@ class Governor:
             },
         }
 
+        result["open"] = result["open_for_humans"]
+        return result
 
 def build_research_graph(objective: str) -> NodeGraph:
     g = NodeGraph()
@@ -294,8 +302,10 @@ def build_cornell_graph() -> NodeGraph:
     )
 
 
-def run_cornell(n_builders=None):
-    ctx = {}
+def run_cornell(n_builders=None, ctx=None):
+    if isinstance(n_builders,dict) and ctx is None:
+        ctx,n_builders = n_builders,None
+    ctx = ctx if ctx is not None else {}
     if n_builders is not None:
         ctx["scenario_n_builders"] = n_builders
     gov = Governor(build_cornell_graph(), ctx=ctx)

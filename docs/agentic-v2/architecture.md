@@ -2,7 +2,8 @@
 
 This implementation continues `codex/agentic-research-refactor` from `52cc4b0`, based on
 `claude/integration-master`, and integrates concurrent upstream commits `c93c984`, `aaabc6e` and
-`e13e54e` (scraper, governor smoke test and CI). It does not claim to have researched
+`e13e54e` (scraper, governor smoke test and CI), plus the later compatibility/test fixes through
+`8c9d755`. It does not claim to have researched
 companies during a Python run without one.
 
 ## Structural audit

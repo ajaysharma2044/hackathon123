@@ -2,8 +2,8 @@
 
 Validation for this revision:
 
-- `python3 -m pytest -q`: **65 passed**, including 22 subprocess cases that execute every historical
-  test script and 43 direct tests. This count describes pytest cases, not an invented count of
+- `python3 -m pytest -q`: **71 passed**, including 21 subprocess cases that execute every historical
+  test script and 50 direct tests. This count describes pytest cases, not an invented count of
   assertions inside the historical scripts.
 - `PYTHONPYCACHEPREFIX=/private/tmp/hackathon-refactor-pycache python3 -m compileall -q engine`: passed.
 - Offline CLI smoke check: exit 2, RESEARCH_BACKEND_REQUIRED, recommendation UNKNOWN, no discovered
@@ -31,3 +31,6 @@ unwritable default bytecode cache; the explicit temporary cache command above pa
 Concurrent upstream lifecycle/scraper/governor tests are included. Scraper cases verify exact
 anchors/digests, rejection of invented excerpts, and private DNS/redirect rejection. CI retains the
 upstream workflow, adds numpy/scipy for the historical engines, and runs the full suite.
+
+The later concurrent conversion of test_agent_os.py is preserved as seven collected pytest tests.
+Governor approval/report aliases and run_cornell(ctx=...) compatibility are retained.
