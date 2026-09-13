@@ -29,8 +29,8 @@ semantic-extraction accuracy claim is made by these tests. A first compile attem
 unwritable default bytecode cache; the explicit temporary cache command above passed.
 
 Concurrent upstream lifecycle/scraper/governor tests are included. Scraper cases verify exact
-anchors/digests, rejection of invented excerpts, and private DNS/redirect rejection. CI retains the
-upstream workflow, adds numpy/scipy for the historical engines, and runs the full suite.
+anchors/digests, rejection of invented excerpts, and private DNS/redirect rejection. CI retains the upstream workflow unchanged, including its numpy/scipy dependencies and
+legacy-script runner. The local unified pytest wrapper also runs all historical scripts.
 
 The later concurrent conversion of test_agent_os.py is preserved as seven collected pytest tests.
 Governor approval/report aliases and run_cornell(ctx=...) compatibility are retained.

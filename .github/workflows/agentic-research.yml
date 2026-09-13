@@ -5,7 +5,6 @@ on:
   pull_request:
     paths:
       - 'engine/**'
-      - 'conftest.py'
       - '.github/workflows/agentic-research.yml'
 jobs:
   tests:
@@ -18,5 +17,20 @@ jobs:
       - run: python -m pip install pytest numpy scipy
       - name: Focused agentic + capture invariants
         run: PYTHONPATH=engine pytest -q engine/test_agent_os_lifecycle.py engine/test_research_contracts.py engine/test_web_research.py engine/test_governor_runtime.py engine/test_capture.py
-      - name: Full regression including isolated legacy scripts
-        run: PYTHONPATH=engine pytest -q engine
+      - name: Legacy + full engine regression
+        shell: bash
+        run: |
+          set -euo pipefail
+          for f in engine/test_*.py; do
+            case "$f" in
+              engine/test_agent_os_lifecycle.py|engine/test_research_contracts.py|engine/test_web_research.py|engine/test_governor_runtime.py|engine/test_capture.py)
+                continue
+                ;;
+            esac
+            echo "=== $f ==="
+            if grep -Eq '^def test_|^class Test' "$f"; then
+              PYTHONPATH=engine pytest -q "$f"
+            else
+              PYTHONPATH=engine python "$f"
+            fi
+          done
