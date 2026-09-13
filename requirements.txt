@@ -1,0 +1,5 @@
+# Live retrieval and compatible semantic API use the Python standard library.
+# Existing analysis kernels and the complete verification suite:
+numpy>=1.24,<3
+scipy>=1.10,<2
+pytest>=7,<9
