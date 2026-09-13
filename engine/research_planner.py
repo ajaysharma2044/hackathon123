@@ -1,83 +1,81 @@
-"""Dynamic research planning primitives.
+"""Dynamic query planning from unresolved research fields.
 
-No sectors, companies, products, or sponsor archetypes are enumerated here.  Research plans are
-produced from a node type + unresolved fields.  This is intentionally small: model cognition may
-propose the questions, but the orchestrator validates their shape and the completion gate determines
-when the work is actually done.
+This hardcodes research ontology, not companies, sectors, or answers.
 """
 from __future__ import annotations
-
-from dataclasses import dataclass
-from typing import Iterable
-
 from research_executor import ResearchQuestion
 
+FIELD_TERMS = {
+    "identity": ("official", "about", "company", "founded", "headquarters"),
+    "current_initiative": ("launch", "announcement", "expansion", "new product", "partnership"),
+    "financial_capacity": ("funding", "financing", "revenue", "valuation", "cash", "investment"),
+    "product_business_model": ("product", "pricing", "customers", "API", "SDK", "enterprise"),
+    "strategic_need": ("hiring", "growth", "adoption", "developer", "research", "product feedback"),
+    "internal_capability": ("research team", "user research", "DevRel", "developer relations", "lab", "university recruiting"),
+    "buyer_function": ("product research", "growth", "developer relations", "innovation", "recruiting", "research leadership"),
+    "substitute": ("user panel", "customer advisory board", "hackathon", "consulting", "internal research", "university program"),
+    "economic_problem": ("cost", "constraint", "shortage", "capacity", "risk", "bottleneck", "demand"),
+    "student_value": ("students", "builders", "learning", "projects", "mentorship", "technical challenge"),
+    "cornell_fit": ("Cornell", "research", "engineering", "computer science", "ORIE", "project teams"),
+    "company_ecosystem": ("vendors", "companies", "startups", "customers", "ecosystem", "suppliers"),
+    "event_feasibility": ("prototype", "hackathon", "48 hours", "benchmark", "API", "simulation"),
+    "commercial_surface": ("sponsorship", "research", "recruiting", "R&D", "developer adoption", "innovation"),
+}
+NEGATIVE_TERMS = {
+    "strategic_need": ("already solved", "mature", "no hiring", "downsizing", "low priority"),
+    "internal_capability": ("internal research team", "UX research", "developer research", "existing lab", "existing university program"),
+    "external_incremental_value": ("internal alternative", "existing vendor", "existing panel", "existing hackathon"),
+    "event_answerable_question": ("not representative", "cannot test", "enterprise only", "long sales cycle"),
+    "substitute": ("Topcoder", "Kaggle", "Devpost", "consulting", "customer advisory board", "user panel"),
+    "economic_problem": ("resolved", "declining importance", "low spend", "low urgency"),
+    "event_feasibility": ("specialized equipment", "cannot prototype", "requires proprietary data", "months to validate"),
+    "commercial_surface": ("no budget", "procurement", "internal only", "no university program"),
+}
 
-@dataclass(frozen=True)
-class ResearchPlan:
-    node_id: str
-    node_type: str
-    questions: tuple[ResearchQuestion, ...]
-    saturation_round: int = 0
+
+def _domain_query(domain, terms):
+    if not domain: return None
+    domain = domain.replace("https://", "").replace("http://", "").split("/")[0].removeprefix("www.")
+    return f"site:{domain} {terms}"
 
 
-def company_questions(company_name: str, missing_fields: Iterable[str]) -> tuple[ResearchQuestion, ...]:
-    missing = set(missing_fields)
-    templates = {
-        "identity": f"{company_name} official company product business model",
-        "current_initiative": f"{company_name} latest launch initiative expansion 2026",
-        "financial_capacity": f"{company_name} funding revenue valuation financing 2026",
-        "product_business_model": f"{company_name} pricing customers API developer product official docs",
-        "strategic_need": f"{company_name} hiring growth product adoption developer program challenge",
-        "internal_capability": f"{company_name} research team user research developer relations university recruiting labs",
-        "external_incremental_value": f"{company_name} external research hackathon university partnership design partner developer community",
-        "event_answerable_question": f"{company_name} developer onboarding switching product feedback benchmark unresolved problem",
-        "buyer_function": f"{company_name} product research developer relations growth innovation recruiting leadership",
-        "substitute": f"{company_name} user research panel hackathon innovation challenge developer program internal research",
-        "event_value_chain": f"{company_name} what metric product team developer adoption recruiting R&D decision",
-        "counterevidence": f"{company_name} existing internal capabilities why hackathon would not help limitations criticism",
-    }
-    out = []
-    for field in missing:
-        if field not in templates:
-            continue
-        out.append(ResearchQuestion(
-            question_id=f"{company_name}:{field}:support",
-            query=templates[field],
-            target_fields=(field,),
-            negative_query=False,
-        ))
-        # Important fields get an explicit disconfirmation search rather than relying on one query.
-        if field in {"strategic_need", "internal_capability", "external_incremental_value", "event_answerable_question"}:
-            out.append(ResearchQuestion(
-                question_id=f"{company_name}:{field}:negative",
-                query=f"{templates[field]} evidence against weakness already solved internally",
-                target_fields=(field, "counterevidence"),
-                negative_query=True,
-            ))
+def company_questions(company_name, missing_fields, official_domain=None, prior_terms=()):
+    questions, prior = [], " ".join(str(x) for x in prior_terms if x)[:300]
+    for field_name in sorted(set(missing_fields)):
+        if field_name in {"external_incremental_value", "event_answerable_question", "event_value_chain"}: continue
+        terms = " ".join(FIELD_TERMS.get(field_name, (field_name.replace("_", " "),)))
+        questions.append(ResearchQuestion(f"{company_name}:{field_name}:general", f'"{company_name}" {terms} {prior}'.strip(), (field_name,)))
+        official = _domain_query(official_domain, terms)
+        if official: questions.append(ResearchQuestion(f"{company_name}:{field_name}:official", official, (field_name,), preferred_domains=(official_domain,)))
+        if field_name in NEGATIVE_TERMS:
+            neg = " OR ".join(f'"{x}"' for x in NEGATIVE_TERMS[field_name])
+            questions.append(ResearchQuestion(f"{company_name}:{field_name}:negative", f'"{company_name}" ({terms}) ({neg})', (field_name, "counterevidence"), negative_query=True))
+    return tuple(questions)
+
+
+def theme_questions(theme_name, missing_fields, prior_terms=()):
+    prior, out = " ".join(str(x) for x in prior_terms if x)[:300], []
+    for field_name in sorted(set(missing_fields)):
+        if field_name == "falsification": continue
+        terms = " ".join(FIELD_TERMS.get(field_name, (field_name.replace("_", " "),)))
+        out.append(ResearchQuestion(f"theme:{theme_name}:{field_name}:support", f'"{theme_name}" {terms} {prior}'.strip(), (field_name,)))
+        if field_name in NEGATIVE_TERMS:
+            neg = " OR ".join(f'"{x}"' for x in NEGATIVE_TERMS[field_name])
+            out.append(ResearchQuestion(f"theme:{theme_name}:{field_name}:negative", f'"{theme_name}" ({terms}) ({neg})', (field_name, "counterevidence"), negative_query=True))
     return tuple(out)
 
 
-def generic_entity_discovery_questions(objective: str, round_number: int = 0) -> tuple[ResearchQuestion, ...]:
-    """Broad discovery without an embedded sector list.
-
-    The queries ask for economic *signals* rather than known logos/categories.  A live executor can
-    diversify phrasing further.  Later rounds should use discovered entities/relations from the graph.
-    """
-    base = (
-        "industries with rapid capital deployment and severe technical talent shortages",
-        "industries with high R&D spending and prototypeable uncertain technical problems",
-        "developer-facing companies with recent large funding rounds and small engineering organizations",
-        "companies expanding developer ecosystems APIs SDKs or technical communities",
-        "industries where university technical talent is strategically valuable but campus presence is weak",
-        "companies launching new technical products where independent user choice and switching are hard to observe internally",
-        "organizations funding innovation challenges university research hackathons or external experimentation",
+def generic_entity_discovery_questions(objective, round_number=0, prior_entities=()):
+    seen = ", ".join(list(prior_entities)[-12:])
+    diversify = f" exclude or diversify beyond recently found: {seen}" if seen else ""
+    lenses = (
+        "rapid capital deployment technical bottlenecks unmet engineering demand",
+        "high R&D spending uncertain prototypeable technical problems external experimentation",
+        "recently funded technical companies developer products small teams aggressive growth",
+        "technical talent shortages high compensation weak university recruiting presence",
+        "developer ecosystems APIs SDKs competitive switching onboarding adoption",
+        "industrial or infrastructure sectors where many independent technical approaches have value",
+        "organizations currently funding university research innovation challenges hackathons external R&D",
+        "emerging technical markets with high spending and weak internal research capability",
     )
-    return tuple(
-        ResearchQuestion(
-            question_id=f"discovery:{round_number}:{i}",
-            query=f"{q}; objective: {objective}",
-            target_fields=("discovered_entity",),
-        )
-        for i, q in enumerate(base)
-    )
+    return tuple(ResearchQuestion(f"discovery:{round_number}:{i}", f"{lens}; objective: {objective}{diversify}", ("discovered_entity",)) for i, lens in enumerate(lenses))

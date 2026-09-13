@@ -1,18 +1,4 @@
-"""
-Agentic OS core (docs/agentic/architecture.md).
-
-The node lifecycle deliberately distinguishes "we cannot answer this from current research" from
-"this question is resolved".  NEEDS_RESEARCH / PRIMARY_VALIDATION_REQUIRED / QUOTE are OPEN states,
-not terminal research success.  A parent never rolls up to RESOLVED merely because its children are
-waiting on more evidence.
-
-Core loop:
-
-    UNRESEARCHED -> RESEARCHING -> PARTIAL / CONTRADICTED / EVIDENCE_COMPLETE
-                 -> SYNTHESIS_READY -> RESOLVED
-
-External actions (email/spend/publish) remain permission-gated.
-"""
+"""Core state machine for evidence-first agentic research."""
 from __future__ import annotations
 from dataclasses import dataclass, field
 from datetime import datetime
@@ -20,12 +6,10 @@ from enum import Enum
 import itertools
 
 
-def _now():
-    return datetime.now().isoformat(timespec="seconds")
+def _now(): return datetime.now().isoformat(timespec="seconds")
 
 
 class NodeStatus(str, Enum):
-    # New explicit lifecycle.
     UNRESEARCHED = "UNRESEARCHED"
     RESEARCHING = "RESEARCHING"
     PARTIAL = "PARTIAL"
@@ -34,11 +18,11 @@ class NodeStatus(str, Enum):
     SYNTHESIS_READY = "SYNTHESIS_READY"
     RESOLVED = "RESOLVED"
     PRIMARY_VALIDATION_REQUIRED = "PRIMARY_VALIDATION_REQUIRED"
+    RESEARCH_BACKEND_REQUIRED = "RESEARCH_BACKEND_REQUIRED"
+    CONTRACT_REQUIRED = "CONTRACT_REQUIRED"
+    RESEARCH_EXHAUSTED = "RESEARCH_EXHAUSTED"
     KILLED = "KILLED"
     BLOCKED = "BLOCKED"
-
-    # Backward-compatible aliases used by older modules.  These are intentionally OPEN except
-    # RESOLVED.  Keeping aliases lets the refactor proceed without breaking every old import at once.
     UNKNOWN = "UNRESEARCHED"
     RESOLVING = "RESEARCHING"
     NEEDS_RESEARCH = "PARTIAL"
@@ -52,86 +36,54 @@ class Permission(str, Enum):
     NEEDS_APPROVAL = "NEEDS_APPROVAL"
 
 
-# A status is terminal only when the research/decision itself is finished.  Waiting for a human,
-# another research round, or primary validation is NOT research completion.
 SUCCESS_TERMINAL = {NodeStatus.RESOLVED, NodeStatus.KILLED}
-OPEN_STATES = {
-    NodeStatus.UNRESEARCHED,
-    NodeStatus.RESEARCHING,
-    NodeStatus.PARTIAL,
-    NodeStatus.CONTRADICTED,
-    NodeStatus.EVIDENCE_COMPLETE,
-    NodeStatus.SYNTHESIS_READY,
-    NodeStatus.PRIMARY_VALIDATION_REQUIRED,
-    NodeStatus.BLOCKED,
-}
+RETRYABLE = {NodeStatus.UNRESEARCHED, NodeStatus.PARTIAL, NodeStatus.CONTRADICTED}
+OPEN_NONRETRYABLE = {NodeStatus.PRIMARY_VALIDATION_REQUIRED, NodeStatus.RESEARCH_BACKEND_REQUIRED, NodeStatus.CONTRACT_REQUIRED, NodeStatus.RESEARCH_EXHAUSTED, NodeStatus.BLOCKED}
 
 
 @dataclass
 class Node:
     id: str
     question: str
-    resolver: str = None
+    resolver: str | None = None
     status: NodeStatus = NodeStatus.UNRESEARCHED
     value: object = None
-    provenance: str = None
-    deps: list = field(default_factory=list)
-    children: list = field(default_factory=list)
+    provenance: str | None = None
+    deps: list[str] = field(default_factory=list)
+    children: list[str] = field(default_factory=list)
     voi: float = 0.0
-    evidence: list = field(default_factory=list)
+    evidence: list[dict] = field(default_factory=list)
     node_type: str | None = None
     completion_gate: str | None = None
     critical_unknown_fields: list[str] = field(default_factory=list)
+    attempt_count: int = 0
+    max_attempts: int = 8
+    retryable: bool = True
 
     def resolve(self, value, provenance, status=NodeStatus.RESOLVED):
-        if status not in SUCCESS_TERMINAL and status != NodeStatus.RESOLVED:
-            raise ValueError(f"resolve() requires a terminal success status, got {status}")
-        self.value, self.provenance, self.status = value, provenance, status
+        if status not in SUCCESS_TERMINAL:
+            raise ValueError(f"resolve() requires a true terminal state, got {status}")
+        self.value, self.provenance, self.status, self.retryable = value, provenance, status, False
         self.evidence.append({"value": value, "provenance": provenance, "at": _now()})
+
+    def can_retry(self) -> bool:
+        return self.retryable and self.status in RETRYABLE and self.attempt_count < self.max_attempts
 
 
 class NodeGraph:
-    def __init__(self):
-        self.nodes: dict[str, Node] = {}
-
+    def __init__(self): self.nodes: dict[str, Node] = {}
     def add(self, node: Node) -> Node:
+        if node.id in self.nodes: return self.nodes[node.id]
         self.nodes[node.id] = node
         return node
-
-    def get(self, i) -> Node:
-        return self.nodes[i]
-
-    def all(self):
-        return list(self.nodes.values())
-
-    def by_status(self, *st):
-        return [n for n in self.nodes.values() if n.status in st]
-
-    def unknown(self):
-        return self.by_status(NodeStatus.UNRESEARCHED)
-
-    def open_for_humans(self):
-        return [n for n in self.nodes.values() if n.status in {
-            NodeStatus.PARTIAL,
-            NodeStatus.CONTRADICTED,
-            NodeStatus.PRIMARY_VALIDATION_REQUIRED,
-            NodeStatus.BLOCKED,
-        }]
-
-    def dependency_complete(self, node_id: str) -> bool:
-        return self.nodes[node_id].status in SUCCESS_TERMINAL
-
-    def ready(self):
-        """Only dispatch nodes whose dependencies are genuinely finished."""
-        return [
-            n for n in self.unknown()
-            if all(self.dependency_complete(d) for d in n.deps)
-        ]
-
-    def children_all_done(self, node):
-        return bool(node.children) and all(
-            self.nodes[c].status in SUCCESS_TERMINAL for c in node.children
-        )
+    def get(self, node_id: str) -> Node: return self.nodes[node_id]
+    def all(self): return list(self.nodes.values())
+    def by_status(self, *statuses): return [n for n in self.nodes.values() if n.status in statuses]
+    def unknown(self): return self.by_status(NodeStatus.UNRESEARCHED)
+    def open_for_humans(self): return [n for n in self.nodes.values() if n.status in OPEN_NONRETRYABLE or n.status in {NodeStatus.PARTIAL, NodeStatus.CONTRADICTED}]
+    def dependency_complete(self, node_id: str) -> bool: return self.nodes[node_id].status in SUCCESS_TERMINAL
+    def ready(self): return [n for n in self.nodes.values() if n.can_retry() and all(self.dependency_complete(d) for d in n.deps)]
+    def children_all_done(self, node: Node): return bool(node.children) and all(self.nodes[c].status in SUCCESS_TERMINAL for c in node.children)
 
 
 @dataclass
@@ -145,58 +97,25 @@ class AgentTask:
 
 
 class TaskQueue:
-    def __init__(self):
-        self._q: list[AgentTask] = []
-        self._c = itertools.count(1)
-
-    def push(self, node_id, agent_type, permission) -> AgentTask:
-        t = AgentTask(f"task_{next(self._c)}", node_id, agent_type, permission)
-        self._q.append(t)
-        return t
-
-    def pending(self):
-        return [t for t in self._q if t.status == "QUEUED"]
-
-    def all(self):
-        return list(self._q)
+    def __init__(self): self._q, self._c = [], itertools.count(1)
+    def push(self, node_id, agent_type, permission):
+        t = AgentTask(f"task_{next(self._c)}", node_id, agent_type, permission); self._q.append(t); return t
+    def pending(self): return [t for t in self._q if t.status == "QUEUED"]
+    def all(self): return list(self._q)
 
 
 @dataclass
-class Evidence:
-    value: object
-    provenance: str
-    status: NodeStatus = NodeStatus.RESOLVED
-
-
+class Evidence: value: object; provenance: str; status: NodeStatus = NodeStatus.RESOLVED
 @dataclass
-class Decompose:
-    children: list
-
-
+class Decompose: children: list[Node]
 @dataclass
-class Defer:
-    status: NodeStatus
-    reason: str
-
-
+class Defer: status: NodeStatus; reason: str
 @dataclass
-class RequestAction:
-    description: str
-    payload: dict = field(default_factory=dict)
+class RequestAction: description: str; payload: dict = field(default_factory=dict)
 
 
 class Log:
-    """Append-only run / decision / approval logs."""
-    def __init__(self):
-        self.runs = []
-        self.decisions = []
-        self.approvals = []
-
-    def run(self, **kw):
-        self.runs.append({"at": _now(), **kw})
-
-    def decision(self, **kw):
-        self.decisions.append({"at": _now(), **kw})
-
-    def approval(self, **kw):
-        self.approvals.append({"at": _now(), **kw})
+    def __init__(self): self.runs, self.decisions, self.approvals = [], [], []
+    def run(self, **kw): self.runs.append({"at": _now(), **kw})
+    def decision(self, **kw): self.decisions.append({"at": _now(), **kw})
+    def approval(self, **kw): self.approvals.append({"at": _now(), **kw})
