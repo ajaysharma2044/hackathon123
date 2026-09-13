@@ -16,6 +16,7 @@ from typing import Iterable, Mapping, Sequence
 
 
 class EpistemicStatus(str, Enum):
+    EVIDENCE = "EVIDENCE"
     FACT = "FACT"
     INFERENCE = "INFERENCE"
     HYPOTHESIS = "HYPOTHESIS"
@@ -39,12 +40,35 @@ class SourceRef:
     published_at: str | None = None
     source_type: str | None = None
     independent_group: str | None = None
+    retrieved_at: str | None = None
+    content_sha256: str | None = None
 
     def __post_init__(self):
         if not self.url or not self.title:
             raise ValueError("source requires url + title")
         if self.tier not in tuple(SourceTier):
             raise ValueError('source tier must be one of the defined quality tiers')
+
+
+    @property
+    def domain(self):
+        from urllib.parse import urlparse
+        return (urlparse(self.url).hostname or '').lower().removeprefix('www.')
+
+@dataclass(frozen=True)
+class EvidenceAnchor:
+    source_url: str
+    excerpt: str
+    content_sha256: str | None = None
+
+    def __post_init__(self):
+        if not self.source_url or not self.excerpt.strip():
+            raise ValueError('evidence anchor requires source and excerpt')
+
+    @property
+    def anchor_id(self):
+        import hashlib
+        return hashlib.sha256((self.source_url+'\n'+self.excerpt).encode()).hexdigest()[:20]
 
 
 @dataclass(frozen=True)
@@ -64,6 +88,7 @@ class AtomicClaim:
     observed_at: str | None = None
     published_at: str | None = None
     supporting_claim_ids: tuple[str, ...] = ()
+    anchors: tuple[EvidenceAnchor, ...] = ()
 
     def __post_init__(self):
         if not isinstance(self.status, EpistemicStatus):

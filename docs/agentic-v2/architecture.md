@@ -1,7 +1,8 @@
 # Evidence-first research architecture
 
 This implementation continues `codex/agentic-research-refactor` from `52cc4b0`, based on
-`claude/integration-master`. It does not install a live browser provider or claim to have researched
+`claude/integration-master`, and integrates concurrent upstream commits `c93c984`, `aaabc6e` and
+`e13e54e` (scraper, governor smoke test and CI). It does not claim to have researched
 companies during a Python run without one.
 
 ## Structural audit
@@ -39,7 +40,7 @@ are required children of the theme comparison node.
 The root includes economic discovery, themes, Cornell capabilities, cost, attendance, capacity,
 pricing, independent red team, and final synthesis. Discovered company/product/problem/investor/
 industry/technology/business-unit/buyer-function/event-concept and opportunity nodes run their own
-contracts. Unsupported entity kinds stay PARTIAL with CONTRACT_REQUIRED.
+contracts. Unsupported entity kinds stay CONTRACT_REQUIRED.
 
 ## Removed production assumptions
 
@@ -59,7 +60,11 @@ or run their event/company assumptions. No earlier research report is loaded as 
 
 ## Explicit boundaries
 
-The implementation supplies a provider-neutral interface, not a production search adapter.
+The implementation supplies a provider-neutral interface and an explicit opt-in HTTP adapter
+(`web_research.build_default_web_executor`) preserving the concurrent search/fetch work. Its default
+keyword extractor emits EVIDENCE, not complete factual dossiers. It requires a reviewed grounded
+extractor for semantic facts, relevant entity proposals and interpretations. No browser/LLM reasoning
+adapter or autonomous end-to-end production research service is bundled.
 Source classification and semantic extraction still require a trustworthy adapter and review:
 verbatim excerpt matching proves provenance, **not logical entailment of arbitrary prose**.
 No deterministic string rule can establish that an extracted interpretation is true.

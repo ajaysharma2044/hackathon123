@@ -11,7 +11,9 @@ Without a configured research adapter this intentionally returns `RESEARCH_BACKE
 
 Supply a trusted installed `--executor module:factory`, an independent `--red-team-executor`,
 and optionally a JSON `--config`. Python `research_run.run` additionally accepts the theme,
-opportunity and synthesis adapters. No production browser/LLM adapter is bundled.
+opportunity and synthesis adapters. An explicit opt-in HTTP adapter is available as
+`web_research:build_default_web_executor`; its default extractor produces unpromoted excerpts, not
+complete business findings. No production browser/LLM reasoning adapter is bundled.
 
 See [architecture](../docs/agentic-v2/architecture.md),
 [executor contract](../docs/agentic-v2/research-executor.md), and

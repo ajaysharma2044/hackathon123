@@ -12,7 +12,8 @@ def dynamic_discovery(node, graph, ctx):
     status = runtime.discover(node)
     if status == 'SATURATED':
         return Evidence(node.value,'runtime discovery saturation; not exhaustive company qualification')
-    return Defer(NodeStatus.PARTIAL,status)
+    return Defer(NodeStatus.RESEARCH_BACKEND_REQUIRED if status=="RESEARCH_BACKEND_REQUIRED" else
+                 NodeStatus.RESEARCH_EXHAUSTED if "BUDGET_EXHAUSTED" in status else NodeStatus.PARTIAL,status)
 
 @agent('dynamic_company_research')
 def dynamic_company_research(node, graph, ctx):
@@ -41,6 +42,9 @@ def dynamic_entity_research(node, graph, ctx):
     state = NodeStatus.CONTRADICTED if any(c.contradictory_claim_ids for c in claims) else (
         NodeStatus.PRIMARY_VALIDATION_REQUIRED if node.completion_gate and rt.gate(node).primary_validation
         else NodeStatus.PARTIAL)
+    if status=='RESEARCH_BACKEND_REQUIRED':state=NodeStatus.RESEARCH_BACKEND_REQUIRED
+    elif status=='CONTRACT_REQUIRED':state=NodeStatus.CONTRACT_REQUIRED
+    elif status=='ROUND_BUDGET_EXHAUSTED' and state==NodeStatus.PARTIAL:state=NodeStatus.RESEARCH_EXHAUSTED
     return Defer(state,status)
 
 @agent('dynamic_theme_generation')

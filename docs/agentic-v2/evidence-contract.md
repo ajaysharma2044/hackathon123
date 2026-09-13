@@ -2,12 +2,13 @@
 
 AtomicClaim extends the branch's existing model with subject_id, value, source_id, quote_or_excerpt,
 observed_at, published_at and supporting_claim_ids. `field` is its predicate; `statement` is the
-extracted text. FACT, INFERENCE, HYPOTHESIS, UNKNOWN and PRIMARY_VALIDATION_REQUIRED stay distinct.
+extracted text. FACT, INFERENCE, HYPOTHESIS, UNKNOWN and PRIMARY_VALIDATION_REQUIRED stay distinct. The concurrent
+branch's EVIDENCE status is retained for unpromoted scraped excerpts; it cannot satisfy a factual gate.
 
 FACT construction requires a source. Production intake additionally requires an opened SourceDocument,
 a nonempty excerpt present verbatim in its content, matching source metadata and matching clocks.
 An extractor cannot upgrade the retrieval adapter's source tier. Sources have IDs, URLs, titles,
-publication/retrieval times, type, quality and optional independent_group for syndicated/common-owner
+publication/retrieval times, content_sha256, type, quality and optional independent_group for syndicated/common-owner
 material. Unknown publication dates stay null. Retrieval is not claimed when opening fails.
 
 INFERENCE requires accepted support IDs, which must trace through facts/inferences. Forward references,
@@ -30,3 +31,6 @@ PRIMARY_VALIDATION_REQUIRED. Comparable prices remain in their own fields.
 
 Acceptance validates provenance and structure; semantic entailment, source authenticity, source-type
 classification, and a buyer's actual authority require adapter quality controls and primary validation.
+
+EvidenceAnchor retains the concurrent source/excerpt/hash representation alongside the atomic
+source_id and excerpt. Intake checks supplied anchor hashes and the opened document content digest.

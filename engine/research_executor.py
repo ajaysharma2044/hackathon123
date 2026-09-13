@@ -14,6 +14,7 @@ class ResearchQuestion:
     agent: str = 'researcher'
     subject_id: str = ''
     context_claims: tuple[AtomicClaim, ...] = ()
+    preferred_domains: tuple[str, ...] = ()
 
 ResearchQuery = ResearchQuestion
 
@@ -74,3 +75,22 @@ class MissingResearchExecutor:
         raise ResearchBackendUnavailable('RESEARCH_BACKEND_REQUIRED')
     def extract_claims(self, document, questions):
         raise ResearchBackendUnavailable('RESEARCH_BACKEND_REQUIRED')
+
+@dataclass(frozen=True)
+class EvidenceCandidate:
+    candidate_id: str
+    question_id: str
+    target_fields: tuple[str, ...]
+    source: SourceRef
+    excerpt: str
+    relevance: float
+    negative_query: bool = False
+
+@dataclass
+class ExtractionResult:
+    claims: list[AtomicClaim] = field(default_factory=list)
+    discovered_entities: list[DiscoveredEntity] = field(default_factory=list)
+    notes: list[str] = field(default_factory=list)
+
+class GroundedExtractor(Protocol):
+    def extract(self, question: ResearchQuestion, candidates: Sequence[EvidenceCandidate], context: dict) -> ExtractionResult: ...

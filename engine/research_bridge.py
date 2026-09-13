@@ -127,6 +127,10 @@ class EvidenceMemory:
         from urllib.parse import urlparse
         if urlparse(document.source.url).scheme not in ('https', 'http'):
             raise ValueError('source URL must be http(s); private buyer records need an authorized adapter URL')
+        if document.source.content_sha256:
+            import hashlib
+            if hashlib.sha256(document.text.encode()).hexdigest() != document.source.content_sha256:
+                raise ValueError('source content digest mismatch')
         old = self.documents.get(document.source_id)
         if old is not None and old != document:
             raise ValueError('source ID reused with different content; version the source')
@@ -145,12 +149,15 @@ class EvidenceMemory:
             if self.claims[claim.claim_id] != claim:
                 raise ValueError('claim ID collision; evidence is append-only')
             return False
-        if claim.status == EpistemicStatus.FACT:
+        if claim.status in (EpistemicStatus.FACT, EpistemicStatus.EVIDENCE):
             doc = self.documents.get(claim.source_id)
             if doc is None or (document is not None and doc.source_id != document.source_id):
                 raise ValueError('FACT must reference the opened document')
             if not claim.quote_or_excerpt.strip() or claim.quote_or_excerpt not in doc.text:
                 raise ValueError('FACT excerpt must occur verbatim in opened content')
+            if any(a.source_url != doc.source.url or a.excerpt not in doc.text or
+                   (a.content_sha256 and a.content_sha256 != doc.source.content_sha256) for a in claim.anchors):
+                raise ValueError('anchor does not match retrieved content')
             if claim.sources != (doc.source,):
                 raise ValueError('source quality must come from retrieval, not extraction')
             if claim.observed_at != doc.observed_at or claim.published_at != doc.source.published_at:
@@ -179,7 +186,7 @@ class EvidenceMemory:
                 raise ValueError('observed WTP amount must be finite and nonnegative')
         self.claims[claim.claim_id] = copy.deepcopy(claim)
         f = Claim(claim.claim_id, claim.statement)
-        if claim.status == EpistemicStatus.FACT:
+        if claim.status in (EpistemicStatus.FACT, EpistemicStatus.EVIDENCE):
             f.add_evidence(EvidenceRef(SUPPORTS, 'source_document', claim.source_id, claim.quote_or_excerpt))
         for i in claim.supporting_claim_ids:
             f.add_evidence(EvidenceRef(SUPPORTS, 'atomic_claim', i))

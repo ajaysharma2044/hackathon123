@@ -34,6 +34,9 @@ class NodeStatus(str, Enum):
     SYNTHESIS_READY = "SYNTHESIS_READY"
     RESOLVED = "RESOLVED"
     PRIMARY_VALIDATION_REQUIRED = "PRIMARY_VALIDATION_REQUIRED"
+    RESEARCH_BACKEND_REQUIRED = "RESEARCH_BACKEND_REQUIRED"
+    CONTRACT_REQUIRED = "CONTRACT_REQUIRED"
+    RESEARCH_EXHAUSTED = "RESEARCH_EXHAUSTED"
     KILLED = "KILLED"
     BLOCKED = "BLOCKED"
 
@@ -64,6 +67,7 @@ OPEN_STATES = {
     NodeStatus.EVIDENCE_COMPLETE,
     NodeStatus.SYNTHESIS_READY,
     NodeStatus.PRIMARY_VALIDATION_REQUIRED,
+    NodeStatus.RESEARCH_BACKEND_REQUIRED, NodeStatus.CONTRACT_REQUIRED, NodeStatus.RESEARCH_EXHAUSTED,
 }
 
 
@@ -84,11 +88,17 @@ class Node:
     critical_unknown_fields: list[str] = field(default_factory=list)
     depth: int = 0
     auto_rollup: bool = True
+    attempt_count: int = 0
+    max_attempts: int = 8
+    retryable: bool = True
 
     def __post_init__(self):
         if self.node_type in ('company','theme','event_concept','industry','problem','product','investor',
                               'technology','business_unit','buyer_function','rd_opportunity','data_opportunity'):
             self.completion_gate = self.completion_gate or self.node_type
+
+    def can_retry(self):
+        return self.retryable and self.status in (NodeStatus.UNRESEARCHED,NodeStatus.PARTIAL,NodeStatus.CONTRADICTED) and self.attempt_count < self.max_attempts
 
     def resolve(self, value, provenance, status=NodeStatus.RESOLVED):
         if status not in SUCCESS_TERMINAL and status != NodeStatus.RESOLVED:
@@ -134,6 +144,7 @@ class NodeGraph:
             NodeStatus.CONTRADICTED,
             NodeStatus.PRIMARY_VALIDATION_REQUIRED,
             NodeStatus.BLOCKED,
+            NodeStatus.RESEARCH_BACKEND_REQUIRED, NodeStatus.CONTRACT_REQUIRED, NodeStatus.RESEARCH_EXHAUSTED,
         }]
 
     def dependency_complete(self, node_id: str) -> bool:
@@ -152,8 +163,8 @@ class NodeGraph:
     def ready(self):
         """Only dispatch nodes whose dependencies are genuinely finished."""
         return [
-            n for n in self.unknown()
-            if all(self.dependency_complete(d) for d in n.deps)
+            n for n in self.all()
+            if n.can_retry() and not n.children and all(self.dependency_complete(d) for d in n.deps)
         ]
 
     def children_all_done(self, node):

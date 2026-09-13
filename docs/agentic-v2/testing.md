@@ -2,8 +2,8 @@
 
 Validation for this revision:
 
-- `python3 -m pytest -q`: **59 passed**, including 22 subprocess cases that execute every historical
-  test script and 37 direct tests. This count describes pytest cases, not an invented count of
+- `python3 -m pytest -q`: **65 passed**, including 22 subprocess cases that execute every historical
+  test script and 43 direct tests. This count describes pytest cases, not an invented count of
   assertions inside the historical scripts.
 - `PYTHONPYCACHEPREFIX=/private/tmp/hackathon-refactor-pycache python3 -m compileall -q engine`: passed.
 - Offline CLI smoke check: exit 2, RESEARCH_BACKEND_REQUIRED, recommendation UNKNOWN, no discovered
@@ -27,3 +27,7 @@ Existing capture, consent, temporal, qualitative, live-research and R&D scripts 
 All research fixtures are fictional. No live provider was exercised; no source classification or
 semantic-extraction accuracy claim is made by these tests. A first compile attempt used macOS's
 unwritable default bytecode cache; the explicit temporary cache command above passed.
+
+Concurrent upstream lifecycle/scraper/governor tests are included. Scraper cases verify exact
+anchors/digests, rejection of invented excerpts, and private DNS/redirect rejection. CI retains the
+upstream workflow, adds numpy/scipy for the historical engines, and runs the full suite.

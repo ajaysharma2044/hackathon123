@@ -220,7 +220,7 @@ def test_cross_node_inference_uses_accepted_provenance_and_rejects_weak_support(
 
 def test_resume_retries_partial_without_erasing_rejected_search_trace():
     g=NodeGraph();n=g.add(Node('company:a','research',node_type='company',resolver='dynamic_company_research'))
-    ctx={};gov=Governor(g,ctx);gov.run();assert n.status==NodeStatus.PARTIAL
+    ctx={};gov=Governor(g,ctx);gov.run();assert n.status==NodeStatus.RESEARCH_BACKEND_REQUIRED
     ctx['research_executor']=FakeExecutor()
     gov.resume();assert n.status==NodeStatus.RESOLVED
     assert any(r['status']=='RESEARCH_BACKEND_REQUIRED' for r in ctx['research_trace'])

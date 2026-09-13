@@ -3,10 +3,11 @@
 Successful closed: **RESOLVED only**.
 Closed but unresolved: **KILLED, BLOCKED**. Neither can satisfy a dependency.
 Open: UNRESEARCHED, RESEARCHING, PARTIAL, CONTRADICTED, EVIDENCE_COMPLETE, SYNTHESIS_READY,
-PRIMARY_VALIDATION_REQUIRED. UNKNOWN/RESOLVING/NEEDS_RESEARCH/DECOMPOSED and PRIMARY/QUOTE remain
+PRIMARY_VALIDATION_REQUIRED, RESEARCH_BACKEND_REQUIRED, CONTRACT_REQUIRED, RESEARCH_EXHAUSTED.
+The latter three are non-dispatchable until an explicit resume. UNKNOWN/RESOLVING/NEEDS_RESEARCH/DECOMPOSED and PRIMARY/QUOTE remain
 backward-compatible aliases with their new semantics.
 
-A dispatch starts RESEARCHING. Exhausted research stays PARTIAL; explicit critical buyer questions
+A dispatch starts RESEARCHING. Exhausted round budgets become RESEARCH_EXHAUSTED; explicit critical buyer questions
 stay PRIMARY_VALIDATION_REQUIRED; conflicting claims stay CONTRADICTED. A passing evidence contract
 permits resolution. EVIDENCE_COMPLETE and SYNTHESIS_READY are representable intermediate states,
 not dependency success; the current synchronous governor validates and commits resolution in one dispatch.
@@ -23,3 +24,7 @@ Independent red-team counterevidence reopens affected owners and invalidates dow
 Contradictions are not automatically adjudicated away: challenged questions remain open until the
 research design/claim scope is explicitly revised. Governor.resume is an explicit bounded retry;
 it never retries external actions or deletes contradictory evidence.
+
+The concurrent branch's attempt_count/max_attempts/can_retry API is retained. The granular research
+loop owns per-dispatch query rounds; deferrals pause outer retries to avoid multiplying those budgets
+or repeatedly calling an unavailable provider. Explicit resume re-arms bounded attempts.

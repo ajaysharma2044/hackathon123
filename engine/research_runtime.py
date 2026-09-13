@@ -50,7 +50,8 @@ class ResearchRuntime:
                 self.memory.for_subject(node.id) + self.support_closure(node.id) +
                 self.memory.for_subject(v.get('company_id','')))
             q = replace(q,subject_id=node.id,question_id=node.id+":"+q.question_id,
-                        context_claims=tuple(context))
+                        context_claims=tuple(context), preferred_domains=((urlparse(v['canonical_url']).hostname,)
+                        if v.get('canonical_url') else q.preferred_domains))
             record = dict(agent=q.agent, node=node.id, missing_field=list(q.target_fields),
                 target_fields=list(q.target_fields), question=q.question_id, query=q.query,
                 negative_query=q.negative_query, search_results_considered=[], sources_opened=[],
