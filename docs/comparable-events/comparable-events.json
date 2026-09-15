@@ -1,0 +1,91 @@
+{
+  "meta": {
+    "title": "Hackathon123 comparable-events dataset (distilled)",
+    "generated": "2026-09-14",
+    "companion_to": "comparable-events-dataset.md",
+    "method": "6 parallel research agents; every datapoint carries a source URL + as_of date + confidence in the markdown note; UNKNOWN where not publicly disclosed; no fabricated figures; Firecrawl was down so WebSearch/WebFetch fallback was used",
+    "confidence_scale": ["stated (published by the org)", "high (reputable/peer-reviewed, corroborated)", "medium (single secondary / vendor)", "speculation (inference)"],
+    "note": "This JSON is the reusable numeric core; full prose, per-field sources, conflicts, and gaps live in comparable-events-dataset.md. Dollar prize 'totals' often mix cash + in-kind credits at face value -- see per-event notes in the md."
+  },
+  "ecosystem": {
+    "mlh_2025_season": {"hackathons_and_programs": 184, "hackers": 150000, "source": "news.mlh.io", "confidence": "stated"},
+    "mlh_2026_season_planned_events": {"value": "200+", "confidence": "stated"},
+    "mlh_gender_split": {"female_or_nonbinary_pct": "39-40", "as_of": "2019-2020", "confidence": "stated", "note": "newest MLH-published demographic; ~6 years old"},
+    "devpost_community": {"value": "4M-6M builders (sources disagree)", "confidence": "stated"},
+    "hackathon_software_market_size_usd": {"range": "1.21B-1.37B", "as_of": "2024-2026", "cagr_pct": "10.6-18.6", "confidence": "medium", "note": "three unaudited vendor reports"}
+  },
+  "elite_collegiate_events": [
+    {"name": "TreeHacks", "org": "Stanford", "year": 2026, "attendees": 1096, "selectivity_pct": 6.7, "applications": 15000, "provides": {"travel": true, "housing": true, "food": true}, "num_sponsors": "29+", "prize_pool_usd": {"site": 150000, "press": 500000, "devpost_itemized": 1030875, "cash_grand_prizes": [12000, 8000], "prior_year_2025": 200000}, "key_source": "treehacks-2026.devpost.com; stanforddaily.com", "confidence": "high", "note": "best-documented comp; prize total inflated by in-kind credits"},
+    {"name": "Cal Hacks", "org": "UC Berkeley", "edition": "12.0", "year": 2025, "attendees": 3000, "prior_year_attendees": 1750, "selectivity_pct": null, "provides": {"travel": null, "housing": "on-site mattresses", "food": true}, "num_sponsors": 60, "prize_pool_usd": 200000, "key_source": "dailycal.org", "confidence": "high"},
+    {"name": "Hack the North", "org": "Waterloo", "year": 2025, "attendees": "1000+", "selectivity_pct": null, "provides": {}, "num_sponsors": null, "prize_pool_usd": null, "key_source": "uwaterloo.ca", "confidence": "high"},
+    {"name": "HackMIT", "org": "MIT", "year": 2025, "attendees": "~1000+", "selectivity_pct": null, "provides": {"travel": "reimbursed ~$200 (2022 policy)", "housing": "on-site (hist.)", "food": true}, "num_sponsors": "42+", "notable_sponsors": ["Anthropic", "Cerebras", "Jane Street", "Hudson River Trading", "Citadel", "D.E. Shaw", "Scale", "YC"], "prize_pool_usd": "100000+", "platform": "own 'Plume' (not Devpost; devpost page is stale 2013)", "key_source": "archive.hackmit.org/2025", "confidence": "stated"},
+    {"name": "HackGT", "org": "Georgia Tech", "edition": 12, "year": 2025, "attendees": 910, "selectivity_pct": null, "provides": {"travel": "partial (reimbursement pool)"}, "num_sponsors": null, "prize_pool_usd": null, "key_source": "hackgt-12.devpost.com", "confidence": "stated"},
+    {"name": "HackHarvard", "org": "Harvard", "year": 2025, "attendees": 528, "selectivity_pct": null, "provides": {"food": true}, "num_sponsors": null, "prize_pool_usd": 0, "prize_note": "non-cash only, 18 prizes", "key_source": "hackharvard-2025.devpost.com", "confidence": "stated"},
+    {"name": "HackPrinceton", "org": "Princeton", "year": 2025, "attendees": "500-600", "selectivity_pct": null, "provides": {}, "num_sponsors": null, "prize_pool_usd": null, "key_source": "hackprinceton.com", "confidence": "medium", "note": "real sponsorship prospectus PDF exists but unparsed -- best remaining lead"},
+    {"name": "MHacks", "org": "Michigan", "year": 2025, "attendees": 380, "attendees_target": "750-1000", "selectivity_pct": null, "provides": {}, "num_sponsors": null, "prize_pool_usd": 39050, "prize_note": "cash + hardware", "key_source": "mhacks-2025.devpost.com", "confidence": "stated"},
+    {"name": "PennApps", "org": "UPenn", "edition": "XXVI", "year": 2025, "attendees": 257, "attendees_site_claim": 500, "selectivity_pct": null, "selectivity_historical_pct": 42, "provides": {"housing": "on-site rest areas", "food": true}, "num_sponsors": "9+", "prize_pool_usd": 0, "prize_note": "non-cash, 23 prizes; contracted from stadium-scale (Wells Fargo Center) historically", "key_source": "pennapps-xxvi.devpost.com", "confidence": "stated"}
+  ],
+  "premium_ai_builder_events": [
+    {"name": "Cerebral Valley AI Summit", "type": "premium_invite_conf", "year": 2026, "attendees": "200-350", "model": "invite-only", "ticket_usd": [199, 1299, 2999], "num_sponsors": "~11", "sponsorship_pricing": "inquiry-only", "key_source": "newcomer.co; cerebralvalley.com", "confidence": "stated", "note": "closest comp to a premium ~200-person invite event; MosaicML/$1.3B deal seeded at CVAI1"},
+    {"name": "Cerebral Valley hackathon series", "type": "ai_builder", "year": 2026, "attendees_per_event": "150-1000+", "model": "application-gated", "selectivity_example_pct": 3.8, "ticket_usd": 0, "prize_pool_examples_usd": [7000, 10000, 18000, 34000, 35000], "key_source": "cerebralvalley.ai", "confidence": "stated"},
+    {"name": "AI Engineer World's Fair", "type": "ai_builder_conf", "year": 2026, "attendees": "6000+", "model": "open ticket", "ticket_usd": [299, 1499, 1999, 2399], "sponsor_tiers": 7, "sponsor_logos": "~261", "sponsorship_pricing": "inquiry-only", "key_source": "ai.engineer/worldsfair/2026", "confidence": "high"},
+    {"name": "AI Engineer Summit NYC", "type": "premium_invite_conf", "year": 2025, "attendees": "sold out", "model": "invite-only", "num_sponsors": "~23", "key_source": "ai.engineer/summit/2025", "confidence": "stated"},
+    {"name": "AGI House SF", "type": "premium_invite_hackerhouse", "year": 2026, "community_size": 15000, "events_since_2022": "80+", "ticket_usd": 0, "num_backers": 38, "residency": true, "key_source": "agihouse.ai", "confidence": "stated", "note": "in federal trademark litigation vs AGI House LLC"},
+    {"name": "AGI House (Hillsborough, LLC)", "type": "premium_invite", "residency_cost_usd_month": 15000, "num_backers": 23, "key_source": "agihouse.org", "confidence": "stated"},
+    {"name": "HF0 Residency", "type": "premium_invite_accelerator", "teams_per_cohort": 10, "acceptance_pct_claimed": "<=0.01", "model": "equity ($1M/5% hist.)", "key_source": "hf0.com", "confidence": "stated"},
+    {"name": "South Park Commons", "type": "premium_invite_community", "active_members": 175, "alumni": "1300+", "membership_fee": 0, "key_source": "southparkcommons.com", "confidence": "stated"},
+    {"name": "YC Full Stack Hackathon", "type": "ai_builder", "year": 2026, "attendees": 250, "model": "application-gated", "ticket_usd": 0, "travel_reimbursed": false, "num_sponsors": 3, "prize": "YC interview + prizes", "key_source": "events.ycombinator.com", "confidence": "stated"},
+    {"name": "YC Agents Hackathon", "type": "ai_builder", "year": 2025, "model": "invite-only", "ticket_usd": 0, "num_sponsors": 6, "prize_pool_usd": {"title": 65000, "body": 80000, "note": "internally inconsistent"}, "key_source": "luma.com/pz27h0xy", "confidence": "stated"},
+    {"name": "Anthropic Built with Opus 4.7", "type": "ai_builder_lab", "year": 2026, "attendees": 500, "applications": 20000, "selectivity_pct": 2.5, "ticket_usd": 0, "prize_pool_usd": {"competitive_credits": 100000, "participation_credits_per_person": 500}, "key_source": "edtechinnovationhub.com", "confidence": "high", "note": "2023 London edition was $30,500/145 -> 3-8x growth"},
+    {"name": "OpenAI Build Week", "type": "ai_builder_lab", "year": 2026, "registered": 46703, "model": "open", "ticket_usd": 0, "prize_pool_usd": 100000, "key_source": "openai.devpost.com", "confidence": "high"},
+    {"name": "Mistral Worldwide Hackathon", "type": "ai_builder_lab", "year": 2026, "attendees": "1000+", "applications": 7000, "selectivity_pct": 14, "cities": 7, "ticket_usd": 0, "num_sponsors": 14, "prize_pool_usd": "200000+", "prize_note": "+ a hire at Mistral", "key_source": "worldwide-hackathon.mistral.ai", "confidence": "high"}
+  ],
+  "sponsorship_ladders_usd": [
+    {"org": "Cal Hacks 13.0", "tiers": {"Bronze": 10000, "Silver": 20000, "Golden Bear": 35000, "Anchor": 50000}, "source": "hackberkeley.org/sponsorship.pdf", "confidence": "stated"},
+    {"org": "MIT Reality Hack", "tiers": {"Network": 3000, "Growth": 7500, "Expansion": 15000, "Enterprise": 30000, "Impact": 65000, "Maximum Visibility": 95000}, "source": "realityhackatmit.com", "confidence": "stated"},
+    {"org": "CNCF KubeCon NA/EU 2026 (conference comp)", "tiers": {"Diamond": "235000-282000", "Platinum": "144000-172800", "Gold": "84000-100800", "Silver": "29500-35400", "Startup": 12000}, "source": "events.linuxfoundation.org", "confidence": "stated"},
+    {"org": "MIT UPOP (recruiting-program comp)", "tiers": {"onsite_event": 1500, "networking": 2500, "signature": 5000, "annual_partner": 15000}, "source": "upop.mit.edu", "confidence": "stated"}
+  ],
+  "recruiting_and_prize_benchmarks_usd": [
+    {"metric": "cost_per_hire_avg_SHRM", "nonexec": 5475, "exec": 35879, "confidence": "medium"},
+    {"metric": "cost_per_hire_tech_median", "value": 9000, "range": "6500-14000", "confidence": "medium"},
+    {"metric": "third_party_recruiter_fee", "value": "20-25% of first-year salary (~20000-32000 on 100-130k)", "confidence": "medium", "note": "verify Hackonomics source before external use"},
+    {"metric": "university_recruiting_median_budget", "value": 114000, "source": "NACE (secondary)", "confidence": "medium"},
+    {"metric": "elite_collegiate_cash_prize_pool_typical", "range": "10000-50000", "confidence": "medium"}
+  ],
+  "outcomes_and_market_evidence": {
+    "project_survival": {"commit_after_event_pct": 35.3, "active_at_5_months_pct": "3.5-5", "skill_diversity_cuts_abandonment_pct": 71, "source": "Nolte et al. 2020, PACM HCI", "confidence": "stated"},
+    "innovation_contest_theory": {"finding": "more competitors + higher problem uncertainty -> better outcomes (parallel-search beats effort-dilution)", "source": "Boudreau/Lacetera/Lakhani 2011, Management Science", "confidence": "high"},
+    "ai_productivity": [
+      {"study": "METR 2025", "finding": "experienced OSS devs 19% SLOWER with AI", "n": 16, "confidence": "stated"},
+      {"study": "METR 2026 follow-up", "finding": "flips toward speedup but self-described 'unreliable signal'", "n": 57, "confidence": "stated"},
+      {"study": "Google RCT", "finding": "~21% faster", "n": 96, "confidence": "stated"},
+      {"study": "GitHub Copilot RCT", "finding": "55.8% faster on greenfield", "n": 95, "confidence": "stated"},
+      {"study": "DORA 2024", "finding": "-7.2% delivery stability with more AI", "confidence": "medium"}
+    ],
+    "dev_intelligence_market": [
+      {"item": "SlashData", "detail": "30,000+ devs/yr, 168 countries, sells to Google/MS/Amazon/Intel/Meta, ~20 yrs", "confidence": "stated"},
+      {"item": "Zoom acquired Common Room", "date": "2026-07-02", "terms": "undisclosed", "confidence": "stated"},
+      {"item": "Reo.Dev Series A", "value_usd": 11300000, "date": "2026-07-17", "confidence": "stated"},
+      {"item": "Orbit acquired by Postman then shut down", "date": "2024-04", "detail": "raised ~19-21M; standalone product sunset in 90 days (cautionary)", "confidence": "stated"},
+      {"item": "Gartner rep-free preference", "value_pct": 61, "n": 632, "as_of": 2024, "confidence": "stated"}
+    ]
+  },
+  "qualitative_methods_benchmarks": [
+    {"method": "cold post-event email survey", "response_rate_pct": {"raw": 9.86, "usable": 2.77}, "source": "Imam Mahmoud et al. 2022", "confidence": "high"},
+    {"method": "in-app/mobile micro-survey (in-event)", "response_rate_pct": "18-34", "source": "SurveyMonkey/Survicate 2025", "confidence": "stated"},
+    {"method": "2-3 question micro-survey vs 7+", "response_rate_pct": {"short": 15.97, "long": 6.87}, "source": "Survicate 2025", "confidence": "stated"},
+    {"method": "judging rubric as data", "coverage": "~100% of submissions, near-zero marginal cost", "confidence": "stated"},
+    {"method": "paid technical panel interview (dscout/Respondent.io)", "incentive_usd": "100-600 per session", "confidence": "stated"},
+    {"method": "incentive design", "finding": "guaranteed small cash beats vouchers beats lotteries (RR 1.25/1.19/1.12); $1 doubled Gallup response vs $0", "confidence": "high"}
+  ],
+  "excluded_unverified": [
+    "55% lower cost-per-hire / 80% higher candidate satisfaction / 4.2 hires per event (vendor marketing)",
+    "$300B global economic value from hackathons (no methodology)",
+    "Gartner '17% of time with vendors' / '70-80% pre-contact' (unverified to primary; 61% rep-free IS verified)",
+    "$266.8M Zoom/Common Room price (contradicted; terms undisclosed)",
+    "40% of companies use hackathons for hiring (unsourced)",
+    "AI Engineer '~9 FTE / $9M+ revenue' (untraceable)",
+    "any hackathon->startup or ->hire conversion rate (no methodology-disclosed study exists)"
+  ]
+}
