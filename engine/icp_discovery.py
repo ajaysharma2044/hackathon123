@@ -104,8 +104,10 @@ def synthesize(label, problems, evidence_lookup=None, **fields) -> ICPCandidate:
 
 def record_wtp_evidence(icp: ICPCandidate, observations):
     """Move the WTP belief with reliability-weighted evidence (reuses beliefs.update_beta). Each obs
-    is a beliefs.RateObservation (e.g. 1 of 8 buyers signed a pilot => close-rate). A SIGNED_COMMERCIAL
-    observation is the only thing that flips WTP out of UNKNOWN into OBSERVED."""
+    is a beliefs.RateObservation (e.g. 1 of 8 buyers signed a pilot => close-rate). Only
+    SIGNED_COMMERCIAL/DIRECT_OBSERVATION evidence can move WTP to OBSERVED, and only once it makes up
+    at least half of the belief's posterior pseudo-count mass -- a lone signed obs against a diffuse
+    prior stays ASSUMED until it dominates (beliefs.update_beta's mass rule). Comparables never flip it."""
     posterior = update_beta(1.0, 1.0, observations, source=f"wtp[{icp.label}]")
     icp.dims.wtp = posterior
     return posterior

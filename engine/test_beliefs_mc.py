@@ -1,7 +1,7 @@
 """python3 engine/test_beliefs_mc.py — belief provenance, UNKNOWN discipline, Bayesian update, MC risk."""
 import numpy as np
-from beliefs import (beta, scenario, unknown, update_beta, RateObservation, BeliefLedger,
-                     UNKNOWN, OBSERVED, EVIDENCE_WEIGHT)
+from beliefs import (beta, scenario, unknown, update_beta, RateObservation, BeliefLedger, point,
+                     UNKNOWN, OBSERVED, ASSUMED, EVIDENCE_WEIGHT)
 from monte_carlo import simulate, correlated_bernoulli
 P = F = 0
 def ck(n, c):
@@ -24,6 +24,17 @@ ck("signed evidence moves posterior mean more than a comparable",
 ck("signed evidence flips status to OBSERVED", signed.status == OBSERVED)
 ck("comparable stays ASSUMED", comparable.status != OBSERVED)
 ck("evidence weights ordered signed>comparable", EVIDENCE_WEIGHT["SIGNED_COMMERCIAL"] > EVIDENCE_WEIGHT["EXTERNAL_COMPARABLE"])
+
+# Bug-2 pin: OBSERVED requires signed/direct evidence to be the MAJORITY of posterior pseudo-count
+# mass. A lone signed obs swamped by comparable-grade mass must NOT launder the belief to OBSERVED.
+laundered = update_beta(2, 6, [RateObservation(1, 0, "SIGNED_COMMERCIAL")]
+                              + [RateObservation(1, 0, "EXTERNAL_COMPARABLE")] * 50)
+ck("one signed obs among comparable-dominated mass stays ASSUMED (no OBSERVED-laundering)",
+   laundered.status == ASSUMED)
+
+# Bug-3 pin: point(name, 0) must have mean exactly 0 and never NaN (a zero-scale uniform is NaN).
+z = point("zero_wtp", 0, "src", "a genuinely observed zero")
+ck("point(0).mean() is exactly 0, never NaN", (not np.isnan(z.mean())) and z.mean() == 0)
 
 # Monte Carlo returns a distribution with tail risk, not a point.
 # Toy: profit = revenue - 150k fixed cost, revenue = sum of 5 independent deals ~ close*value.

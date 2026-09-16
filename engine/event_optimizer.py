@@ -129,8 +129,9 @@ def economic(d: EventDesign, close_band=(0.10, 0.25, 0.45), contract_band=(40000
     params["ancillary"] = scenario("ancillary", *A["ancillary_band"], "ASSUMED",
                                     "activation sponsors + logistics recovery")
     def model(s, rng):
-        k = len(s["close"])
-        closes = correlated_bernoulli(np.full(d.n_research_sponsors, s["close"].mean()), k, rho, rng)
+        close = s["close"]                                            # per-draw sampled close-rate (n,)
+        probs = np.repeat(close[:, None], d.n_research_sponsors, axis=1)   # (n, n_research_sponsors)
+        closes = correlated_bernoulli(probs, len(close), rho, rng)    # propagate the band, don't collapse
         contract = s["contract"] * qmult
         revenue = closes.sum(axis=1) * contract + s["ancillary"]
         net_cost = fixed_non_travel + (1 - s["scholarship"]) * fundable

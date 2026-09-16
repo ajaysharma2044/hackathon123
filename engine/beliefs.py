@@ -69,8 +69,12 @@ class Belief:
 def _prov(source, reason, confidence, status): return Provenance(source, reason, confidence, status)
 
 def point(name, value, source, reason, confidence=1.0, status=OBSERVED):
-    return Belief(name, stats.uniform(loc=value, scale=0.0) if value == 0 else
-                  stats.uniform(loc=value, scale=1e-12), _prov(source, reason, confidence, status))
+    # A near-degenerate point mass (1e-12 width so it still samples). value==0 must CENTER the tiny
+    # interval on 0 so mean() is exactly 0; a zero-scale uniform yields NaN (the special case was
+    # backwards). Nonzero values keep the original loc=value width.
+    scale = 1e-12
+    return Belief(name, stats.uniform(loc=value - scale / 2 if value == 0 else value, scale=scale),
+                  _prov(source, reason, confidence, status))
 
 def uniform(name, lo, hi, source, reason, confidence=0.5, status=ASSUMED):
     return Belief(name, stats.uniform(loc=lo, scale=hi - lo), _prov(source, reason, confidence, status))
@@ -105,16 +109,25 @@ class RateObservation:
 
 def update_beta(prior_a, prior_b, observations, source="posterior"):
     """Posterior for a rate (close/acceptance/retention). Each observation is reliability-weighted:
-    a signed deal counts fully; a comparable is heavily discounted to fractional pseudo-counts."""
+    a signed deal counts fully; a comparable is heavily discounted to fractional pseudo-counts.
+
+    Status is OBSERVED only when SIGNED_COMMERCIAL/DIRECT_OBSERVATION evidence contributes at least
+    HALF of the total posterior pseudo-count mass (prior + all weighted observations). A lone signed
+    observation swamped by comparable-grade mass stays ASSUMED -- otherwise a single signed deal would
+    launder a belief that is mostly comparables into OBSERVED, defeating the provenance discipline.
+    (This is the mass contract behind icp_discovery.record_wtp_evidence's WTP-tier docstring.)"""
     a, b = float(prior_a), float(prior_b)
+    observed_mass = 0.0
     for o in observations:
         w = EVIDENCE_WEIGHT[o.kind]
         a += o.successes * w
         b += o.failures * w
+        if o.kind in ("SIGNED_COMMERCIAL", "DIRECT_OBSERVATION"):
+            observed_mass += (o.successes + o.failures) * w
     reasons = ", ".join(f"{o.successes:.0f}/{o.successes+o.failures:.0f} [{o.kind}]" for o in observations)
+    status = OBSERVED if observed_mass >= 0.5 * (a + b) else ASSUMED
     return beta("posterior", a, b, source, f"Beta-Binomial update: prior Beta({prior_a},{prior_b}) + {reasons}",
-                confidence=0.7, status=OBSERVED if any(o.kind in ("SIGNED_COMMERCIAL", "DIRECT_OBSERVATION")
-                                                       for o in observations) else ASSUMED)
+                confidence=0.7, status=status)
 
 
 class BeliefLedger:

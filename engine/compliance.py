@@ -12,6 +12,7 @@ module imports the SAME definitions and the guardrail test-suite can assert them
 - Individual professional disclosure requires an explicit, per-scope opt-in.
 """
 from __future__ import annotations
+import re
 
 # Data levels (Part I) — kept separate; C requires explicit per-scope opt-in.
 DATA_LEVELS = ("A_EVENT_OPERATIONS", "B_AGGREGATE_RESEARCH", "C_OPT_IN_PROFESSIONAL")
@@ -43,12 +44,18 @@ FORBIDDEN_SCORES = frozenset({
 
 
 def assert_no_sensitive(field_names) -> bool:
-    """Raise if any field name is (or contains) a sensitive attribute. Used to vet profile/job schemas
-    before they are accepted."""
+    """Raise if any field name is (or contains, AT A WORD BOUNDARY) a sensitive attribute. Used to vet
+    profile/job schemas before they are accepted. Boundary match, not substring: benign fields like
+    'language', 'coverage', 'agent', 'storage' must pass even though they contain the letters 'age';
+    'applicant_age_band' or 'date_of_birth' still refuse because a whole token / phrase matches."""
     for f in field_names:
-        key = str(f).strip().lower()
-        if key in SENSITIVE_ATTRIBUTES or any(s in key for s in SENSITIVE_ATTRIBUTES):
-            raise ValueError(f"Sensitive attribute {f!r} may never be collected, inferred, or used.")
+        norm = re.sub(r"[^a-z0-9]+", " ", str(f).strip().lower()).strip()
+        tokens = set(norm.split())
+        for s in SENSITIVE_ATTRIBUTES:
+            phrase = s.replace("_", " ")
+            hit = (phrase in tokens) if " " not in phrase else ((" " + phrase + " ") in (" " + norm + " "))
+            if hit:
+                raise ValueError(f"Sensitive attribute {f!r} may never be collected, inferred, or used.")
     return True
 
 

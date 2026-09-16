@@ -22,6 +22,13 @@ def raises(fn, exc=Exception):
 ck("sensitive attribute is refused", raises(lambda: compliance.assert_no_sensitive(["race"]), ValueError))
 ck("sensitive substring is refused", raises(lambda: compliance.assert_no_sensitive(["applicant_age_band"]), ValueError))
 ck("non-sensitive fields pass", compliance.assert_no_sensitive(["backend", "location_preference"]) is True)
+# Bug-5 pin: benign fields that merely CONTAIN a sensitive substring must pass (word-boundary match).
+ck("benign fields containing a sensitive substring pass (language/coverage/agent/storage)",
+   compliance.assert_no_sensitive(["language", "coverage", "agent", "storage"]) is True)
+ck("a real sensitive token among benign look-alikes is still refused",
+   raises(lambda: compliance.assert_no_sensitive(["language", "coverage", "age"]), ValueError))
+ck("a multi-word sensitive attribute is still refused",
+   raises(lambda: compliance.assert_no_sensitive(["date_of_birth"]), ValueError))
 ck("job requirement with a sensitive field is refused",
    raises(lambda: JobRequirement("j", "Eng", required_capabilities={"religion": 3}), ValueError))
 
