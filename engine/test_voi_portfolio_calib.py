@@ -20,6 +20,25 @@ ck("EVSI increases with sample size (40 interviews > 3)", big >= small - 1e-6)
 ck("EVSI <= EVPI (imperfect info can't beat perfect)", big <= ev_perfect + 1e-6)
 ck("NetVOI subtracts cost", abs(net_voi(big, 15000) - (big - 15000)) < 1e-6)
 
+# Bug-1 pin: under NONLINEAR (convex) utility the act-now baseline must be max_a E[util] over the
+# prior draws, not a plug-in at the prior mean; otherwise the Jensen gap makes EVSI exceed EVPI.
+Vc, Fc = 100000.0, 27000.0                                        # invest pays V*theta^2 - F (convex)
+cvx_actions = ["invest", "pass"]
+def cvx_util(a, theta):
+    theta = np.asarray(theta, float)
+    return (Vc * theta**2 - Fc) if a == "invest" else np.zeros_like(theta)
+cvx_prior = np.random.default_rng(0).beta(2, 2, size=80000)       # theta~Beta(2,2): mean .5, E[t^2]=.30
+cvx_evpi = evpi(cvx_prior, cvx_actions, cvx_util)
+cvx_tol = max(1.0, 0.02 * cvx_evpi)
+cvx_ev0 = evsi_beta(2, 2, m=0, actions=cvx_actions, util=cvx_util)
+cvx_ev5 = evsi_beta(2, 2, m=5, actions=cvx_actions, util=cvx_util)
+cvx_ev20 = evsi_beta(2, 2, m=20, actions=cvx_actions, util=cvx_util)
+ck("EVSI(0)==0 under convex utility (no observations, no value)", cvx_ev0 == 0.0)
+ck("EVSI(5) within [0, EVPI] under convex utility", -1e-6 <= cvx_ev5 <= cvx_evpi + cvx_tol)
+ck("EVSI(20) within [0, EVPI] under convex utility (imperfect can't beat perfect)",
+   -1e-6 <= cvx_ev20 <= cvx_evpi + cvx_tol)
+ck("EVSI is non-decreasing in sample size under convex utility", cvx_ev20 >= cvx_ev5 - cvx_tol)
+
 # Portfolio: 4 studies, two in the SAME competitive category (can't coexist), a capacity limit.
 studies = [
     Study("anthropic_ai", 120000, 40000, 1200, 60, "ai_coding"),

@@ -1,5 +1,5 @@
 """python3 test_event_optimizer.py"""
-from event_optimizer import EventDesign, experience, research_information, objectives, pareto_frontier, tweak, robust_eval
+from event_optimizer import EventDesign, experience, research_information, objectives, pareto_frontier, tweak, robust_eval, economic
 P = F = 0
 def ck(n, c):
     global P, F; P += c; F += (not c); print(f"  {'PASS' if c else 'FAIL'}  {n}")
@@ -32,6 +32,14 @@ ck("at least one specialist design is on the frontier", len(front) >= 1)
 rb = robust_eval(base)
 ck("bull WTP scenario beats bear on expected contribution", rb["bull"]["mean"] > rb["bear"]["mean"])
 ck("bear scenario has lower break-even probability", rb["bear"]["p_breakeven"] <= rb["bull"]["p_breakeven"])
+
+# Bug-4 pin: the close-rate band's spread must reach the output distribution. Both bands share the
+# same mean (0.25); pre-fix .mean()-collapse made wide and narrow produce ~identical std (ratio 1.001).
+# Post-fix the wide band adds real close-rate variance (observed ratio ~1.028 at the default seed).
+narrow_std = economic(base, close_band=(0.249, 0.25, 0.251)).summary()["std"]
+wide_std = economic(base, close_band=(0.02, 0.25, 0.48)).summary()["std"]
+ck("wider close band yields larger contribution std (sampled close reaches the output)",
+   wide_std > narrow_std * 1.015)
 
 if __name__ == "__main__":
     import sys; print(f"\n{'='*50}\n{P} passed, {F} failed"); sys.exit(1 if F else 0)

@@ -11,13 +11,20 @@ from beliefs import Belief, UNKNOWN
 def correlated_bernoulli(probs, n, rho, rng):
     """Correlated closes/attendance via a Gaussian copula with a shared latent factor. rho in [0,1).
     Independence (rho=0) is the default assumption; correlation matters when a category-wide demand
-    shock moves several buyers together (docs/quant-engine.md, Part 21)."""
-    probs = np.atleast_1d(np.asarray(probs, float))
-    k = probs.shape[0]
+    shock moves several buyers together (docs/quant-engine.md, Part 21).
+
+    probs may be a shape-(k,) vector shared by all n draws, OR a shape-(n,k) array giving each draw
+    its own per-buyer probabilities -- used to propagate a SAMPLED rate belief through the draw
+    instead of collapsing it to its mean."""
+    probs = np.asarray(probs, float)
+    if probs.ndim >= 2:
+        n, k = probs.shape                                   # per-draw probs; n comes from the array
+    else:
+        probs = np.atleast_1d(probs); k = probs.shape[0]
     common = rng.standard_normal((n, 1))
     idio = rng.standard_normal((n, k))
     z = np.sqrt(rho) * common + np.sqrt(1 - rho) * idio      # corr(z_i, z_j) = rho
-    thresh = np.array([_ppf(p) for p in probs])
+    thresh = _ppf(probs)                                     # (k,) or (n,k); broadcasts against z
     return (z < thresh).astype(float)                        # P(z<thresh_i) = probs_i
 
 def _ppf(p):
