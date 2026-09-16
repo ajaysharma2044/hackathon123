@@ -1,0 +1,11 @@
+{
+  "_README": "Sales-call / buyer-interview evidence channel (audit Section 7, step 3). Each record in 'observations' is a beliefs.RateObservation-shaped close-rate datum, fed through beliefs.update_beta to move the sponsor close-rate / WTP belief. THIS is the ONLY channel that can move a belief to OBSERVED: grounding.py marks research_close_prob and research_wtp_actual PRIMARY (they exist nowhere online; only a real buyer yes/no resolves them). Empty until AJ's first call lands here.",
+  "_schema": {
+    "successes": "float -- buyers who signed / committed in this batch",
+    "failures": "float -- buyers who declined in this batch",
+    "kind": "one of SIGNED_COMMERCIAL | DIRECT_OBSERVATION | EMPIRICAL_RATE | BUYER_STATED | EXTERNAL_COMPARABLE | EXPERT_PRIOR | MODEL_ESTIMATE (see beliefs.EVIDENCE_WEIGHT)"
+  },
+  "_rule": "Only SIGNED_COMMERCIAL / DIRECT_OBSERVATION can move a belief to OBSERVED, and only once they are at least half of the posterior pseudo-count mass (beliefs.update_beta). A single signed obs among comparable-grade mass stays ASSUMED.",
+  "_example": {"successes": 1, "failures": 7, "kind": "SIGNED_COMMERCIAL"},
+  "observations": []
+}
