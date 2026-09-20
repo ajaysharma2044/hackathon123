@@ -17,7 +17,7 @@ we must never report them as if they were.**
 
 The vendor engineer is correlated with both the treatment (heavy use of their product) and the
 outcome (the team shipping on it). That is the definition of a confounder. At n=200, split into
-arms of ~60 ([measurement.md](../measurement.md)), we cannot isolate its effect — we can only detect
+arms of ~60 ([measurement.md](../research-product/measurement.md)), we cannot isolate its effect — we can only detect
 large differences, and the rescue signal is exactly the kind of thing that would masquerade as a
 large product effect. So the discipline is:
 
@@ -118,7 +118,7 @@ The analysis they unlock is a **comparison of strata**, reported as such:
 
 A client reading this learns something real and actionable: if `k` is large, the product stands on
 its own for elite builders; if `m` dominates, the product needs a human in the loop to succeed in a
-weekend — a precise, honest diagnosis ([measurement.md](../measurement.md), "precise friction
+weekend — a precise, honest diagnosis ([measurement.md](../research-product/measurement.md), "precise friction
 diagnosis"). What the client does **not** get is "the help caused X% more success", because:
 
 - the mentor-touched and untouched teams are not exchangeable (teams self-select into asking);

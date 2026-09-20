@@ -89,7 +89,7 @@ the **participant burden** of the answer, and its **commercial value** (why we c
 ## How a trigger is detected
 
 Detection is triangulated, never asserted from one source — the hardest case is `SWITCH`, which the
-[capture system](../capture-system.md) builds from brokered-key telemetry going silent + a dependency
+[capture system](../research-product/capture-system.md) builds from brokered-key telemetry going silent + a dependency
 manifest change + a checkpoint "what are you using now" delta. The detector field records *which*
 channel fired, so the war room can see, e.g., that a switch was inferred from telemetry silence
 alone (lower confidence) vs confirmed by three signals (higher).
@@ -114,7 +114,7 @@ PRODUCT_WORKAROUND · UNEXPECTED_USE_CASE · CREDIT_USE · CREDIT_IGNORE · CONT
 + (interview-only) MAJOR_PIVOT · REPEATED_HELP_REQUEST · RD_HYPOTHESIS_FAILURE
 ```
 
-These map directly onto the questions clients pay most for ([question-catalog.md](../question-catalog.md)):
+These map directly onto the questions clients pay most for ([question-catalog.md](../buyers/question-catalog.md)):
 why the non-choosers didn't choose, whether credits buy retention or just activation, where
 integration breaks, and what the failed R&D paths were.
 

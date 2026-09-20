@@ -32,7 +32,7 @@ EXPLICIT (counts against the budget)        AMBIENT (does NOT consume the budget
   FOLLOWUP        a 7/30/90-day survey wave
 ```
 
-The distinction is the whole trick from [capture-system.md](../capture-system.md): the best capture
+The distinction is the whole trick from [capture-system.md](../research-product/capture-system.md): the best capture
 *is* the builder's flow, lightly structured — instrumenting the help they sought, reading the
 artifacts they wrote, observing the demo they were giving anyway. Those are ambient. Only the things
 that genuinely interrupt or add work are explicit, and only those are rationed.
@@ -44,7 +44,7 @@ EXPLICIT_CAP_SEC     = 18 min of EXPLICIT research per participant, across the w
 MIN_PROMPT_GAP_SEC   = ~45 min minimum between micro-prompts to the same participant
 ```
 
-Why ~18 minutes: [event1-design.md](../event1-design.md) sets research burden at ≤18 min/participant
+Why ~18 minutes: [event1-design.md](../event/event1-design.md) sets research burden at ≤18 min/participant
 because past roughly 25 minutes the experience loss dominates the research gain. That 18 minutes is a
 whole-event total — baseline + checkpoints + any prompts + any interview — not per instrument. An
 exit interview is the single largest line item (~12–15 min), which is exactly why interviews are
@@ -102,7 +102,7 @@ The budget is not just a cap checked at the end — it actively shapes behavior 
 Do **not** treat 18 minutes as revealed truth. It is a defensible starting cap from the optimizer
 and comparable-event experience, and **how much burden is actually tolerable is itself something
 Event 1 should measure** (the real research-minutes tolerance is on the "learnable only by running
-it" list in [event1-design.md](../event1-design.md)). The [experience pulse](participant-experience.md)
+it" list in [event1-design.md](../event/event1-design.md)). The [experience pulse](participant-experience.md)
 (`experience_pulse.prompts_annoying`, `research_felt_intrusive`) is the feedback signal: if builders
 report prompts as annoying well under the cap, the cap is too high for this cohort and comes down.
 The budget is a dial we tune from evidence, not a constant we defend.

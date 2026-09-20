@@ -126,7 +126,7 @@ Claim's `claim_evidence` to the signed raw rows, and each raw row back to the im
 telemetry event it came from — *including the rows that argue against the claim.* Nothing in the
 chain is asserted without a pointer to what it rests on, and consent is still enforced at query time
 from the 001 ledger, so a revoked participant's evidence drops out of the trace without anything
-being deleted ([research-data-model.md](../research-data-model.md)).
+being deleted ([research-data-model.md](../research-product/research-data-model.md)).
 
 ## The three tables, and why each exists
 

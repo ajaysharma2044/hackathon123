@@ -74,7 +74,7 @@ FieldNote(..., observed_event="removed SDK", researcher_interpretation="they hat
 
 ## The three clocks travel with the note
 
-Like every raw row in the system ([research-data-model.md](../research-data-model.md)), an
+Like every raw row in the system ([research-data-model.md](../research-product/research-data-model.md)), an
 observation carries:
 
 ```

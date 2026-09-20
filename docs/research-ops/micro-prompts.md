@@ -63,7 +63,7 @@ MAJOR_PIVOT / RD_HYPOTHESIS_FAILURE
    → NO prompt. FLAG_FOR_INTERVIEW — too rich for one line; queue a sampled conversation.
 ```
 
-The timing is the whole point ([capture-system.md](../capture-system.md), freshest-signal
+The timing is the whole point ([capture-system.md](../research-product/capture-system.md), freshest-signal
 principle): a prompt fired the instant the switch is detected asks while the reason is still on the
 screen, not reconstructed at hour 14 from memory.
 
@@ -83,7 +83,7 @@ design trade-offs, not measured values.
 The default micro-prompt is **multiple-choice + optional text**: the choice is the branch key that
 `Node.next_qid` resolves, and the optional text is the verbatim that may become a
 `qualitative_observation`. Voice is offered where the "why" is worth more than the typing cost (the
-"rubber-duck" note in [capture-system.md](../capture-system.md)). Mentor capture costs the
+"rubber-duck" note in [capture-system.md](../research-product/capture-system.md)). Mentor capture costs the
 participant *nothing* — it is the help they already sought — but carries the mentor-intensity
 confounder and is never laundered into a neutral observation.
 

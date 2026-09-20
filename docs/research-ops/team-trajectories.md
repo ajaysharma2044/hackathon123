@@ -8,7 +8,7 @@ document specifies the object that holds that arc — the `team_trajectory` — 
 keeps it honest.
 
 > A `team_trajectory` is **DERIVED**, exactly like a `behavioral_episode` in
-> [research-data-model.md](../research-data-model.md). It is assembled from raw evidence and
+> [research-data-model.md](../research-product/research-data-model.md). It is assembled from raw evidence and
 > observations, carries a `model_version`, and is **re-derivable** — never hand-edited. If the
 > assembler improves, you throw the old story away and rebuild it. A story you cannot rebuild from
 > raw is not a finding; it is a memory.
@@ -90,7 +90,7 @@ leading to the `NewHypothesis` of the next node. The spine to protect:
 ## XXIV — The PRODUCT_JOURNEY trajectory (adoption, friction, switch, continued use)
 
 For product/activation clients, the arc is the **lived journey with a tool** — the chain
-[research-framework.md](../research-framework.md)'s funnel measures quantitatively, reconstructed
+[research-framework.md](../research-product/research-framework.md)'s funnel measures quantitatively, reconstructed
 qualitatively per team:
 
 ```
@@ -99,7 +99,7 @@ InitialExpectation → DiscoverySource → ConsiderationSet → InitialChoice �
 ```
 
 `kind = PRODUCT_JOURNEY` episodes carry `expectation`, `friction`, `workaround`, `switched_to`.
-`ConsiderationSet` is the `ChoiceSet` primitive from [research-data-model.md](../research-data-model.md)
+`ConsiderationSet` is the `ChoiceSet` primitive from [research-data-model.md](../research-product/research-data-model.md)
 — a choice is only a preference signal if we know what else was reachable. `ContinuedUse` is
 populated from the 7/30/90-day follow-up, so a product-journey trajectory is not *closed* at event
 end; it accretes the continuation node when the follow-up wave lands.

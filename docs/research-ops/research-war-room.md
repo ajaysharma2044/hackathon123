@@ -142,7 +142,7 @@ AUTHENTICATION panel reads as an illustrative worked example:
 
 These counts are **descriptive (L1)**. "AUTHENTICATION is the top friction" is a frequency claim;
 "auth friction predicts switching" is a different, testable claim and must not be conflated with it
-([capture-system.md](../capture-system.md), "LLM themes are labels, not ground truth").
+([capture-system.md](../research-product/capture-system.md), "LLM themes are labels, not ground truth").
 
 ### Research: negative cases, unusual behaviors, candidate follow-ups
 

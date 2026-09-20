@@ -16,7 +16,7 @@ selection logic is the `DISCONFIRMING` segment map in
 [`adaptive_sampling.py`](../../engine/adaptive_sampling.py).
 
 This matters because every prior research pass in this project *baked the conclusion in*
-([STATE.md](../STATE.md), "Correcting the frame"). Negative-case analysis is how the event-embedded
+([STATE.md](../overview/STATE.md), "Correcting the frame"). Negative-case analysis is how the event-embedded
 research refuses to repeat that mistake: it is built to *discover* the truth, not confirm a desired
 one.
 
@@ -132,7 +132,7 @@ explicitly re-justified — contradictory evidence can never be silently outvote
 | Failure mode | Without negative-case analysis | With it |
 |---|---|---|
 | **Cherry-picking** | interview only abandoners; "see, auth is the problem" | sampler forces `SUCCESSFUL_TEAM` / `NON_SWITCHER` interviews first |
-| **Echo-chamber coding** | frequent theme read as cause | theme frequency ≠ outcome prediction, and must survive a disconfirming search ([capture-system.md](../capture-system.md)) |
+| **Echo-chamber coding** | frequent theme read as cause | theme frequency ≠ outcome prediction, and must survive a disconfirming search ([capture-system.md](../research-product/capture-system.md)) |
 | **Premature certainty** | a vivid quote promoted to a finding | `can_promote` blocks until the search is run |
 | **Silent overrule of contradiction** | inconvenient counterexample ignored | `CONTRADICTS` caps confidence at MED; the negative case is first-class in `trace()` |
 | **Confounds read as causes** | "auth causes abandonment" (really experience) | stratify the disconfirming search across experience / mentor-support |

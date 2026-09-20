@@ -181,7 +181,7 @@ The rules, each tied to its enforcement point:
   ([evidence-graph.md](evidence-graph.md)).
 - **No individual surveillance.** There is no per-participant view for a client, ever. The only
   individual-grain disclosure anywhere is a participant's *own* opted-in work evidence, and that
-  path does not pass through the client research view ([capture-system.md](../capture-system.md)).
+  path does not pass through the client research view ([capture-system.md](../research-product/capture-system.md)).
 - **No interference.** Clients observe on a scheduled, disclosed basis; they do not direct prompts,
   pick interview subjects, or trigger adaptations. Adaptation is a research/ops decision
   ([event-adaptation.md](event-adaptation.md), [client-protocols.md](client-protocols.md)).

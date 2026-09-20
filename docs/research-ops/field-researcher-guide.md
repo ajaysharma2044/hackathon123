@@ -59,12 +59,12 @@ researcher who fixed a team's auth can't neutrally observe that they "struggled 
 listen or record audio; infer protected traits; build a hidden person score; interrupt
 unnecessarily; pressure anyone into answering; or degrade the event to get data. These are the
 permanent no-go boundaries from [live-research-os.md](live-research-os.md) and
-[capture-risk-register.md](../capture-risk-register.md).
+[capture-risk-register.md](../research-product/capture-risk-register.md).
 
 ## Staffing — reasoned, not guessed
 
 The scarce resource is **researcher-hours with coverage continuity**, not participant-minutes
-([event1-instrumentation-plan.md](../event1-instrumentation-plan.md) capacity model). A useful
+([event1-instrumentation-plan.md](../research-product/event1-instrumentation-plan.md) capacity model). A useful
 heuristic: one field researcher can hold **genuine coverage of ~6–8 teams** (primary) while
 roaming over a few more — beyond that, notes get shallow and incidents are missed. At ~4 builders
 per team, that is roughly **one field researcher per ~25–30 participants** for primary coverage,

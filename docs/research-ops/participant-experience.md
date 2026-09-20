@@ -2,7 +2,7 @@
 
 The hard constraint, made into a measured system. The research only exists because the event is
 genuinely excellent; the moment it stops being excellent, the panel degrades and the data goes with
-it ([STATE.md](../STATE.md), [live-research-os.md](live-research-os.md)). So participant experience
+it ([STATE.md](../overview/STATE.md), [live-research-os.md](live-research-os.md)). So participant experience
 is not a nice-to-have we hope for — it is a **tracked outcome with its own feedback loop**, and the
 research system is required to evaluate *itself* against it.
 

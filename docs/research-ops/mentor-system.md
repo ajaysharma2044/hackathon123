@@ -16,11 +16,11 @@ hard part for a team is treated on its own in [mentor-interventions.md](mentor-i
 ## Why mentors are a sensor at all
 
 At a mentor density of ~0.1 (roughly one elite mentor per ten builders — see
-[event1-design.md](../event1-design.md)), mentors touch the event at exactly the moments research
+[event1-design.md](../event/event1-design.md)), mentors touch the event at exactly the moments research
 cares about: a blocker, a stated reason for a switch, a repeated friction that is systemic rather
 than personal. A help request is a **naturally occurring critical incident**
 ([critical-incidents.md](critical-incidents.md)) — the builder was going to ask anyway, so capturing
-it costs them nothing. This is the same principle the [capture system](../capture-system.md) commits
+it costs them nothing. This is the same principle the [capture system](../research-product/capture-system.md) commits
 to: spend explicit participant attention only at the freshest, highest-signal moments, and let
 everything else ride on things people did anyway. A mentor note is an **ambient** channel, not an
 explicit one — it is excluded from the ≤18-minute explicit research budget on purpose
@@ -192,8 +192,8 @@ logging burden is the smallest thing a mentor thinks about.
   [mentor-interventions.md](mentor-interventions.md).
 - The checkpoint slot that compliance is often tied to is in [checkpoints.md](checkpoints.md); the
   mentor slot is one of the things a builder *wants*, which is why it is a good incentive anchor
-  ([measurement.md](../measurement.md)).
+  ([measurement.md](../research-product/measurement.md)).
 - Whether a flagged incident may actually interrupt a team is decided by
   [interruption-policy.md](interruption-policy.md), consulted by
   `LiveResearchOS.observe_then_decide` ([`live_research.py`](../../engine/live_research.py)).
-- Program status, the unproven thesis, and the WTP gate are upstream in [STATE.md](../STATE.md).
+- Program status, the unproven thesis, and the WTP gate are upstream in [STATE.md](../overview/STATE.md).

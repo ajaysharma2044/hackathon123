@@ -163,35 +163,35 @@ outcomes — is not.
 
 ## Repo map
 
-**Read [docs/STATE.md](docs/STATE.md) first** — the honest synthesis: what we actually know vs.
+**Read [docs/STATE.md](docs/overview/STATE.md) first** — the honest synthesis: what we actually know vs.
 assumed, the bear case at full strength, and the one untested question (will a buyer pay?) that
 gates everything. The docs below are raw material feeding it.
 
 | Path | Contents |
 |---|---|
-| [docs/STATE.md](docs/STATE.md) | **The standing understanding.** Evidence/claim/hypothesis separation, epistemic status, next test |
+| [docs/STATE.md](docs/overview/STATE.md) | **The standing understanding.** Evidence/claim/hypothesis separation, epistemic status, next test |
 | **— Capture & research infrastructure —** | |
-| [docs/capture-system.md](docs/capture-system.md) | Architecture, lifecycle, brokered instrumentation, qualitative, consent, opportunity model |
-| [docs/research-data-model.md](docs/research-data-model.md) | Canonical entities, the four layers, tri-temporal event envelope, provenance rules |
-| [docs/research-modules.md](docs/research-modules.md) | ICP (problem-backward) + the pain-first reusable module catalog |
-| [docs/capture-risk-register.md](docs/capture-risk-register.md) | Methodological / privacy / legal / experience / data-quality / integration risks |
-| [docs/event1-instrumentation-plan.md](docs/event1-instrumentation-plan.md) | MVP capture stack, study-compatibility capacity model, the 20-question synthesis |
-| [docs/question-catalog.md](docs/question-catalog.md) | **The VOI-scored questions** — what a hackathon economy can answer that telemetry/panels can't |
+| [docs/capture-system.md](docs/research-product/capture-system.md) | Architecture, lifecycle, brokered instrumentation, qualitative, consent, opportunity model |
+| [docs/research-data-model.md](docs/research-product/research-data-model.md) | Canonical entities, the four layers, tri-temporal event envelope, provenance rules |
+| [docs/research-modules.md](docs/research-product/research-modules.md) | ICP (problem-backward) + the pain-first reusable module catalog |
+| [docs/capture-risk-register.md](docs/research-product/capture-risk-register.md) | Methodological / privacy / legal / experience / data-quality / integration risks |
+| [docs/event1-instrumentation-plan.md](docs/research-product/event1-instrumentation-plan.md) | MVP capture stack, study-compatibility capacity model, the 20-question synthesis |
+| [docs/question-catalog.md](docs/buyers/question-catalog.md) | **The VOI-scored questions** — what a hackathon economy can answer that telemetry/panels can't |
 | **— Quant decision engine —** | |
-| [docs/quant-engine.md](docs/quant-engine.md) | The probabilistic engine: beliefs, Bayesian updates, Monte Carlo, VOI, calibration |
-| [docs/quant-assumptions.md](docs/quant-assumptions.md) | **Read before quoting any engine number** — every assumption, labeled, ranked by resolve-value |
-| [docs/event-optimizer.md](docs/event-optimizer.md) | Event as multi-objective optimization: worked 3-design result + the 25-answer memo |
-| [docs/event-system-flowcharts.md](docs/event-system-flowcharts.md) | Four Mermaid diagrams: master system, participant, economy, quant loop |
-| [docs/event-design-matrix.md](docs/event-design-matrix.md) | Every event feature × experience/data/money/longterm/cost/risk |
+| [docs/quant-engine.md](docs/modeling/quant-engine/quant-engine.md) | The probabilistic engine: beliefs, Bayesian updates, Monte Carlo, VOI, calibration |
+| [docs/quant-assumptions.md](docs/modeling/quant-engine/quant-assumptions.md) | **Read before quoting any engine number** — every assumption, labeled, ranked by resolve-value |
+| [docs/event-optimizer.md](docs/modeling/quant-engine/event-optimizer.md) | Event as multi-objective optimization: worked 3-design result + the 25-answer memo |
+| [docs/event-system-flowcharts.md](docs/modeling/quant-engine/event-system-flowcharts.md) | Four Mermaid diagrams: master system, participant, economy, quant loop |
+| [docs/event-design-matrix.md](docs/modeling/quant-engine/event-design-matrix.md) | Every event feature × experience/data/money/longterm/cost/risk |
 | **— Value engines & the company→offer system —** | |
-| [docs/historical-structural-analysis.md](docs/historical-structural-analysis.md) | How contests/prizes/hackathons historically created value; the Boudreau/Lakhani R&D result |
-| [docs/structural-archetypes.md](docs/structural-archetypes.md) | The 10 recurring structures; which two are both hackathon-advantaged and six-figure |
-| [docs/rd-engine.md](docs/rd-engine.md) · [docs/commercial-engines.md](docs/commercial-engines.md) | The specialized engines: R&D value-of-failure, research, activation, product-dev, more |
-| [docs/company-opportunity-map.md](docs/company-opportunity-map.md) · [docs/icp-by-engine.md](docs/icp-by-engine.md) | The COMPANY→OFFER generator (routes or says NO FIT); one ICP per engine |
-| [docs/top-prospects.md](docs/top-prospects.md) · [docs/go-to-market.md](docs/go-to-market.md) | First-cut prospect list + problem-first outreach theses |
-| [docs/event1-design.md](docs/event1-design.md) | **The payoff.** Concrete Event 1 design + the 40-question synthesis |
-| [docs/value-engine-flowcharts.md](docs/value-engine-flowcharts.md) | Five Mermaid diagrams: value engine, economy, portfolio, tweak, ICP discovery |
-| [docs/historical-program-dataset.md](docs/historical-program-dataset.md) | Structured historical program records (UNKNOWN-honest) |
+| [docs/historical-structural-analysis.md](docs/evidence/historical-structural-analysis.md) | How contests/prizes/hackathons historically created value; the Boudreau/Lakhani R&D result |
+| [docs/structural-archetypes.md](docs/modeling/discovery-engine/structural-archetypes.md) | The 10 recurring structures; which two are both hackathon-advantaged and six-figure |
+| [docs/rd-engine.md](docs/business-model/rd-engine.md) · [docs/commercial-engines.md](docs/business-model/commercial-engines.md) | The specialized engines: R&D value-of-failure, research, activation, product-dev, more |
+| [docs/company-opportunity-map.md](docs/modeling/discovery-engine/company-opportunity-map.md) · [docs/icp-by-engine.md](docs/buyers/icp-by-engine.md) | The COMPANY→OFFER generator (routes or says NO FIT); one ICP per engine |
+| [docs/top-prospects.md](docs/buyers/top-prospects.md) · [docs/go-to-market.md](docs/buyers/go-to-market.md) | First-cut prospect list + problem-first outreach theses |
+| [docs/event1-design.md](docs/event/event1-design.md) | **The payoff.** Concrete Event 1 design + the 40-question synthesis |
+| [docs/value-engine-flowcharts.md](docs/modeling/quant-engine/value-engine-flowcharts.md) | Five Mermaid diagrams: value engine, economy, portfolio, tweak, ICP discovery |
+| [docs/historical-program-dataset.md](docs/evidence/historical-program-dataset.md) | Structured historical program records (UNKNOWN-honest) |
 | **— Live Research Operating System (Event 1) —** | |
 | [docs/research-ops/live-research-os.md](docs/research-ops/live-research-os.md) | **Start here.** The master architecture: the 17 layers, the live loop, the human sensor network, the no-go list |
 | [docs/research-ops/event1-live-playbook.md](docs/research-ops/event1-live-playbook.md) | **The payoff.** Hour-by-hour timeline, 10 tabletop simulations, MVP-vs-ideal, and the 60-question final synthesis |
@@ -205,38 +205,38 @@ gates everything. The docs below are raw material feeding it.
 | [docs/research-ops/event-phase-plan.md](docs/research-ops/event-phase-plan.md) · [client-protocols.md](docs/research-ops/client-protocols.md) · [consent-design.md](docs/research-ops/consent-design.md) · [longitudinal-followup.md](docs/research-ops/longitudinal-followup.md) | Per-phase research ops, per-client-engine protocols, modular consent, and 7/30/90-day follow-up |
 | [docs/research-ops/participant-experience.md](docs/research-ops/participant-experience.md) · [event1-staffing.md](docs/research-ops/event1-staffing.md) | The hard constraint (experience wins) as a measured loop; the staffing architecture by event size |
 | **— Event Operations (Event 1) —** | |
-| [docs/event-ops/operational-architecture.md](docs/event-ops/operational-architecture.md) | **Start here.** The two orgs on one timeline; the operational layers; how ops IS the research sensor network |
-| [docs/event-ops/prior-hackathons.md](docs/event-ops/prior-hackathons.md) | **The evidence base.** Sourced operational facts from MLH, HackMIT, Hack the North, TreeHacks, Cal Hacks, hackathon.guide — KNOWN vs our design choice |
-| [docs/event-ops/org-chart-and-roles.md](docs/event-ops/org-chart-and-roles.md) · [role-correlations.md](docs/event-ops/role-correlations.md) | Every role + counts by size; the typed correlation graph (who depends on whom, the ops↔research interlock, criticality) |
-| [docs/event-ops/logistics.md](docs/event-ops/logistics.md) · [run-of-show.md](docs/event-ops/run-of-show.md) | Venue/food/travel/check-in/wifi/safety + the 72-hour run sheet with the research cadence overlaid |
-| [docs/event-ops/judging-system.md](docs/event-ops/judging-system.md) · [volunteers-and-crew.md](docs/event-ops/volunteers-and-crew.md) | Science-fair + finals (the judge formula, stack-ranking, sponsor conflicts); the volunteer/crew layer + the research firewall |
+| [docs/event-ops/operational-architecture.md](docs/event/operational-architecture.md) | **Start here.** The two orgs on one timeline; the operational layers; how ops IS the research sensor network |
+| [docs/event-ops/prior-hackathons.md](docs/event/prior-hackathons.md) | **The evidence base.** Sourced operational facts from MLH, HackMIT, Hack the North, TreeHacks, Cal Hacks, hackathon.guide — KNOWN vs our design choice |
+| [docs/event-ops/org-chart-and-roles.md](docs/event/org-chart-and-roles.md) · [role-correlations.md](docs/event/role-correlations.md) | Every role + counts by size; the typed correlation graph (who depends on whom, the ops↔research interlock, criticality) |
+| [docs/event-ops/logistics.md](docs/event/logistics.md) · [run-of-show.md](docs/event/run-of-show.md) | Venue/food/travel/check-in/wifi/safety + the 72-hour run sheet with the research cadence overlaid |
+| [docs/event-ops/judging-system.md](docs/event/judging-system.md) · [volunteers-and-crew.md](docs/event/volunteers-and-crew.md) | Science-fair + finals (the judge formula, stack-ranking, sponsor conflicts); the volunteer/crew layer + the research firewall |
 | [schema/](schema/) · [engine/](engine/) | Typed schema (core + economic + quant + [live-research](schema/006_live_research.sql)) + runnable engines: consent/temporal correctness, VOI kill-filter, beliefs, Monte Carlo, portfolio, calibration, event optimizer, value engines, company→offer matcher, **the Live Research OS kernel** (triggers, adaptive questions, adaptive sampling, mentor routing, question backlog, team trajectory, evidence graph, burden budget, intervention log), **and the Event-Ops kernel** ([schema/007](schema/007_event_ops.sql) + staffing model, judging assignment / stack-rank, the role-correlation graph) — **182 passing checks across eleven suites** |
-| [docs/roadmap.md](docs/roadmap.md) | Critical path, owner split, next 30/90 days |
-| [docs/economics.md](docs/economics.md) | The full economic surface — attention / access / answers / outcomes |
-| [docs/monetization-map.md](docs/monetization-map.md) | Every step monetized, tagged proven/swing, against the extraction frontier |
-| [docs/research-findings.md](docs/research-findings.md) | Sourced benchmarks: competitor pricing, Miami costs, market comparables |
-| [docs/logistics-revenue.md](docs/logistics-revenue.md) | $30-45K hidden in the room block, F&B, and venue — and how to actually collect it |
-| [docs/asset-monetization.md](docs/asset-monetization.md) | What the list, content, research, and credits are worth — and the PyCon price benchmark |
-| [docs/buyer-needs.md](docs/buyer-needs.md) | **Open with their unknown.** The real open questions, in the companies' own words |
-| [docs/who-pays-for-research.md](docs/who-pays-for-research.md) | **Verified: what firms pay for research now** — named vendors, recurring budgets, the gap |
-| [docs/innovation-budget.md](docs/innovation-budget.md) | **The biggest budget line.** The research-wallet mechanic, $150-300K/yr band |
-| [docs/the-quote.md](docs/the-quote.md) | **How to price one engagement.** The 45% argument, the itemized quote, the ceiling |
-| [docs/target-list.md](docs/target-list.md) | **Named doors.** Companies, contacts, what's dead, and what to do in the next two weeks |
-| [docs/procurement.md](docs/procurement.md) | **How to actually get paid.** Champion requirement, the $25K threshold, sponsorship vs. SOW |
-| [docs/recruiting-legal.md](docs/recruiting-legal.md) | **Read before building the recruiting product.** FCRA, LL144, EU AI Act, who-pays |
-| [docs/event-comps.md](docs/event-comps.md) | Real prospectus ladders from comparable events, and the honest sponsor math |
-| [docs/venture-upside.md](docs/venture-upside.md) | Why not to take equity, and the three things to do instead |
-| [docs/research-pricing.md](docs/research-pricing.md) | **What to charge.** The LF rate card template, the $27K student-access trap, two defensible floors |
-| [docs/location.md](docs/location.md) | **Open decision.** Criteria, candidate comparison, and the resolution worth testing |
-| [docs/funding.md](docs/funding.md) | Budget, cost levers, sponsor stack, which budget to sell into, liability |
-| [docs/measurement.md](docs/measurement.md) | What specifically to look for, and how to capture it |
-| [docs/concept.md](docs/concept.md) | Full concept: experience design, sponsor model, tracks, the Club OS link |
-| [docs/data-model.md](docs/data-model.md) | Entities, event taxonomy, consent scoping, temporal semantics |
-| [docs/research-framework.md](docs/research-framework.md) | Experiment lifecycle, behavioral funnels, model specs, qualitative coding |
-| [docs/products.md](docs/products.md) | The four buyers: sponsors, recruiters, VCs, R&D partners |
-| [docs/open-questions.md](docs/open-questions.md) | Decisions that block building |
+| [docs/roadmap.md](docs/overview/roadmap.md) | Critical path, owner split, next 30/90 days |
+| [docs/economics.md](docs/business-model/economics.md) | The full economic surface — attention / access / answers / outcomes |
+| [docs/monetization-map.md](docs/business-model/monetization-map.md) | Every step monetized, tagged proven/swing, against the extraction frontier |
+| [docs/research-findings.md](docs/evidence/research-findings.md) | Sourced benchmarks: competitor pricing, Miami costs, market comparables |
+| [docs/logistics-revenue.md](docs/business-model/logistics-revenue.md) | $30-45K hidden in the room block, F&B, and venue — and how to actually collect it |
+| [docs/asset-monetization.md](docs/business-model/asset-monetization.md) | What the list, content, research, and credits are worth — and the PyCon price benchmark |
+| [docs/buyer-needs.md](docs/buyers/buyer-needs.md) | **Open with their unknown.** The real open questions, in the companies' own words |
+| [docs/who-pays-for-research.md](docs/buyers/who-pays-for-research.md) | **Verified: what firms pay for research now** — named vendors, recurring budgets, the gap |
+| [docs/innovation-budget.md](docs/business-model/innovation-budget.md) | **The biggest budget line.** The research-wallet mechanic, $150-300K/yr band |
+| [docs/the-quote.md](docs/business-model/the-quote.md) | **How to price one engagement.** The 45% argument, the itemized quote, the ceiling |
+| [docs/target-list.md](docs/buyers/target-list.md) | **Named doors.** Companies, contacts, what's dead, and what to do in the next two weeks |
+| [docs/procurement.md](docs/buyers/procurement.md) | **How to actually get paid.** Champion requirement, the $25K threshold, sponsorship vs. SOW |
+| [docs/recruiting-legal.md](docs/markets/recruiting-legal.md) | **Read before building the recruiting product.** FCRA, LL144, EU AI Act, who-pays |
+| [docs/event-comps.md](docs/evidence/event-comps.md) | Real prospectus ladders from comparable events, and the honest sponsor math |
+| [docs/venture-upside.md](docs/business-model/venture-upside.md) | Why not to take equity, and the three things to do instead |
+| [docs/research-pricing.md](docs/business-model/research-pricing.md) | **What to charge.** The LF rate card template, the $27K student-access trap, two defensible floors |
+| [docs/location.md](docs/event/location.md) | **Open decision.** Criteria, candidate comparison, and the resolution worth testing |
+| [docs/funding.md](docs/business-model/funding.md) | Budget, cost levers, sponsor stack, which budget to sell into, liability |
+| [docs/measurement.md](docs/research-product/measurement.md) | What specifically to look for, and how to capture it |
+| [docs/concept.md](docs/overview/concept.md) | Full concept: experience design, sponsor model, tracks, the Club OS link |
+| [docs/data-model.md](docs/research-product/data-model.md) | Entities, event taxonomy, consent scoping, temporal semantics |
+| [docs/research-framework.md](docs/research-product/research-framework.md) | Experiment lifecycle, behavioral funnels, model specs, qualitative coding |
+| [docs/products.md](docs/buyers/products.md) | The four buyers: sponsors, recruiters, VCs, R&D partners |
+| [docs/open-questions.md](docs/overview/open-questions.md) | Decisions that block building |
 
 ## Status
 
 Planning Event 1. The binding constraint is the anchor sponsor, and the window is Q4 2026 —
-2027 corporate budgets are being set now. See [docs/roadmap.md](docs/roadmap.md).
+2027 corporate budgets are being set now. See [docs/roadmap.md](docs/overview/roadmap.md).

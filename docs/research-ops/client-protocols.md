@@ -3,12 +3,12 @@
 How the *one* instrument serves different buyers without becoming five different events. This is
 layer 16 of the master [live-research-os.md](live-research-os.md) (Parts XXXII, XXXVI, XXXIII): the
 same human sensor network, the same evidence graph, the same consent gate — pointed at a different
-question per client. The engine mix for Event 1 is fixed in [event1-design.md](../event1-design.md)
+question per client. The engine mix for Event 1 is fixed in [event1-design.md](../event/event1-design.md)
 (**1 Research primary + 1 Activation + 1 R&D challenge + ≤1 sponsorship floor**); this document is
 the live protocol each engine runs *during* the 72 hours.
 
 > **The instrument does not bend to the buyer.** A client buys a *question* and a *grain of
-> rigor* ([measurement.md](../measurement.md)'s tiering), not a conclusion. Sponsors get instrument
+> rigor* ([measurement.md](../research-product/measurement.md)'s tiering), not a conclusion. Sponsors get instrument
 > review and early access — never editorial control. Findings come back negative. A client whose
 > protocol would require covert capture, individual surveillance, or a person score cannot be sold
 > the research tier; the no-go list ([consent-design.md](consent-design.md)) is not negotiable.
@@ -17,7 +17,7 @@ the live protocol each engine runs *during* the 72 hours.
 
 Each engine maps to a `question_tree.module` in [`006_live_research.sql`](../../schema/006_live_research.sql)
 and an `engine` tag on the [research_question_backlog](../../schema/006_live_research.sql). The
-grain of rigor column is the honest promise from [measurement.md](../measurement.md): you get **one**
+grain of rigor column is the honest promise from [measurement.md](../research-product/measurement.md): you get **one**
 well-powered study per event.
 
 | Engine | Module | Core question | Rigor grain | ICP |
@@ -44,8 +44,8 @@ ASK      why considered?  why rejected (the invisible non-choice)?  what trigger
 ```
 
 The prize is the **unconstrained baseline** and the **why-not** — the rejected alternative is
-invisible to any sponsor's own first-party telemetry ([measurement.md](../measurement.md) #5).
-`ChoiceSet` ([research-data-model.md](../research-data-model.md)) is what turns "72 signups" into
+invisible to any sponsor's own first-party telemetry ([measurement.md](../research-product/measurement.md) #5).
+`ChoiceSet` ([research-data-model.md](../research-product/research-data-model.md)) is what turns "72 signups" into
 "chosen 41% of the time when two equally-reachable competitors were unincentivized."
 
 ### Product-development (`product_dev`)
@@ -68,7 +68,7 @@ ASK      why this approach?  what failed and at what assumption?  what is the ne
 ```
 
 Parallel teams are an R&D search only for high-uncertainty, parallelizable, evaluable,
-prototypeable-in-event problems ([event1-design.md](../event1-design.md) #15–16). The deliverable
+prototypeable-in-event problems ([event1-design.md](../event/event1-design.md) #15–16). The deliverable
 is **N independent prototypes + the value-of-failure map** — the map of which approaches died and
 where is often worth more than the winner. Uses the `RD_REASONING` trajectory
 (`hypothesis → why_hypothesis → experiment → result → assumption_failed`).
@@ -83,9 +83,9 @@ ASK      did the credit change what you'd have done?  what made it worth continu
 
 The one question worth the contract: **does a $100 credit create sustained adoption, or only
 subsidize temporary activation?** If `Credits↑ ⇒ Activation↑` but `Retention_30d` is flat, the
-client learns its startup-credit spend buys temporary usage ([research-data-model.md](../research-data-model.md)).
+client learns its startup-credit spend buys temporary usage ([research-data-model.md](../research-product/research-data-model.md)).
 Operational definitions (`activation`, `repeated_use`, `retention_30d`) are pre-registered before
-the event per [measurement.md](../measurement.md), never tuned after.
+the event per [measurement.md](../research-product/measurement.md), never tuned after.
 
 ### Design-partner (opt-in intro flow)
 
@@ -132,7 +132,7 @@ ARTIFACT      repo / deploy / dependency manifest (the honest cross-check on sel
         └──────────────── all three point back to raw evidence via claim_evidence ──────────────┘
 ```
 
-Report order is fixed by [measurement.md](../measurement.md) and is not the client's to reorder:
+Report order is fixed by [measurement.md](../research-product/measurement.md) and is not the client's to reorder:
 
 1. **Precise friction diagnosis** — "38 of 72 stalled at the same auth step, median 41 min lost,
    here are 12 describing it." Actionable, needs no inference.

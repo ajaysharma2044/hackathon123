@@ -3,7 +3,7 @@
 The operational playbook for running the [live research OS](live-research-os.md) at Event 1, a
 hour-by-hour walk-through from the participant's seat, ten tabletop simulations, the minimum-viable-
 vs-ideal split, and the **60-question final synthesis** the brief requires. Everything here assumes
-the [WTP gate](../event1-design.md) has been passed and a sold study has sized the event.
+the [WTP gate](../event/event1-design.md) has been passed and a sold study has sized the event.
 
 ## The 72 hours, from the participant's seat
 
@@ -98,7 +98,7 @@ software, when built, is built against tested correctness properties rather than
 
 # The 60-question final synthesis
 
-Direct answers. Where a number appears it is illustrative; WTP remains UNKNOWN ([STATE.md](../STATE.md)).
+Direct answers. Where a number appears it is illustrative; WTP remains UNKNOWN ([STATE.md](../overview/STATE.md)).
 
 **1. What exactly should a field researcher do?** Circulate an assigned zone (plus roaming), observe
 natural team interaction, record critical incidents and decisions, run short in-the-moment
@@ -285,7 +285,7 @@ un-opted-in recruiting/VC disclosure, and badly-timed prompts — all excluded r
 
 **54. What will companies pay most for?** The invisible-to-telemetry answers: why non-choosers didn't
 choose, whether credits retain or just activate, where integration breaks, and the R&D failure map
-([question-catalog.md](../question-catalog.md)).
+([question-catalog.md](../buyers/question-catalog.md)).
 
 **55. Strongest evidence?** Triangulated behavior — brokered-key telemetry + dependency manifest +
 observed switch + the participant's fresh-moment "why" — cross-checked against the artifact.
@@ -295,11 +295,11 @@ and the counterfactual, the failed-R&D-path map, and true post-event retention w
 
 **57. How should the final report integrate the evidence?** Lead with friction diagnosis + the
 unconstrained baseline; behavioral funnels + switching matrices next; qualitative mechanism and team
-stories as the "why"; stats and honest limitations in the appendix ([client-protocols.md](client-protocols.md), [measurement.md](../measurement.md)).
+stories as the "why"; stats and honest limitations in the appendix ([client-protocols.md](client-protocols.md), [measurement.md](../research-product/measurement.md)).
 
 **58. What would falsify our research-method thesis?** If the rich capture produces nothing a panel/
 telemetry couldn't, if burden ruins the experience, or if the instrumentation is seen to compromise
-authenticity ([STATE.md](../STATE.md)).
+authenticity ([STATE.md](../overview/STATE.md)).
 
 **59. What should we test during Event 1?** The real research-minutes tolerance, whether brokered-key
 instrumentation works at scale, actual retention curves, and whether the live loop produces sharper

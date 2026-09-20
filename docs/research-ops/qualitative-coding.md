@@ -1,14 +1,14 @@
 # Qualitative Coding — the pipeline (Parts XXV–XXVI)
 
 Telemetry says *they switched after 24 minutes*; it does not say *why*
-([research-framework.md](../research-framework.md)). The coding pipeline is how raw human language —
+([research-framework.md](../research-product/research-framework.md)). The coding pipeline is how raw human language —
 a mentor's note, an interview quote, a checkpoint free-text — becomes a structured, traceable input
 to synthesis **without an LLM silently converting a comment into a fact along the way.**
 
 > The one rule that governs this entire document: **an LLM label is a HYPOTHESIS, not truth.** The
 > raw text is kept beside every extracted label, the label carries its `model_version`, and a human
 > gate stands between every AI suggestion and anything a client ever sees
-> ([research-data-model.md](../research-data-model.md), provenance rules 3 + 5).
+> ([research-data-model.md](../research-product/research-data-model.md), provenance rules 3 + 5).
 
 ## XXV — The pipeline, with provenance at every step
 
@@ -54,7 +54,7 @@ coding_assignment    code_id → code
 
 A `code` rolls up to a `subtheme`, a subtheme to a `theme`, and a theme is itself a **hypothesis**
 that a set of observations hang together — not a proven claim. The worked example from
-[research-framework.md](../research-framework.md) in pipeline terms:
+[research-framework.md](../research-product/research-framework.md) in pipeline terms:
 
 ```
 RawQuote      "I couldn't figure out how auth worked"        (interview_excerpt, immutable)

@@ -27,7 +27,7 @@ The phase names are the `EVENT_PHASES` tuple in
 ## PRE_EVENT / APPLICATION / ACCEPTANCE / BASELINE
 
 Before anyone arrives, the research cost to the participant is near-zero because the instruments
-*are* the application and selection they were doing anyway ([capture-system.md](../capture-system.md)
+*are* the application and selection they were doing anyway ([capture-system.md](../research-product/capture-system.md)
 Phases A/B).
 
 - **What matters?** The SAID baseline — stated stack, prior familiarity, intended project, prior
@@ -131,7 +131,7 @@ fixed.
 - **What questions?** What did they *actually* wire in (vs what they said)? What was the hardest
   part? What would they change?
 - **Who captures it?** `ARTIFACT` ingestion; the demo/retro structured as an interview
-  ([capture-system.md](../capture-system.md)).
+  ([capture-system.md](../research-product/capture-system.md)).
 - **How much burden?** MED — but it is the retro they would do anyway, lightly structured; `channel
   = ARTIFACT_SUBMISSION | CHECKPOINT`.
 - **What must NEVER happen?** Self-report is never taken as ground truth where an artifact can

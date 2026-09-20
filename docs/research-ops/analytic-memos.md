@@ -142,7 +142,7 @@ backlog's `top(n)`; the memos feed the backlog; the backlog steers the sampler. 
   promotion gate ([negative-case-analysis.md](negative-case-analysis.md)).
 - **Not a quota tracker.** The backlog prioritizes by evidence value and contradiction, never by "how
   many interviews done" ([adaptive-sampling.md](adaptive-sampling.md) saturation,
-  [measurement.md](../measurement.md)).
+  [measurement.md](../research-product/measurement.md)).
 - **Not permanent truth.** Saturation is provisional; any memo or question can be reopened by a
   single well-placed disconfirming case. The system is built to change its mind
-  ([STATE.md](../STATE.md)).
+  ([STATE.md](../overview/STATE.md)).

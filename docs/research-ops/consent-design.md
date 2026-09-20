@@ -5,7 +5,7 @@ Participant-friendly, modular consent for the live research OS (Parts XXXIV–XX
 hard constraint — *the experience wins* — legible to the person being researched. Consent here is
 **data**, not a signature: it is an append-only ledger enforced at query time in
 [`capture.py`](../../engine/capture.py), and the exact scopes are defined in
-[`001_core.sql`](../../schema/001_core.sql) and [research-data-model.md](../research-data-model.md).
+[`001_core.sql`](../../schema/001_core.sql) and [research-data-model.md](../research-product/research-data-model.md).
 
 > **The test:** a participant should be able to read the whole consent surface in a few minutes,
 > know exactly what leaves the room and what never does, and change their mind at any time without
@@ -80,7 +80,7 @@ ALWAYS AGGREGATE, NEVER YOU ALONE         MAY BE LINKED TO YOUR ARTIFACTS / YOU
 ([`capture.py`](../../engine/capture.py) `AGGREGATE_ONLY`): the store will *refuse* to emit
 individual-grain output for them even if rows exist. Only the `*_DISCOVERABILITY` scopes
 (`INDIVIDUAL_DISCLOSURE_OK`) can produce individual output, and only of the participant's own
-first-hand work (the FCRA constraint — [recruiting-legal.md](../recruiting-legal.md)).
+first-hand work (the FCRA constraint — [recruiting-legal.md](../markets/recruiting-legal.md)).
 
 ## The no-go capture list (default-prohibited, permanently)
 

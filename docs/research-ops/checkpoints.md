@@ -43,7 +43,7 @@ is measured; without it, drift is unmeasurable.
 | expected challenge | what do you expect to be hardest? |
 
 `prior familiarity` is load-bearing: a team already fluent in a product is measuring **retention**,
-not **adoption**, and mixing the two corrupts both numbers ([measurement.md](../measurement.md),
+not **adoption**, and mixing the two corrupts both numbers ([measurement.md](../research-product/measurement.md),
 "Selection is an instrument too"). START is where that covariate is set.
 
 ### MIDPOINT — the drift (≈ t/2)
@@ -88,7 +88,7 @@ intention at t1 that the 7/30/90-day waves then test against behavior.
 Stored as `FOLLOWUP_7 | FOLLOWUP_30 | FOLLOWUP_90` (`checkpoint.kind`). This is the retention asset
 no other hackathon produces ([live-research-os.md](live-research-os.md), Layer 15). Response rates
 decay hard (≈60% at 7d, maybe ≈25% at 90d without incentive — **illustrative**, from
-[measurement.md](../measurement.md)), so the follow-up waves are budgeted real incentives.
+[measurement.md](../research-product/measurement.md)), so the follow-up waves are budgeted real incentives.
 
 | Field | Question (short form) |
 |---|---|
@@ -105,7 +105,7 @@ later, and the two timestamps are kept distinct on every row so "as of day D" qu
 
 ## Length and timing — ≤5 questions, <60 seconds
 
-The hard limits, from [measurement.md](../measurement.md) and the burden budget:
+The hard limits, from [measurement.md](../research-product/measurement.md) and the burden budget:
 
 ```
 ≤ 5 questions shown at once     more than five and the response rate (and the data) collapse
@@ -121,7 +121,7 @@ taps and short choices wherever possible; free text is optional on every field.
 ## Compliance — tie it to something they want
 
 Voluntary checkpoints get ~30% response, and **the non-responders are exactly the people whose data
-you most need** — the heads-down, the struggling, the about-to-abandon ([measurement.md](../measurement.md)).
+you most need** — the heads-down, the struggling, the about-to-abandon ([measurement.md](../research-product/measurement.md)).
 So compliance is tied to something the builder already wants, never coerced:
 
 ```
@@ -130,7 +130,7 @@ CHECKPOINT COMPLETE  ──unlocks──►  mentor-slot booking  |  meal access
 
 This makes the checkpoint a natural step in something they were going to do anyway (book a mentor,
 eat, qualify to demo) rather than a survey bolted on — the same "capture through things people were
-going to do anyway" principle as the rest of the [capture system](../capture-system.md). The mentor
+going to do anyway" principle as the rest of the [capture system](../research-product/capture-system.md). The mentor
 slot is a particularly clean anchor because it is also where the [mentor system](mentor-system.md)
 already touches the team.
 
@@ -142,7 +142,7 @@ already touches the team.
 The governing objective, made concrete:
 
 - **Every field must earn its second.** If a field is reliably recoverable from an artifact
-  ([capture-system.md](../capture-system.md)) or from telemetry, it is cut from the checkpoint and
+  ([capture-system.md](../research-product/capture-system.md)) or from telemetry, it is cut from the checkpoint and
   read from the cheaper channel instead — checkpoints spend *explicit* budget, artifacts do not.
 - **START and MIDPOINT are the highest-leverage spends** (they capture state that is *unrecoverable
   later* — a plan and a fresh change), so they get first claim on the explicit budget; END overlaps
@@ -163,4 +163,4 @@ The governing objective, made concrete:
 - Timing and interruptibility are governed by [interruption-policy.md](interruption-policy.md); the
   explicit burden accounting is [participant-burden.md](participant-burden.md).
 - Program status and the WTP gate that decides whether Event 1 runs at all are upstream in
-  [STATE.md](../STATE.md).
+  [STATE.md](../overview/STATE.md).

@@ -8,13 +8,13 @@ valuable, least-reproducible data in the whole system is captured.
 
 > **Why this is the differentiator.** Every hackathon can tell a sponsor who *used* a product over
 > a weekend. Almost none can tell them who was *still using it 30 days later, and who quietly
-> switched away* — the question [measurement.md](../measurement.md) calls the one no competitor has.
-> Retention is the output; activation was only the input ([research-data-model.md](../research-data-model.md),
+> switched away* — the question [measurement.md](../research-product/measurement.md) calls the one no competitor has.
+> Retention is the output; activation was only the input ([research-data-model.md](../research-product/research-data-model.md),
 > the credit→activation→retention chain).
 
 ## Cornell's same-campus advantage (a structural retention asset)
 
-Event 1 is **Cornell-only** ([event1-design.md](../event1-design.md)). This is not a recruiting
+Event 1 is **Cornell-only** ([event1-design.md](../event/event1-design.md)). This is not a recruiting
 constraint — it is the reason the follow-up works. A national hackathon scatters its cohort across
 the country on Sunday night; a Cornell cohort is **still reachable on the same campus** at day 7,
 day 30, and day 90.
@@ -79,12 +79,12 @@ The **contradictory case** is deliberately over-weighted: the system hunts the d
 example, not just more of the confirming one ([live-research-os.md](live-research-os.md)'s
 confirm-*and*-contradict loop). A 90-day follow-up that only re-interviews the people who kept
 using the product manufactures a flattering retention curve — response bias
-([measurement.md](../measurement.md)'s honest limits) — so the abandoners and switchers are
+([measurement.md](../research-product/measurement.md)'s honest limits) — so the abandoners and switchers are
 priority targets, not afterthoughts.
 
 ## Incentives: response rates decay, so budget for them
 
-Follow-up response is not free and it does not hold. Per [measurement.md](../measurement.md),
+Follow-up response is not free and it does not hold. Per [measurement.md](../research-product/measurement.md),
 without incentive:
 
 ```
@@ -96,7 +96,7 @@ without incentive:
 ```
 
 Budget **real** incentives for every wave — the retention data is the thing no competitor has and
-it is worth paying for ([event1-design.md](../event1-design.md): follow-up is *never dropped*). The
+it is worth paying for ([event1-design.md](../event/event1-design.md): follow-up is *never dropped*). The
 same-campus advantage lets incentives be things proximity makes cheap and welcome (an on-campus
 event, a meal, priority for Event 2), not just cash. State the residual response bias in the report
 regardless; incentives reduce it, they do not erase it.
@@ -105,7 +105,7 @@ regardless; incentives reduce it, they do not erase it.
 
 This is the correctness invariant that the whole follow-up depends on, and it is enforced, not just
 documented ([`capture.py`](../../engine/capture.py) `retention_events`; the three clocks in
-[research-data-model.md](../research-data-model.md)):
+[research-data-model.md](../research-product/research-data-model.md)):
 
 ```
   occurred_at    WHEN THE BEHAVIOR HAPPENED      — the survival / retention axis
@@ -144,5 +144,5 @@ protected spending and not costs to trim.
 **Honest limits, restated for the long horizon:** follow-up response bias favors the satisfied;
 elite Cornell builders generalize to elite student builders and early adopters, not median
 developers; and a 90-day window catches early retention, not durable multi-year adoption. State
-each in the report ([measurement.md](../measurement.md)). The panel makes these *tractable over
+each in the report ([measurement.md](../research-product/measurement.md)). The panel makes these *tractable over
 time* — successive waves can measure the bias directly — but Event 1 alone does not resolve them.

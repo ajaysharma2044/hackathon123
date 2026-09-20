@@ -44,7 +44,7 @@ RD_WINNER          → RD_FAILURE           CHOOSER            → NON_CHOOSER
 
 These segments describe *work-in-context*, never the person. `HIGH_MENTOR_SUPPORT` is a confounder
 stratum (did the mentor cause the outcome?), not a competence label — there is no person score here
-([STATE.md](../STATE.md) no-go list; schema Invariant 5).
+([STATE.md](../overview/STATE.md) no-go list; schema Invariant 5).
 
 ## The algorithm — `Sampler.suggest_next`
 
@@ -129,9 +129,9 @@ OPEN ──► ANSWERED_PARTIALLY ──► SATURATED ────────�
 
 - **Not a recruitment quota.** There is no "interview N people" target; the intensity of sampling is
   set by evidence gaps and the burden budget ([participant-burden.md](participant-burden.md)), not a
-  number ([measurement.md](../measurement.md)).
+  number ([measurement.md](../research-product/measurement.md)).
 - **Not representative-sample statistics.** n≈150–200, self-selected, Hawthorne-affected — this is
   *directional behavioral signal*, sampled for mechanism and disconfirmation, not a population
-  estimate ([STATE.md](../STATE.md) internal-validity caveats). Sold as depth, not breadth.
+  estimate ([STATE.md](../overview/STATE.md) internal-validity caveats). Sold as depth, not breadth.
 - **Not a person-ranking.** Segments are work-in-context strata; the sampler holds no model of who is
   "good," only of where the evidence is thin and where it might be wrong.

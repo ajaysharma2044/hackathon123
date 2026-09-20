@@ -3,7 +3,7 @@
 The people who actually run the live research OS, what each does, which roles can overlap, and the
 recommended structure for Event 1. This builds on the field-researcher staffing ratios in
 [field-researcher-guide.md](field-researcher-guide.md) and is costed against the two-person-load
-warning in [STATE.md](../STATE.md) (bear case #6: a 200-person flown-in event with parallel
+warning in [STATE.md](../overview/STATE.md) (bear case #6: a 200-person flown-in event with parallel
 engagements is *not* a two-person job, and no amount of research changes that).
 
 ## The roles
@@ -82,7 +82,7 @@ experience, client) is additional and partly volunteer/sponsor-supplied.
 | **150** | 1 | 1 | 5–6 | 2 | 2 | 2 | 1 | **~13–14** | + a client lead, 2–3 challenge leads |
 | **200** | 1 | 1 | 7–8 | 2 | 3 | 2–3 | 1 | **~16–18** | full structure, interview pod |
 
-For **Event 1 at ~150–200** ([event1-design.md](../event1-design.md)), the recommendation is the
+For **Event 1 at ~150–200** ([event1-design.md](../event/event1-design.md)), the recommendation is the
 150/200 column: roughly **13–18 research staff**, separate event and research directors, a dedicated
 data steward, and a client lead who keeps paying clients on the aggregate side of the
 [ClientView](live-research-os.md) gate.
@@ -93,7 +93,7 @@ The staff line is real money, so optimize it honestly:
 
 - **Field researchers and mentors can be trained Cornell grad students / staff / sponsor engineers**
   (the last only as *disclosed, logged* mentors — never as neutral observers of their own product).
-  This is the Reality-Hack-style model referenced in [event1-design.md](../event1-design.md).
+  This is the Reality-Hack-style model referenced in [event1-design.md](../event/event1-design.md).
 - **The war room can be run by a small core** (Research Ops Lead + 1–2 leads) if the field
   researchers are well-calibrated — good notes reduce synthesis load.
 - **Much of the "engine" is a disciplined process + a spreadsheet for Event 1**
@@ -108,5 +108,5 @@ The staff line is real money, so optimize it honestly:
 The live research OS is **staff-heavy by design** — it is a human sensor network, and the humans are
 the sensors. That is a direct answer to the bear case: this is not a two-person operation, and
 pretending it is would either ruin the event or produce thin data. The cost is justified only if a
-client is paying for the depth the staffing buys ([STATE.md](../STATE.md)) — which is why no staff
-are hired until the [WTP gate](../event1-design.md) is passed and the sold study sizes the event.
+client is paying for the depth the staffing buys ([STATE.md](../overview/STATE.md)) — which is why no staff
+are hired until the [WTP gate](../event/event1-design.md) is passed and the sold study sizes the event.

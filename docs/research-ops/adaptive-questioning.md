@@ -164,13 +164,13 @@ An answered node becomes a `prompt` row (instance-level, with `answer_text` / `a
 `qualitative_observation` (`linked_qual_id`) and then coded — the
 `RawQuote → Observation → Code → Theme` pipeline that feeds the evidence graph
 ([`evidence_graph.py`](../../engine/evidence_graph.py)). The fact/interpretation split from
-[capture-system.md](../capture-system.md) holds throughout: what they *said* is evidence; what it
+[capture-system.md](../research-product/capture-system.md) holds throughout: what they *said* is evidence; what it
 *means* is a separately-labeled, separately-tested claim.
 
 ## What this layer is not
 
 - **Not adaptive because it profiles people.** Branching is on *answers about work in context*, never
-  on any inferred trait — there is no person model here, by construction ([STATE.md](../STATE.md),
+  on any inferred trait — there is no person model here, by construction ([STATE.md](../overview/STATE.md),
   no-person-score invariant; schema Invariant 5).
 - **Not a completion target.** A short path that terminates early is a *success*, not a dropout;
   `hit_cap` and early termination are both first-class outcomes.

@@ -6,8 +6,8 @@ runnable kernel is in [`engine/`](../../engine/) with the schema in
 [`schema/006_live_research.sql`](../../schema/006_live_research.sql).
 
 It sits **downstream of the decision to run Event 1**. Everything about whether to run it, at what
-price, and for which buyer is governed by [STATE.md](../STATE.md) (the thesis is unproven; WTP is the
-gating unknown) and [event1-design.md](../event1-design.md) (the recommended shape). This document
+price, and for which buyer is governed by [STATE.md](../overview/STATE.md) (the thesis is unproven; WTP is the
+gating unknown) and [event1-design.md](../event/event1-design.md) (the recommended shape). This document
 assumes that gate has been passed and answers a narrower question: **given that Event 1 runs, how do
 we extract an exceptionally rich, traceable, adaptive understanding of how elite builders decide,
 struggle, switch, build, and continue — without ever making it feel like a study?**
@@ -17,11 +17,11 @@ struggle, switch, build, and continue — without ever making it feel like a stu
 > **If the research and the participant experience ever conflict, the experience wins.** A weekend
 > the builders call one of the best events they ever attended is worth more than any single
 > weekend's data, because the data asset compounds only if the event keeps happening
-> ([monetization-map.md](../monetization-map.md), extraction frontier).
+> ([monetization-map.md](../business-model/monetization-map.md), extraction frontier).
 
 Everything below is built to make that constraint and "extremely rich research" compatible rather
 than opposed. The mechanism is the same one the capture system already commits to
-([capture-system.md](../capture-system.md)): **capture through things people were going to do anyway,
+([capture-system.md](../research-product/capture-system.md)): **capture through things people were going to do anyway,
 and spend their explicit attention only at the freshest, highest-signal moments.**
 
 ## What we are trying to reconstruct
@@ -85,9 +85,9 @@ first-class, correct outcome.
 
 | # | Layer | What it does | Where |
 |---|---|---|---|
-| 1 | **Participant baseline** | pre-event SAID state, stack, familiarity (the adoption-vs-retention covariate) | [capture-system.md](../capture-system.md) Phase A/B; [checkpoints.md](checkpoints.md) |
+| 1 | **Participant baseline** | pre-event SAID state, stack, familiarity (the adoption-vs-retention covariate) | [capture-system.md](../research-product/capture-system.md) Phase A/B; [checkpoints.md](checkpoints.md) |
 | 2 | **Team baseline** | problem, plan, intended tools, prior-collaboration graph at t0 | [checkpoints.md](checkpoints.md) (START) |
-| 3 | **Passive legitimate capture** | brokered keys, event-app actions, artifacts — disclosed, invisible-but-not-covert | [capture-system.md](../capture-system.md) Part 3 |
+| 3 | **Passive legitimate capture** | brokered keys, event-app actions, artifacts — disclosed, invisible-but-not-covert | [capture-system.md](../research-product/capture-system.md) Part 3 |
 | 4 | **Behavioral-event triggers** | the critical-incident taxonomy that notices "something interesting happened" | [critical-incidents.md](critical-incidents.md); [`research_triggers.py`](../../engine/research_triggers.py) |
 | 5 | **Field-researcher observation** | trained humans, zone coverage, fact ≠ interpretation | [field-researcher-guide.md](field-researcher-guide.md), [field-note-system.md](field-note-system.md) |
 | 6 | **Mentor observation** | help-first support that reveals blockers as a byproduct | [mentor-system.md](mentor-system.md) |
@@ -97,7 +97,7 @@ first-class, correct outcome.
 | 10 | **Emerging-theme detection** | the war room turns raw notes into provisional patterns | [research-war-room.md](research-war-room.md), [qualitative-coding.md](qualitative-coding.md) |
 | 11 | **Live research war room** | the operations room/dashboard that runs the loop | [research-war-room.md](research-war-room.md), [dashboard-spec.md](dashboard-spec.md) |
 | 12 | **Intervention logging** | every material event change, timestamped, with validity impact | [event-adaptation.md](event-adaptation.md); [`intervention_log.py`](../../engine/intervention_log.py) |
-| 13 | **Artifact analysis** | the honest cross-check on all self-report (repos, deps, deploys) | [capture-system.md](../capture-system.md); [measurement.md](../measurement.md) |
+| 13 | **Artifact analysis** | the honest cross-check on all self-report (repos, deps, deploys) | [capture-system.md](../research-product/capture-system.md); [measurement.md](../research-product/measurement.md) |
 | 14 | **End-of-event synthesis** | the team stories + the claim/evidence graph | [team-trajectories.md](team-trajectories.md), [evidence-graph.md](evidence-graph.md) |
 | 15 | **7/30/90-day follow-up** | the retention asset no other hackathon has | [longitudinal-followup.md](longitudinal-followup.md) |
 | 16 | **Client-specific analysis** | the same instrument serving research / R&D / product / activation clients | [client-protocols.md](client-protocols.md) |
@@ -131,7 +131,7 @@ Encoded structurally, not just promised ([`live_research.py`](../../engine/live_
   is budgeted to ≤~18 minutes per participant across the whole weekend.
 - **Not a surveillance system.** No keystroke logging, no continuous screen capture, no private-
   message scraping, no covert audio, no attention monitoring. Permanently out of scope — see the
-  no-go list below and [capture-risk-register.md](../capture-risk-register.md).
+  no-go list below and [capture-risk-register.md](../research-product/capture-risk-register.md).
 - **Not a participant-scoring system.** There is no quality / employability / founder / personality
   score and no protected-trait inference anywhere in the schema or the engines. `assert_clean`
   rejects any record that tries to carry one.
