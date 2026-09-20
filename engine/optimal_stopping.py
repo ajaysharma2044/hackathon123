@@ -1,5 +1,5 @@
 """
-Optimal stopping — continue vs pivot / kill vs fund (docs/temporal/optimal-stopping.md; Parts XVII, XVIII).
+Optimal stopping — continue vs pivot / kill vs fund (docs/modeling/temporal/optimal-stopping.md; Parts XVII, XVIII).
 
 A stuck team faces: keep trying or pivot now? Continue while E[value of another attempt] > E[value of
 pivoting now]. R&D faces the same shape: continue a failing path, kill it, or fund an alternative. We

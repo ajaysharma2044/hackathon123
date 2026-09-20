@@ -1,5 +1,5 @@
 """
-The role-correlation graph (docs/event-ops/role-correlations.md).
+The role-correlation graph (docs/event/role-correlations.md).
 
 This is the structural answer to "show how it is all tied together." Every role/unit — across BOTH
 the event org and the research org — is a node; every working relationship is a typed edge:
@@ -11,7 +11,7 @@ whom, what an org-chart path looks like, which roles feed the research layer, wh
 constrain an ops role, and which nodes are critical (a failure there cascades widely).
 
 The canonical Event 1 graph is built in `event1_graph()`; it is the machine-readable twin of the
-matrix in docs/event-ops/role-correlations.md. Pure stdlib.
+matrix in docs/event/role-correlations.md. Pure stdlib.
 """
 from __future__ import annotations
 from dataclasses import dataclass, field

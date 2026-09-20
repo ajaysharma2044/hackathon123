@@ -1,5 +1,5 @@
 """
-Multi-use-asset engine (docs/multi-sided/multi-use-assets.md). Net-new: one artifact -> many
+Multi-use-asset engine (docs/markets/multi-sided/multi-use-assets.md). Net-new: one artifact -> many
 downstream uses (Part XXIV), with rights/consent (Part XXV) and NO double-counting of revenue
 (Parts XXVII-XXVIII). Reuses compliance (disclosure rules) and opportunity_market.dedup_revenue.
 """

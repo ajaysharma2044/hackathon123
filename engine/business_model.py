@@ -1,5 +1,5 @@
 """
-Business-model discovery (docs/business-model-discovery.md; Phase 21).
+Business-model discovery (docs/modeling/discovery-engine/business-model-discovery.md; Phase 21).
 
 Sponsorship is ONE row here, not the frame. Each monetization model is scored on DECOMPOSED ordinal
 dimensions (never collapsed) and the module returns a Pareto set, mirroring the "keep the vector"

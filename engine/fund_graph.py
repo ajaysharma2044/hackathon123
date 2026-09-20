@@ -1,5 +1,5 @@
 """
-Investor / fund graph from PUBLIC data only (docs/venture/fund-graph.md; Parts XXXII, LVIII).
+Investor / fund graph from PUBLIC data only (docs/markets/venture/fund-graph.md; Parts XXXII, LVIII).
 
 Structural fund + investor records built from public fund websites, announcements, portfolios, and
 public professional profiles. No private or scraped contact data.

@@ -1,6 +1,6 @@
 """
 Grounded inputs adapter (audit Section 7, step 1): turn the sourced Round-1 comparable-events dataset
-(docs/comparable-events/comparable-events.json) into provenance-tagged beliefs.Belief objects the quant
+(docs/evidence/comparable-events/comparable-events.json) into provenance-tagged beliefs.Belief objects the quant
 engine can consume. Nothing else in the repo reads the Round-1 dataset -- this is the data-in seam the
 audit flagged as the single biggest gap.
 

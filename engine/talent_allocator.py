@@ -1,5 +1,5 @@
 """
-Talent / problem allocation (docs/talent-configuration.md; Phase 14).
+Talent / problem allocation (docs/modeling/discovery-engine/talent-configuration.md; Phase 14).
 
 Given a problem portfolio, a configured population (teams), and scarce shared resources (mentor
 hours, compute), choose how many teams attack each problem to maximize a DECOMPOSED objective —

@@ -1,6 +1,6 @@
 """
 Belief / state layer: uncertain business quantities as DISTRIBUTIONS WITH PROVENANCE, not point
-estimates or fake decimals. (docs/quant-engine.md)
+estimates or fake decimals. (docs/modeling/quant-engine/quant-engine.md)
 
 Discipline enforced here:
 - Every Belief carries provenance and a status: OBSERVED | ASSUMED | UNKNOWN.
@@ -18,7 +18,7 @@ from scipy import stats
 
 OBSERVED, ASSUMED, UNKNOWN = "OBSERVED", "ASSUMED", "UNKNOWN"
 
-# Evidence reliability weights (docs/quant-engine.md, Part 2). Higher = moves beliefs more.
+# Evidence reliability weights (docs/modeling/quant-engine/quant-engine.md, Part 2). Higher = moves beliefs more.
 EVIDENCE_WEIGHT = {
     "SIGNED_COMMERCIAL": 1.00,   # a signed deal / paid pilot — the gold standard for WTP
     "DIRECT_OBSERVATION": 0.90,  # e.g. 3 of 10 qualified buyers took a meeting

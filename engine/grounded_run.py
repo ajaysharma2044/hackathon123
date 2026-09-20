@@ -17,7 +17,7 @@ import grounded_inputs as gi
 from event_optimizer import EventDesign, economic
 from voi import evsi_beta
 
-ASSUMED_CONTRACT = (40000, 75000, 150000)     # the engine's original invented band (docs/quant-assumptions.md)
+ASSUMED_CONTRACT = (40000, 75000, 150000)     # the engine's original invented band (docs/modeling/quant-engine/quant-assumptions.md)
 ASSUMED_CLOSE = (0.10, 0.25, 0.45)            # close rate stays ASSUMED -- no demand-side evidence exists
 
 

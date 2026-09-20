@@ -1,5 +1,5 @@
 """
-COMPANY -> OFFER generator (docs/company-opportunity-map.md, Part XII). Takes a company situation
+COMPANY -> OFFER generator (docs/modeling/discovery-engine/company-opportunity-map.md, Part XII). Takes a company situation
 and routes to the best-fit value engine with a structured 20-field offer -- or concludes NO_FIT.
 Deterministic, transparent, and ALLOWED to say no. All fit scores are structural (from evidence
 flags); every price is a rational CEILING, never observed WTP.

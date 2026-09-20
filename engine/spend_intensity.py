@@ -1,6 +1,6 @@
 """
-Economic arms-race / spending-intensity engine (docs/economic-arms-races.md,
-docs/spending-intensity-map.md).
+Economic arms-race / spending-intensity engine (docs/buyers/economic-arms-races.md,
+docs/buyers/spending-intensity-map.md).
 
 Do not look for companies that "could benefit." Look for markets where organizations are ALREADY
 SPENDING AGGRESSIVELY to win an economically important outcome — a spending war — and then find the

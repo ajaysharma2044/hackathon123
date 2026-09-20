@@ -1,6 +1,6 @@
 """
-Participant opportunity hub + value fan-out + monetization legality (docs/talent/transaction-flow.md,
-docs/venture/legal-policy.md; Parts XLIII-XLsix, LXIII-LXV, XL).
+Participant opportunity hub + value fan-out + monetization legality (docs/markets/talent/transaction-flow.md,
+docs/markets/venture/legal-policy.md; Parts XLIII-XLsix, LXIII-LXV, XL).
 
 One naturally-produced activity (a repo, a demo, a mentor request) can serve MANY value surfaces —
 but hiring/venture surfaces light up ONLY with the participant's per-scope opt-in. The participant hub

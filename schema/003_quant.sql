@@ -1,7 +1,7 @@
 -- Builder Network — quantitative decision layer (v003)
 -- Belief state, distributions with provenance, buyer latent state, VOI evaluations, event designs,
 -- Monte Carlo results, study positions, and the calibration/prediction ledger.
--- See docs/quant-engine.md. Engine: engine/{beliefs,monte_carlo,voi,portfolio,calibration,event_optimizer}.py
+-- See docs/modeling/quant-engine/quant-engine.md. Engine: engine/{beliefs,monte_carlo,voi,portfolio,calibration,event_optimizer}.py
 -- INVARIANT: no uncertain business quantity is stored as a bare number. It is a distribution with
 -- provenance and a status (OBSERVED | ASSUMED | UNKNOWN). UNKNOWN cannot be silently sampled.
 
@@ -40,7 +40,7 @@ create table business_hypothesis (
   decision_relevance text, model_version text, updated_at timestamptz
 );
 
--- Latent buyer state (docs/quant-engine.md Part 4). Each dimension a belief, updated by signals.
+-- Latent buyer state (docs/modeling/quant-engine/quant-engine.md Part 4). Each dimension a belief, updated by signals.
 create table buyer_state (
   company_id     uuid primary key,              -- references company (schema 001)
   pain uuid, urgency uuid, mandate_strength uuid, decision_value uuid, blind_spot uuid,
@@ -74,11 +74,11 @@ create table event_scenario_result (
   experience real, research_info real, longterm real,
   econ_mean numeric, econ_p5 numeric, econ_p95 numeric, p_breakeven real,
   var95 numeric, cvar95 numeric, on_pareto_frontier boolean,
-  assumptions_ref text,                          -- pointer to docs/quant-assumptions.md version
+  assumptions_ref text,                          -- pointer to docs/modeling/quant-engine/quant-assumptions.md version
   model_version text, computed_at timestamptz
 );
 
--- Study portfolio positions (docs/quant-engine.md Part 19).
+-- Study portfolio positions (docs/modeling/quant-engine/quant-engine.md Part 19).
 create table study_position (
   study_id       uuid primary key,
   name text, category text, exp_value numeric, info_value numeric,

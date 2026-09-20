@@ -1,5 +1,5 @@
 """
-Process tracing + counterfactual honesty (docs/temporal/process-tracing.md; Parts LXX, LXXI, LXXVIII).
+Process tracing + counterfactual honesty (docs/modeling/temporal/process-tracing.md; Parts LXX, LXXI, LXXVIII).
 
 For an important outcome we reconstruct the MECHANISM, not just the correlation: what happened, what
 immediately preceded it, the proposed mechanism, the evidence for AND against it, and the rival

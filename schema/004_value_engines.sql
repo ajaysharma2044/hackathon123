@@ -7,7 +7,7 @@
 create type engine_kind as enum ('RESEARCH','RD','PRODUCT_DEV','ACTIVATION','INNOVATION','SPONSORSHIP','DESIGN_PARTNER');
 create type fit_verdict as enum ('ADVANTAGEOUS','INFERIOR','NO_FIT');
 
--- Historical program dataset (docs/historical-program-dataset.md). UNKNOWN via nulls, never invented.
+-- Historical program dataset (docs/evidence/historical-program-dataset.md). UNKNOWN via nulls, never invented.
 create table historical_program (
   program_id uuid primary key, name text, organizer text, program_type text,
   year_started int, year_ended int, still_active boolean,
@@ -20,7 +20,7 @@ create table historical_program (
   source text, source_quality text, confidence text, epistemic_tag text, notes text
 );
 
--- Structural archetypes (docs/structural-archetypes.md).
+-- Structural archetypes (docs/modeling/discovery-engine/structural-archetypes.md).
 create table archetype (
   archetype_id uuid primary key, name text, engine engine_kind,
   input_desc text, mechanism text, output_desc text, buyer text, budget_source text,
@@ -29,7 +29,7 @@ create table archetype (
   six_figure_capable boolean
 );
 
--- Company situations + the routed offer (docs/company-opportunity-map.md; engine/company_matcher.py).
+-- Company situations + the routed offer (docs/modeling/discovery-engine/company-opportunity-map.md; engine/company_matcher.py).
 create table company_situation (
   situation_id uuid primary key, company_id uuid,   -- references company (schema 001)
   business_unit text, problem text, evidence text, trigger text, decision_owner text,
@@ -54,7 +54,7 @@ create table rd_team_curve (
   is_optimum boolean, primary key (problem_id, n_teams)
 );
 
--- Multi-engine capacity portfolio (docs/event1-design.md; extends schema/003 event_design).
+-- Multi-engine capacity portfolio (docs/event/event1-design.md; extends schema/003 event_design).
 create table engine_portfolio_selection (
   design_id uuid, engine engine_kind, client_ref text, selected boolean,
   participant_minutes numeric, researcher_hours numeric, category text,

@@ -1,5 +1,5 @@
 -- Builder Network — core research capture schema (v001)
--- Postgres flavor. See docs/research-data-model.md for the object model and docs/capture-system.md
+-- Postgres flavor. See docs/research-product/research-data-model.md for the object model and docs/research-product/capture-system.md
 -- for the architecture. Correctness invariants enforced in engine/capture.py + tests.
 --
 -- LAYERS:  registry (definitions) → raw evidence (immutable) → derived (versioned) → business graph

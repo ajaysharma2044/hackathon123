@@ -1,5 +1,5 @@
 """
-Bilevel discovery (docs/discovery-engine.md; Phases 22-23).
+Bilevel discovery (docs/modeling/discovery-engine/discovery-engine.md; Phases 22-23).
 
     OUTER loop  : which recurring problems are most valuable?
     INNER loop  : for each problem, design the best environment, then decide act-vs-gather-evidence.

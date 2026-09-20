@@ -1,5 +1,5 @@
 """
-Problem x Environment matching (docs/problem-environment-fit.md; Phase 11).
+Problem x Environment matching (docs/modeling/discovery-engine/problem-environment-fit.md; Phase 11).
 
 Fit(P,E) is computed on DECOMPOSED dimensions and gated by a HARD structural-advantage test, exactly
 as score.py gates on HackathonAdvantage: a large budget or a big decision CANNOT rescue a problem the

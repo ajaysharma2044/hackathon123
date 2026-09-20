@@ -1,5 +1,5 @@
 """
-Structural-gap search (docs/structural-gap-map.md).
+Structural-gap search (docs/buyers/structural-gap-map.md).
 
 For every spending war, ask the message's question: "What CAN'T the buyer currently purchase?"
     They can buy consultants, but not 30 independent technical approaches in 72 hours.

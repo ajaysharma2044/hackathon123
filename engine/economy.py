@@ -1,5 +1,5 @@
 """
-The GENERAL ECONOMY (docs/economic-flow-model.md).
+The GENERAL ECONOMY (docs/modeling/discovery-engine/economic-flow-model.md).
 
 Generalizes the "hackathon as a compressed economic laboratory" (research-data-model.md) and the
 choice_set / economic_transaction tables (schema 002) beyond participants-choosing-devtools. The

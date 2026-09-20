@@ -1,5 +1,5 @@
 """
-Mechanism design over the multi-sided market (docs/multi-sided/mechanism-design.md). Net-new layer:
+Mechanism design over the multi-sided market (docs/markets/multi-sided/mechanism-design.md). Net-new layer:
 HARD participant floors that revenue cannot override, a Pareto frontier over STAKEHOLDER utilities
 (not one score), Nash welfare only as a secondary tie-breaker, attention shadow price / value-per-
 participant-minute, the frontend-distortion gate, and multi-sided module packing.

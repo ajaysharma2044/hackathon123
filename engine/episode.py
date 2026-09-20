@@ -1,5 +1,5 @@
 """
-Episode reconstruction — the master object (docs/temporal/episodes.md; Parts VII, VIII, LXX, LXXI).
+Episode reconstruction — the master object (docs/modeling/temporal/episodes.md; Parts VII, VIII, LXX, LXXI).
 
 The unit of the system is not a row, it is an EPISODE: an actor trying to achieve a goal, from a prior
 state, with an opportunity set, under constraints, after prior events, who makes a decision, receives

@@ -17,7 +17,7 @@ from scipy import stats
 #   Force 2 (effort dilution / rivalry): more teams -> each exerts less effort (mean quality drops).
 #   Extreme-value force dominates for HIGH-uncertainty problems; dilution dominates for LOW.
 #   Source: Boudreau, Lacetera & Lakhani, "Incentives and Problem Uncertainty in Innovation
-#   Contests," Management Science 2011 (verified via web search; see docs/rd-engine.md).
+#   Contests," Management Science 2011 (verified via web search; see docs/business-model/rd-engine.md).
 # ---------------------------------------------------------------------------------------------
 RD_A = {"mu0": 1.0, "base_sigma": 0.35, "effort_elasticity": 0.18, "value_scale": 400000,
         "per_team_cost": 3000, "failure_elim_per_team": 0.06, "search_value": 250000}

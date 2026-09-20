@@ -8,7 +8,7 @@
 -- is redefined; new objects only. The research org is modeled in 006; this file models the EVENT
 -- org and the ops↔research correlation edges (role_dependency).
 --
--- GUIDING FACTS (sourced — see docs/event-ops/prior-hackathons.md):
+-- GUIDING FACTS (sourced — see docs/event/prior-hackathons.md):
 --   * Organizer teams (MLH): Lead + Logistics, Finance/Sponsorship, Marketing, Operations; extended
 --     committees add Tech/AV, Design, Participant Experience, Judging & Awards, Mentorship, Safety.
 --   * Judges needed J = ceil(P*n*t / T): projects × rounds × minutes-per-project / total-judging-minutes
@@ -81,7 +81,7 @@ create table shift_assignment (
 );
 
 ------------------------------------------------------------------------------------------------
--- JUDGING  (science-fair + finals; see engine/judging_assignment.py, docs/event-ops/judging-system.md)
+-- JUDGING  (science-fair + finals; see engine/judging_assignment.py, docs/event/judging-system.md)
 ------------------------------------------------------------------------------------------------
 create table judge (
   judge_id        uuid primary key,
@@ -141,7 +141,7 @@ create table prize_award (
 );
 
 ------------------------------------------------------------------------------------------------
--- LOGISTICS  (venue, food, travel, resources, tasks — docs/event-ops/logistics.md)
+-- LOGISTICS  (venue, food, travel, resources, tasks — docs/event/logistics.md)
 ------------------------------------------------------------------------------------------------
 create table logistics_task (                  -- the checklist; each task owned by a unit, time-offset
   task_id         uuid primary key,
@@ -179,7 +179,7 @@ create table travel_grant (                    -- the premium fly-in: funded, ad
   amount          numeric,
   status          text not null default 'OFFERED',  -- OFFERED | ACCEPTED | REIMBURSED | DECLINED
   -- NOTE: travel-grant decisions are made AFTER admission and must not bias selection
-  --       (admission-blind, per docs/event-ops/prior-hackathons.md).
+  --       (admission-blind, per docs/event/prior-hackathons.md).
   affects_admission boolean not null default false check (affects_admission = false)
 );
 

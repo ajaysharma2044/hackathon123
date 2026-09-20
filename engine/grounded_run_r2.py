@@ -1,6 +1,6 @@
 """
 Round-2 grounded engine run. Same engine + discipline as grounded_run.py, reads the Round-2-enriched
-dataset (docs/comparable-events/comparable-events.json) and BRACKETS the sponsor contract band: the elite grounded band ($10/35/95K, Cal Hacks /
+dataset (docs/evidence/comparable-events/comparable-events.json) and BRACKETS the sponsor contract band: the elite grounded band ($10/35/95K, Cal Hacks /
 Reality Hack) vs the realistic first-event DOWN-MARKET band ($1/5/10K, from the Round-2 sub-500-person
 collegiate ladders). Round 2 also cross-checks the grounded cost: Assemble's real itemized core (~$25K
 ex-travel, ~$145/head) + MLH stated per-person benchmarks put a ~200-person core at ~$25-40K, corroborating

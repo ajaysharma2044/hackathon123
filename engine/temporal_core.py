@@ -1,6 +1,6 @@
 """
 Temporal core — the master primitive that turns the static event DB into a time-aware dynamic system
-(docs/temporal/temporal-model.md; Parts I, II, VI, VIII of the temporal spec).
+(docs/modeling/temporal/temporal-model.md; Parts I, II, VI, VIII of the temporal spec).
 
 Static thinking:   Actor + Action -> Outcome
 Dynamic thinking:  PriorState_t -> Context_t -> OpportunitySet_t -> Trigger_t -> ChoiceSet_t ->

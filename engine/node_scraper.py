@@ -1,5 +1,5 @@
 """
-Autonomous grounding agent (docs/grounding.md). Goes to the web ITSELF (pure urllib, no LLM in the
+Autonomous grounding agent (docs/modeling/quant-engine/grounding.md). Goes to the web ITSELF (pure urllib, no LLM in the
 loop), pulls live values into grounding.NODES, and refreshes ONLY stale nodes -- staleness decided by
 freshness.py, the same decay engine the rest of the system uses. It knows its limits: QUOTE nodes
 (behind 'contact us') and PRIMARY nodes (a sponsor/buyer 'yes' that exists nowhere online) are not

@@ -1,5 +1,5 @@
 """
-Temporal resource allocation (docs/temporal/allocation.md; Parts XXXIX, XL, XLII, XLIV, XLVI).
+Temporal resource allocation (docs/modeling/temporal/allocation.md; Parts XXXIX, XL, XLII, XLIV, XLVI).
 
 Participant minutes are the scarcest, most perishable resource. Ledgers track four minute-budgets;
 each REUSES burden_budget.BurdenBudget (the participant-minute floor), so temporal allocation cannot

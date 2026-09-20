@@ -1,10 +1,10 @@
 """
-Event design as multi-objective stochastic optimization (docs/quant-engine.md Parts 6-8, 20-23;
-docs/event-optimizer.md). The event is a DECISION VECTOR. We do NOT collapse the objectives into
+Event design as multi-objective stochastic optimization (docs/modeling/quant-engine/quant-engine.md Parts 6-8, 20-23;
+docs/modeling/quant-engine/event-optimizer.md). The event is a DECISION VECTOR. We do NOT collapse the objectives into
 one score — we build the Pareto frontier and show the tradeoffs.
 
 CRITICAL HONESTY: the effect coefficients below are ASSUMPTIONS, not measurements. They live in one
-ASSUMPTIONS dict so they are obviously assumptions (mirrored in docs/quant-assumptions.md). The value
+ASSUMPTIONS dict so they are obviously assumptions (mirrored in docs/modeling/quant-engine/quant-assumptions.md). The value
 of this engine is the machinery + the explicit assumption ledger + sensitivity showing which
 assumption drives the answer — NOT the specific output numbers. Participant experience is a core
 objective, never a soft constraint.
@@ -15,7 +15,7 @@ import numpy as np
 from beliefs import scenario, beta
 from monte_carlo import simulate, correlated_bernoulli
 
-# ---- ASSUMED effect model (every number here is an assumption; see docs/quant-assumptions.md) ----
+# ---- ASSUMED effect model (every number here is an assumption; see docs/modeling/quant-engine/quant-assumptions.md) ----
 A = {
     "exp_base": 5.0,
     "exp_travel_funded": 1.5, "exp_hotel_premium": 1.2, "exp_free_choice": 1.5,
@@ -111,7 +111,7 @@ def _ref_info():
 
 def research_quality_multiplier(d: EventDesign) -> float:
     """THE THESIS, made economic: better research (more builders, more free-choice, follow-up) makes
-    sponsors pay more. Coupling elasticity is ASSUMED (docs/quant-assumptions.md); clipped so it can
+    sponsors pay more. Coupling elasticity is ASSUMED (docs/modeling/quant-engine/quant-assumptions.md); clipped so it can
     neither vanish nor explode. This is why flying in 200 builders can beat a cheap 120-person event."""
     return float(np.clip((research_information(d) / _ref_info()) ** A["wtp_research_elasticity"],
                          A["wtp_mult_floor"], A["wtp_mult_ceiling"]))

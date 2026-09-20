@@ -1,5 +1,5 @@
 """
-Judging assignment + scoring (docs/event-ops/judging-system.md).
+Judging assignment + scoring (docs/event/judging-system.md).
 
 Implements the science-fair judging model used by MLH and most elite hackathons:
 

@@ -1,5 +1,5 @@
 """
-Question-VOI scoring (docs/research-modules.md, "From Company-Fit to Question-VOI").
+Question-VOI scoring (docs/research-product/research-modules.md, "From Company-Fit to Question-VOI").
 
 Scores a candidate research question on visible dimensions and returns the FULL VECTOR plus a
 composite — dimensions are never collapsed away. HackathonAdvantage is a HARD GATE, not a weight:

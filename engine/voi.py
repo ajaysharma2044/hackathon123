@@ -1,5 +1,5 @@
 """
-Value of Information (docs/quant-engine.md, Part 5). The tool that decides whether to research more
+Value of Information (docs/modeling/quant-engine/quant-engine.md, Part 5). The tool that decides whether to research more
 or act now — for BOTH the research we sell AND the research we run on ourselves.
 
 EVPI  = E[max_a U(a|theta)]  -  max_a E[U(a|theta)]           (value of resolving theta perfectly)

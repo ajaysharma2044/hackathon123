@@ -1,5 +1,5 @@
 """
-Survival / hazard for time-to-event (docs/temporal/survival.md; Parts XIII, XIV).
+Survival / hazard for time-to-event (docs/modeling/temporal/survival.md; Parts XIII, XIV).
 
 Kaplan-Meier with right-censoring, hand-rolled (statsmodels is not in the stack). Models time until:
 abandonment, switching, completion, mentor request, retention loss, project continuation. This is

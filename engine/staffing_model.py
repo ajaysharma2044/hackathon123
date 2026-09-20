@@ -1,10 +1,10 @@
 """
-The event staffing model (docs/event-ops/org-chart-and-roles.md, event1-staffing.md).
+The event staffing model (docs/event/org-chart-and-roles.md, event1-staffing.md).
 
 Given an event size, compute the full staffing plan across BOTH orgs — organizers, crew, mentors,
 judges, volunteers, and the research staff — with the ratios each count is derived from, and flag
 any under-staffing. The ratios are grounded in the researched comps
-(docs/event-ops/prior-hackathons.md); they are defensible defaults, not laws, and every number
+(docs/event/prior-hackathons.md); they are defensible defaults, not laws, and every number
 reports the rule it came from so a human can override it with reasons.
 
 Sourced anchors:

@@ -1,5 +1,5 @@
 """
-Multi-sided value matrix (docs/multi-sided/mechanic-value-matrix.md). The net-new layer the
+Multi-sided value matrix (docs/markets/multi-sided/mechanic-value-matrix.md). The net-new layer the
 integration plan flagged: U[s,j] (mechanic x stakeholder VALUE), C[r,j] (mechanic x resource COST),
 cross-side fan-out, synergy Gamma, and conflicts. Builds ON the existing engines
 (opportunity_market.fan_out for participant scopes; does not recreate the markets).

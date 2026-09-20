@@ -3,12 +3,12 @@ Reference implementation of the two hardest correctness properties in the captur
 
   1. POINT-IN-TIME CORRECTNESS  — an "as of D" query may only use evidence that was available
      (available_at <= D); retention/survival runs on occurred_at, never observed_at, so
-     survey-lag does not corrupt time-to-event.  (docs/research-data-model.md, "three clocks")
+     survey-lag does not corrupt time-to-event.  (docs/research-product/research-data-model.md, "three clocks")
 
   2. CONSENT ENFORCED AT QUERY TIME — visibility for a purpose is resolved from the append-only
      consent ledger as-of query time, so a revocation takes effect without deleting anything;
      AGGREGATE_RESEARCH is aggregate-only (min cell size), and only the *_DISCOVERABILITY scopes
-     may ever produce individual-grain output.  (docs/capture-system.md, Part 7)
+     may ever produce individual-grain output.  (docs/research-product/capture-system.md, Part 7)
 
 Pure stdlib, no external deps. This is a reference/enforcement kernel, not a production store —
 it exists so the invariants are executable and testable (engine/test_capture.py), not asserted
@@ -31,7 +31,7 @@ INDIVIDUAL_DISCLOSURE_OK = {
 }
 # Aggregate-only scopes: never individual grain to a sponsor.
 AGGREGATE_ONLY = {"AGGREGATE_RESEARCH", "ANONYMIZED_PUBLICATION"}
-DEFAULT_MIN_CELL = 8   # min-cell-size suppression (docs/data-model.md "aggregate-only has teeth")
+DEFAULT_MIN_CELL = 8   # min-cell-size suppression (docs/research-product/data-model.md "aggregate-only has teeth")
 
 
 @dataclass(frozen=True)

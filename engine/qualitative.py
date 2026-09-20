@@ -1,6 +1,6 @@
 """
 Qualitative + insight engine (docs/qualitative-engine.md, docs/qualitative-writing-engine.md,
-docs/data-universe.md; Parts V-VII).
+docs/research-product/data-universe.md; Parts V-VII).
 
 Telemetry tells us WHAT; companies pay for WHY. This engine (a) gives every behavioral event a strict
 OPERATIONAL definition tied to an allowed capture mode, (b) enforces critical-event sampling (not just

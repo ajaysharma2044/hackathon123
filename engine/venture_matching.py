@@ -1,5 +1,5 @@
 """
-Startup <-> fund matching + investor discovery (docs/venture/startup-matching.md; Parts XXXIII,
+Startup <-> fund matching + investor discovery (docs/markets/venture/startup-matching.md; Parts XXXIII,
 XXXVII, XXXVIII, XLVIII).
 
 Decomposed thesis match — never a "founder quality" score (Part XXXIII). Discovery covers ALL opt-in

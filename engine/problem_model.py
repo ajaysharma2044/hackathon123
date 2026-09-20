@@ -1,5 +1,5 @@
 """
-The PROBLEM primitive (docs/problem-mechanics.md, docs/corporate-problem-universe.md).
+The PROBLEM primitive (docs/modeling/discovery-engine/problem-mechanics.md, docs/buyers/corporate-problem-universe.md).
 
 Problems are characterized by their MECHANICS, not their industry (Phase 7). "Retail is a good
 industry" is a useless statement; "this is a high-parallelizability, high-prototypeability,

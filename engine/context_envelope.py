@@ -1,5 +1,5 @@
 """
-Context envelope + dynamic context + opportunity set (docs/temporal/context.md; Parts III, IV, V,
+Context envelope + dynamic context + opportunity set (docs/modeling/temporal/context.md; Parts III, IV, V,
 XXXI, XXXII of the temporal spec).
 
 Context is a FUNCTION OF TIME, C_i(t), not a static profile — a participant is "ORIE student, no team"

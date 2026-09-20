@@ -1,5 +1,5 @@
 """
-Generative environment design (docs/environment-archetypes.md, docs/discovery-engine.md; Phase 12).
+Generative environment design (docs/modeling/discovery-engine/environment-archetypes.md, docs/modeling/discovery-engine/discovery-engine.md; Phase 12).
 
 The prior engine could only OPTIMIZE a fixed hackathon (event_optimizer.tweak over an EventDesign).
 This module GENERATES environments from scratch for a given problem: it picks an archetype from the

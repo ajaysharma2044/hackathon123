@@ -1,5 +1,5 @@
-"""Worked example (docs/quant-engine.md Part 31): run the engine on 3 Event-1 designs.
-ALL numeric inputs are ASSUMED scenario bands (docs/quant-assumptions.md), NOT measurements.
+"""Worked example (docs/modeling/quant-engine/quant-engine.md Part 31): run the engine on 3 Event-1 designs.
+ALL numeric inputs are ASSUMED scenario bands (docs/modeling/quant-engine/quant-assumptions.md), NOT measurements.
 The output demonstrates the machinery; the specific numbers move the moment real evidence arrives."""
 import numpy as np
 from event_optimizer import (EventDesign, objectives, economic, pareto_frontier, tweak, robust_eval,

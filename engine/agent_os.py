@@ -1,5 +1,5 @@
 """
-Agentic OS core (docs/agentic/architecture.md).
+Agentic OS core (docs/system/agentic/architecture.md).
 
 The node lifecycle deliberately distinguishes "we cannot answer this from current research" from
 "this question is resolved".  NEEDS_RESEARCH / PRIMARY_VALIDATION_REQUIRED / QUOTE are OPEN states,

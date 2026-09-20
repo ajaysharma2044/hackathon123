@@ -1,6 +1,6 @@
 """
 Professional capability ontology + artifact->capability evidence mapping
-(docs/talent/capability-ontology.md; Parts VI-VIII).
+(docs/markets/talent/capability-ontology.md; Parts VI-VIII).
 
 Separates SELF_REPORTED skill from ARTIFACT_SUPPORTED experience. Artifact evidence supports
 EXPERIENCE IN an area — it never proves mastery, seniority, intelligence, or future performance

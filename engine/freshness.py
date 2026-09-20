@@ -1,5 +1,5 @@
 """
-Evidence freshness & decay (docs/temporal/freshness.md; Parts XXIV, XXV, LIX).
+Evidence freshness & decay (docs/modeling/temporal/freshness.md; Parts XXIV, XXV, LIX).
 
 Every claim has a shelf life. A 2026 Claude-vs-Gemini tool preference may be stale by 2028; eHub room
 capacity persists until the facility changes. We mark age and validity window BY CLAIM TYPE — we do

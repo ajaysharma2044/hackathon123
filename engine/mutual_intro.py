@@ -1,6 +1,6 @@
 """
-Mutual-opt-in introduction flow + transaction liquidity (docs/talent/transaction-flow.md,
-docs/venture/transaction-flow.md; Parts XX-XXI, XXXIX, LXI).
+Mutual-opt-in introduction flow + transaction liquidity (docs/markets/talent/transaction-flow.md,
+docs/markets/venture/transaction-flow.md; Parts XX-XXI, XXXIX, LXI).
 
 An employer/investor can express interest, but NO contact information is disclosed until BOTH sides
 opt in. The participant/team always controls the introduction. This module also tracks funnel

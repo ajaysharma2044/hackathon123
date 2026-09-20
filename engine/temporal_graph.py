@@ -1,6 +1,6 @@
 """
 Temporal event graph — timestamped edges, window/trajectory queries, and motif mining
-(docs/temporal/temporal-graph.md; Parts IX, X, XX-XXI, XXXIII-XXXIV, LXXVI-LXXVII).
+(docs/modeling/temporal/temporal-graph.md; Parts IX, X, XX-XXI, XXXIII-XXXIV, LXXVI-LXXVII).
 
 Every edge is timestamped, so we can ask "show the 30 minutes before every database switch" or "show
 teams whose architecture changed within an hour of a mentor intervention". Sequence itself is a

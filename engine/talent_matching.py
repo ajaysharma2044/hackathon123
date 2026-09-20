@@ -1,5 +1,5 @@
 """
-Talent retrieval + matching (docs/talent/job-matching.md; Parts XIII-XVI, XLVII, L).
+Talent retrieval + matching (docs/markets/talent/job-matching.md; Parts XIII-XVI, XLVII, L).
 
 Bipartite matching between structured job requirements and OPT-IN participant work-evidence. The
 output is a DECOMPOSED, EXPLAINABLE match — never a single opaque candidate score (Part XIII/XIV).

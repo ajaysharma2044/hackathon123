@@ -1,5 +1,5 @@
 """
-Trajectories — snapshots become paths (docs/temporal/trajectory.md; Parts XXX, XXXI, XXXVI, XXXVII,
+Trajectories — snapshots become paths (docs/modeling/temporal/trajectory.md; Parts XXX, XXXI, XXXVI, XXXVII,
 XXXVIII, LXXVII).
 
 A trajectory is tau_i = (S0,A0,S1,A1,...,ST). Two teams that look different at the end may have had

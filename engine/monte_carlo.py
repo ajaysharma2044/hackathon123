@@ -1,7 +1,7 @@
 """
 Monte Carlo simulation + risk metrics. Runs a model over sampled Beliefs and returns a
 DISTRIBUTION of outcomes (mean, median, percentiles, tail risk) — never a single point estimate.
-Refuses to run if any input is UNKNOWN. (docs/quant-engine.md, Parts 7 & 20)
+Refuses to run if any input is UNKNOWN. (docs/modeling/quant-engine/quant-engine.md, Parts 7 & 20)
 """
 from __future__ import annotations
 import numpy as np
@@ -11,7 +11,7 @@ from beliefs import Belief, UNKNOWN
 def correlated_bernoulli(probs, n, rho, rng):
     """Correlated closes/attendance via a Gaussian copula with a shared latent factor. rho in [0,1).
     Independence (rho=0) is the default assumption; correlation matters when a category-wide demand
-    shock moves several buyers together (docs/quant-engine.md, Part 21).
+    shock moves several buyers together (docs/modeling/quant-engine/quant-engine.md, Part 21).
 
     probs may be a shape-(k,) vector shared by all n draws, OR a shape-(n,k) array giving each draw
     its own per-buyer probabilities -- used to propagate a SAMPLED rate belief through the draw
@@ -58,7 +58,7 @@ def simulate(model, params: dict[str, Belief], n=50000, seed=7):
     unknown = [k for k, b in params.items() if b.status == UNKNOWN]
     if unknown:
         raise ValueError(f"Cannot simulate: UNKNOWN inputs must be resolved to scenario bands first: "
-                         f"{unknown}. (docs/quant-assumptions.md)")
+                         f"{unknown}. (docs/modeling/quant-engine/quant-assumptions.md)")
     rng = np.random.default_rng(seed)
     samples = {k: b.sample(n, rng) for k, b in params.items()}
     return MCResult(model(samples, rng), samples)

@@ -1,5 +1,5 @@
 """
-Time-sensitive value of information (docs/temporal/temporal-voi.md; Parts XXVI, XXVII, XXVIII, XXIX).
+Time-sensitive value of information (docs/modeling/temporal/temporal-voi.md; Parts XXVI, XXVII, XXVIII, XXIX).
 
 Client value depends not only on WHAT we learn but WHEN. Evidence delivered after the client's
 decision deadline has little/no decision value even if identical. So VOI becomes VOI(E,t), and we

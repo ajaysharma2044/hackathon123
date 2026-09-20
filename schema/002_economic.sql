@@ -1,7 +1,7 @@
 -- Builder Network — economic-laboratory extension (v002)
 -- Adds the micro-economy layer: choice sets, resource/incentive flows, sponsor economics, and the
--- question-VOI scoring table. See docs/research-data-model.md ("Compressed Economic Laboratory")
--- and docs/research-modules.md ("Question-VOI"). All flow records reuse the tri-temporal + consent
+-- question-VOI scoring table. See docs/research-product/research-data-model.md ("Compressed Economic Laboratory")
+-- and docs/research-product/research-modules.md ("Question-VOI"). All flow records reuse the tri-temporal + consent
 -- envelope of evidence_event (schema/001_core.sql).
 
 -- Choice ≠ Preference: record what was actually AVAILABLE, not just what was chosen.
@@ -64,7 +64,7 @@ create table sponsor_economics (
   -- No single fake ROI number; components stay visible.
 );
 
--- Question-VOI scoring (docs/research-modules.md). Dimensions kept SEPARATE — never one score.
+-- Question-VOI scoring (docs/research-product/research-modules.md). Dimensions kept SEPARATE — never one score.
 create table research_question_score (
   question_id    uuid primary key,
   question_text  text not null,

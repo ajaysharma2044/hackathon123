@@ -1,5 +1,5 @@
 """
-Study portfolio optimization (docs/quant-engine.md, Part 19). The event hosts multiple studies
+Study portfolio optimization (docs/modeling/quant-engine/quant-engine.md, Part 19). The event hosts multiple studies
 under finite capacity and hard compatibility constraints. Exact solve by subset enumeration
 (study counts are small). More sponsors is NOT automatically better.
 """

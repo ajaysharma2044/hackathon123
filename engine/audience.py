@@ -1,10 +1,10 @@
 """
-Cornell audience model (docs/cornell-audience-map.md; Parts I-II).
+Cornell audience model (docs/event/cornell-audience-map.md; Parts I-II).
 
 Event 1 is CORNELL-ONLY. This models Cornell student subpopulations at the POPULATION level — never
 individuals, never a "quality"/intelligence/employability score (a hard ethical boundary). Segment
 DEFINITIONS (codes, skills, the talent labels each maps to) live here; accessible-population COUNTS
-default to None/UNKNOWN and are filled only from the cited seed sweep (docs/cornell-audience-map.md).
+default to None/UNKNOWN and are filled only from the cited seed sweep (docs/event/cornell-audience-map.md).
 We do not fabricate enrollment numbers.
 
 The bridge to the rest of the engine: `to_talent_mix` turns a chosen cohort (segment -> count) into an

@@ -1,5 +1,5 @@
 """
-Agent registry + concrete agents (docs/agentic/agents.md). Every agent declares a Permission and a
+Agent registry + concrete agents (docs/system/agentic/agents.md). Every agent declares a Permission and a
 run(node, graph, ctx) -> Evidence | Decompose | Defer | RequestAction.
 
 AUTONOMOUS agents do real work now by reusing the engines already in the repo (node_scraper, grounding,

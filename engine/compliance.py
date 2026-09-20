@@ -1,6 +1,6 @@
 """
-Shared compliance guardrails for the talent + venture markets (docs/talent/legal-policy.md,
-docs/venture/legal-policy.md; Parts I, IV, XXVI, XLIX, L, LI, LXXIV).
+Shared compliance guardrails for the talent + venture markets (docs/markets/talent/legal-policy.md,
+docs/markets/venture/legal-policy.md; Parts I, IV, XXVI, XLIX, L, LI, LXXIV).
 
 These are the invariants the whole opportunity layer is built to preserve, centralized so every
 module imports the SAME definitions and the guardrail test-suite can assert them once:

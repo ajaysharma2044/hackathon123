@@ -1,5 +1,5 @@
 """
-Founder/team venture profile (docs/venture/founder-team-profile.md; Parts XXX, XXXI, XXXIV-XXXVI).
+Founder/team venture profile (docs/markets/venture/founder-team-profile.md; Parts XXX, XXXI, XXXIV-XXXVI).
 
 Opt-in team profile for investor discovery. Every MATERIAL claim carries an epistemic status
 (OBSERVED / SELF_REPORTED / ASSUMED / UNKNOWN). A weekend prototype is never presented as production

@@ -1,5 +1,5 @@
 """
-Team state-transition model (docs/temporal/state-space.md; Parts XI, XII).
+Team state-transition model (docs/modeling/temporal/state-space.md; Parts XI, XII).
 
 Teams move through states over the project clock. We estimate transition probabilities ONLY after
 enough data — before that the honest answer is INSUFFICIENT_DATA, not a fabricated matrix. True state

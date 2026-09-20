@@ -1,5 +1,5 @@
 """
-Work-evidence graph (docs/talent/work-evidence-graph.md; Parts II-XI).
+Work-evidence graph (docs/markets/talent/work-evidence-graph.md; Parts II-XI).
 
 A hackathon produces work evidence a resume cannot. This models that evidence as a traceable GRAPH —
 never a hidden person score. Role ownership is DECLARED by the team and CONFIRMED by the participant,

@@ -1,5 +1,5 @@
 """
-GAP x MONEY x FIT opportunity matching (docs/high-value-gap-ranking.md, docs/demand-shaped-event.md).
+GAP x MONEY x FIT opportunity matching (docs/buyers/high-value-gap-ranking.md, docs/modeling/discovery-engine/demand-shaped-event.md).
 
 Fuses a spending war (spend_intensity.SpendCategory) with a structural gap (gap_finder.StructuralGap)
 and the environment fit into a single Opportunity whose 12 dimensions are kept DECOMPOSED — the

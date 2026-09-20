@@ -1,5 +1,5 @@
 """
-ICP discovery (docs/icp-discovery-engine.md; Phases 19-20).
+ICP discovery (docs/modeling/discovery-engine/icp-discovery-engine.md; Phases 19-20).
 
 The ICP is an OUTPUT, never an input. This module clusters high-opportunity problems and synthesizes
 candidate ICPs. It deliberately does NOT start from "our customer is a devtools company" — that is

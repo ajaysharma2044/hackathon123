@@ -1,5 +1,5 @@
 """
-Calibration (docs/quant-engine.md, Part 17). NON-NEGOTIABLE: a quant engine earns trust only by
+Calibration (docs/modeling/quant-engine/quant-engine.md, Part 17). NON-NEGOTIABLE: a quant engine earns trust only by
 being calibrated. If we say P(close)=70% for 20 accounts, ~14 should close. Pure numpy.
 """
 from __future__ import annotations

@@ -1,5 +1,5 @@
 """
-Structured hiring requirement graph (docs/talent/job-matching.md; Parts XII, XXVI).
+Structured hiring requirement graph (docs/markets/talent/job-matching.md; Parts XII, XXVI).
 
 Job requirements are structural (capabilities, domain, technologies, work type, location) and are
 vetted to contain NO sensitive attributes. Requirements express what work the role needs — they are a

@@ -1,6 +1,6 @@
 """
-The ENVIRONMENT primitive (docs/temporary-economy-thesis.md, docs/environment-capability-map.md,
-docs/environment-archetypes.md).
+The ENVIRONMENT primitive (docs/overview/temporary-economy-thesis.md, docs/modeling/discovery-engine/environment-capability-map.md,
+docs/modeling/discovery-engine/environment-archetypes.md).
 
 This GENERALIZES event_optimizer.EventDesign. There, the environment was hardcoded to a 200-person,
 72-hour, flown-in software hackathon. Here the environment is the configurable object itself:
@@ -36,7 +36,7 @@ INCENTIVES = ("WINNER_TAKE_ALL", "MULTIPLE_PRIZES", "BOUNTIES", "MILESTONE_PAYME
               "PEER_PREDICTION", "AUCTION", "INTERNAL_MARKET", "RESOURCE_BUDGET",
               "CONTINUATION_CONTRACT", "PROCUREMENT_OFFER", "EQUITY", "REPUTATION_ONLY")
 
-# ---- ASSUMED capability model (every coefficient here is an assumption; see docs/quant-assumptions.md) ----
+# ---- ASSUMED capability model (every coefficient here is an assumption; see docs/modeling/quant-engine/quant-assumptions.md) ----
 # Each capability is a transparent, monotonic function of a few knobs. We deliberately keep these
 # STRUCTURAL (thresholds / sums of labeled contributions) rather than fitting precise coefficients we
 # do not have. Latent scores are unbounded-ish; `capability_vector` buckets them to ordinal 0..3.
